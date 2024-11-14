@@ -190,8 +190,7 @@
 
   .logo img {
     height: 35px;
-    position:fixed;
-    margin-left:-1.5em;
+    margin-left:-1.0em;
   }
   /* Buttons Grid adjustments for mobile */
   .buttonsGrid {
