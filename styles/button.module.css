@@ -1,0 +1,11 @@
+/* Base subscribe button styles */
+.subscribeButton {
+    white-space: nowrap;
+    font-family: inter;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,194 @@
+/* Main Content Container responsible for storing EVERYTHING */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Adjust gap between sections */
+  padding: 4rem 3rem; /* Modify padding for spacing */
+  width:95%;
+  margin: 0 auto;
+}
+
+/* content Head Container Responsible for storing heading text */
+.contentHead {
+  gap: 5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 1rem; /* Add padding to separate from cards */
+}
+
+.textContainer {
+  /* gives as much space possible to text and then the rest goes to the button */
+  flex-grow: 1;
+}
+
+.buttonContainer {
+  /* Justified the position of button container to the far end */
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Text Styles for variations in text */
+.boldText {
+  font-size: 3rem;
+  font-family: Helvetica;
+  font-weight: 800;
+  color: #224750;
+}
+
+.basicTextLarge {
+  font-size: 3rem;
+  font-family: Helvetica;
+  color: #224750;
+}
+
+.basicTextSmall {
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: Helvetica;
+  color: #224750;
+}
+
+.basicTextSmallGreen {
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: Helvetica;
+  color: #44B07A;
+}
+
+/* Card Grid Layout */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 1.5rem; /* Increased gap between cards */
+  padding: 2rem 0;
+  max-width:100%;
+}
+
+
+/* Card Title Styles */
+.cardTitle {
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: Helvetica;
+  color: #224750;
+}
+
+.cardPublisher {
+  font-weight: 500;
+  font-size: 0.98rem;
+  font-family: Helvetica;
+  color: #7A8B94;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.5rem;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.cardImage {
+  height: 15rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.6rem;
+  mask-image: url(/cardMask.png);
+  background-image: url('../public/image1.png');
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 0.7rem;
+}
+
+.card{
+}
+.button {
+  /* Button styles */
+}
+@media screen and (max-width: 1010px) {
+  .contentHead{
+    flex-direction: column;
+  }
+  .buttonContainer{
+    margin-left: auto;
+    justify-content: right;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* Main content container adjustments */
+  .mainContent {
+    padding: 2rem 0.7rem;
+    gap: 1rem;
+  }
+
+  /* Content head adjustments for mobile */
+  .contentHead {
+    flex-direction: column;
+    gap: 2rem; /* Smaller gap for mobile */
+    text-align: center;
+    margin-top: 1em;
+  }
+
+  .textContainer {
+    flex-grow:unset;
+    width: 100%;
+    text-align: left;
+  }
+
+
+  .buttonContainer {
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  /* Text styling for mobile screens */
+  .boldText {
+    font-size: 2rem;
+  }
+
+  .basicTextLarge {
+    font-size: 2rem;
+  }
+
+  .basicTextSmall {
+    font-size: 0.85rem;
+  }
+
+  .basicTextSmallGreen {
+    font-size: 0.85rem;
+  }
+
+  /* Card layout for mobile */
+  .cards {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  /* Card content adjustments */
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardPublisher {
+    font-size: 0.9rem;
+  }
+
+  /* Card image adjustments */
+  .cardImage {
+    height: 12rem;
+    border-radius: 0.5rem;
+  }
+
+  /* General button adjustments for mobile */
+  .button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+}
