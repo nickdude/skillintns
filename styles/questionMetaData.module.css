@@ -1,0 +1,61 @@
+.practiceMetaData{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2rem;
+
+}
+    /* Link container contains the link elements it has flex row for horizontal display with fontsize 1.2 rem*/
+    .linkContainer{
+        display:flex;
+        flex-direction: row;
+    }
+        /* selected image to add gap between image and text */
+    .linkContainer img{
+        padding-right: 1em;
+        padding-top: 0.2em;
+        height:25px;
+    }
+        /* Added Padding to the Slashes between the links */
+    .linkContainer p{
+        padding:0 0.25em;
+    }
+        /* Green Link Decorator */
+    .greenLink{
+        text-wrap: nowrap;
+        font-family: Helvetica;
+        color: #44B07A;
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    .metaData img{
+        padding-right: 0.3em;
+        width:31px;
+
+
+    }
+    .metaData{
+        text-wrap: nowrap;
+        margin-left: auto;
+        display: flex;
+        flex-direction: row;
+        font-family: 'inter';
+        color:#3C4852;
+        gap:1em;
+    }
+        .skill{
+            display: flex;
+            flex-direction: row;
+            gap:0.2em;
+
+        }
+        .Level{
+            gap:0.2em;
+            display: flex;
+            flex-direction: row;
+        }
+
+    .skillName {
+        font-weight:600;
+
+    }

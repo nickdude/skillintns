@@ -1,0 +1,87 @@
+/* Text Styles for variations in text */
+.boldText {
+    font-size: 3rem;
+    font-family: Helvetica;
+    font-weight: 800;
+    color: #224750;
+}
+  
+.basicTextLarge {
+    font-size: 3rem;
+    font-family: Helvetica;
+    color: #224750;
+}
+  
+.basicTextSmall {
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: Helvetica;
+    color: #224750;
+}
+  
+  .basicTextSmallGreen {
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: Helvetica;
+    color: #44B07A;
+}
+
+
+/* MAIN TEXT CONTENT */
+/* content Head Container Responsible for storing heading text */
+.contentHead {
+    gap: 5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 1rem; /* Add padding to separate from cards */
+  }
+  
+.textContainer {
+    /* gives as much space possible to text and then the rest goes to the button */
+    flex-grow: 1;
+}
+  
+.buttonContainer {
+    /* Justified the position of button container to the far end */
+    display: flex;
+    justify-content: flex-end;
+    width:80px;
+}
+
+/* BUTTON */
+
+/* Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
+    gap: 1.5rem; /* Increased gap between cards */
+    padding: 2rem 0;
+    max-width:100%;
+
+}
+
+.card{
+    display: flex;
+}
+@media (max-width: 1120px) { /* Tablet size */
+    .cards {
+      grid-template-columns: repeat(3, 1fr); /* Switch to 3 columns */
+
+    }
+  }
+  
+@media (max-width: 768px) { /* Smaller screens */
+    .cards {
+      grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns */
+    }
+  }
+  
+@media (max-width: 480px) { /* Very small screens */
+    .cards {
+      grid-template-columns: 1fr; /* Switch to 1 column */
+    }
+  }
+  

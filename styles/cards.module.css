@@ -1,0 +1,80 @@
+/* fonts and text size */
+.cardTitle{
+    font-weight:600;
+    font-size: 110%;
+    font-family: Helvetica;
+    color:#224750;
+    
+  }
+  
+.cardPublisher{
+    font-weight: 500;
+    font-size:0.98rem;
+    font-family: Helvetica;
+    color:#7A8B94;
+}
+;
+/* style for card */
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: space-between;
+}
+.cardImage{
+    height: auto;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    max-width: none;   /* Removes any intrinsic size limitation */
+
+    height: 12em;
+    mask-image: url(/cardMask.png);
+    background-image: url('../public/image1.png'); /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 0.7rem;
+}
+.card{
+    aspect-ratio: 4/5;
+    width: 360px;
+    height:450px;
+    border-radius: 1rem;
+    padding:1em;
+    border: 2px solid#d9d9d9;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.button{
+    justify-content: flex-end;
+}
+
+@media (max-width: 1120px) { /* Tablet size */
+    .card {
+        height:380px;
+        width: 304px;
+
+
+    }
+  }
+  
+@media (max-width: 768px) { /* Smaller screens */
+    .card{
+        height: 414px;
+        width: 331px;
+
+    }
+  }
+  
+@media (max-width: 480px) { /* Very small screens */
+    .card {
+        width:414px;
+        height:515px;
+    }
+  }
+  

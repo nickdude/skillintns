@@ -1,0 +1,83 @@
+.Question{
+    height:30%;
+    width:100%;
+    background-color: #ffffff;
+    padding:2em 1.5em;
+    padding-top: 1em;
+    border: 2px solid #22475026;
+    border-radius: 0.5em;
+    font-family: 'inter';
+}
+
+.Qbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .QuestionCell{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+        .QuestionGenre{
+            font-size:1.2rem;
+            color:#22475080;
+        }
+
+        .QuestValue{
+            font-size:1rem;
+            font-weight: 600;
+            color:#224750;
+        }
+
+
+
+/* Main Container for Options */
+.Options {
+    display: grid; /* Use grid layout for the two-column structure */
+    grid-template-columns: 1fr 1fr; /* Two columns with equal width */
+    gap: 1.5rem; /* Space between rows and columns */
+    padding: 1rem 0; /* Top and bottom padding */
+}
+
+/* Individual Option Container */
+.Option {
+    display: flex; /* Flexbox for aligning label and text */
+    align-items: center; /* Vertically align items */
+    border: 1px solid #E0E0E0; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #F8F9FA; /* Light gray background */
+    overflow: hidden; /* Ensures no overflow for rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: all 0.2s ease; /* Smooth transition for hover */
+}
+
+/* Hover State */
+.Option:hover {
+    background-color: #F0F4F8; /* Slightly darker gray on hover */
+    border-color: #44B07A; /* Highlight border */
+}
+
+/* Option Label (e.g., A., B., etc.) */
+.OptionLabel {
+    font-size: 1.2rem; /* Slightly larger text size */
+    font-weight: 700; /* Bold font */
+    color: #224750; /* Darker text color */
+    padding: 1rem; /* Space around label */
+    background-color: #E9ECEF; /* Slightly darker background for the label */
+    flex: 0 0 auto; /* Label has fixed size */
+}
+
+/* Option Text */
+.OptionText {
+    font-size: 1rem;
+    color: #3C4852; /* Medium dark text color */
+    padding: 1rem; /* Padding around the text */
+    flex: 1; /* Text takes up remaining space */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+}

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Text Styles for variations in text */
+.boldText {
+    font-size: 3rem;
+    font-family: Helvetica;
+    font-weight: 800;
+    color: #224750;
+}
+  
+.basicTextLarge {
+    font-size: 3rem;
+    font-family: Helvetica;
+    color: #224750;
+}
+  
+
+  
+.basicTextSmallGreen {
+    font-size: 1.2rem;
+    font-family: Helvetica;
+    color: #44B07A;
+}
+
+/* Structure */
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    padding-top: 6em;
+}
+.enrolledTasks{
+    width: 19em;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 1rem;
+    background-color: #FDF9F1;
+}
+
+/* right container practice content structure */
+
+.practiceContent{
+    width:100%;
+}
+
+.Title{
+    display: flex;
+    flex-direction: row;
+    padding-top: 3em;
+    padding-bottom:2em;
+    margin-left: 0.2em;
+}
+    .TitleButtonCell{
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        gap:1em;
+    }
+    .TitleButton{
+        margin-left: auto;
+        font-family: 'inter';
+        color:#224750;
+        font-weight: 700;
+    }
+    .TitleIcon{
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+        margin-left:auto;
+        height:50px;
+        width:50px;
+        border: 2px solid #22475026;
+        border-radius: 50%;
+        justify-content: center;
+        padding:0em;
+        margin-top: 0.5em;
+        align-items: center;
+
+    }
+    .TitleIcon img{
+        object-fit: contain; /* Prevent distortion */
+        display: block;
+        width: 25px;
+        height: 25px;
+    }
+
+

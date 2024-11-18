@@ -1,0 +1,29 @@
+.iconCell {
+    align-items: center; /* Vertically align the icon */
+    justify-content: center; /* Horizontally align the icon */
+}
+
+.iconCell{
+ /* Set the height of the circle (same as width for a circle) */
+    font-size: 1.3rem;
+    color: #7A8B94;
+}
+
+.iconCell img{
+    width: 25px;
+    height: 25px;
+}
+
+.subjectCell{
+    padding:0.5em 1em; /* padding to adjust distance from icon */
+    padding-bottom: 0.5em; /* padding to adjust distance from self elements below and above*/
+    align-items: center; /* Vertically align the icon */
+    justify-content: center; 
+    font-size:1em;
+    font-weight: 600;
+    color: #3C4852;
+}
+
+.container{
+    font-family: inter;
+}

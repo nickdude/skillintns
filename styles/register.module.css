@@ -1,0 +1,517 @@
+.fieldBox::placeholder{
+    padding: 0.5em 1em;
+}
+
+.termsAndCondition{
+    display: flex;
+    margin-top: 20px;
+}
+/* For mobile devices */
+@media (max-width: 600px) {
+    .loginContainer {
+        display: flex;
+        width: 100vw;
+        flex-direction: column;
+      }
+      .loginImage {
+        min-width: 100vw;
+        max-height: 100%;
+        object-fit: contain;
+        margin-bottom:12em;
+      }
+      .imageContainer {
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f5f5f5;
+      }
+    
+      .logoImage{
+        width: 243.43px;
+        height: 54.21px;
+        margin-bottom: 10px;
+      }
+      
+      .formContainer {
+        width: 100vw;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+      }
+      .fieldContainer{
+        width: 335px;
+        height: 651px;
+        border-radius: 8px;
+        border: 1.2px;
+        opacity: 0px;
+        background-color: #FFFFFF;
+      }
+      .loginHeader{
+        width: 300px;
+        height: 21px;
+        margin: 20px;
+        font-family: Inter;
+        font-size: 20.02px;
+        font-weight: 700;
+        line-height: 21px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #224750;
+      }
+      .fieldLabel{
+        width: 86.96px;
+        height: 20px;
+        gap: 0px;
+        opacity: 0px;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #224750;
+        margin: 21px 0 10.5px 20px;
+      }
+      .fieldBox{
+        width: 296.12px;
+        height: 45px;
+        border-radius: 8px;
+        border: 0.6px;
+        border-color: red;
+        background: #FFFFFF;
+        margin-left: 20px;
+        border: 1.2px solid #ECE8E5
+      }
+      
+      .loginButton{
+        border: 1.3px solid #07875CB2;
+        background: #38A56F;
+        width: 296.12px;
+        height: 50px;
+        top: 295px;
+        left: 20px;
+        padding: 14px 0px 16px 0px;
+        gap: 0px;
+        border-radius: 8px;
+        border: 1.3px;
+        opacity: 0px;
+        color: #FFFFFF;
+        margin: 13px 0 13px 20px;
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    
+      }
+      .prompt{
+        font-family: Inter;
+        font-size: 15.63px;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        width: 349.56px;
+        height: 19.2px;
+        color: #666666;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .create{
+        font-family: Inter;
+        font-size: 15.25px;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: left;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #38A56F;
+        width: 137.71px;
+        height: 19.2px;
+        top: 684.85px;
+        left: 1109.33px;
+        gap: 0px;
+        opacity: 0px;
+      }
+      .termsAndCondition{
+        display: flex;
+      }
+      .termsAndCondition input{
+        margin-left: 20px;
+      }
+      .termsAndCondition p{
+        font-family: Inter;
+        font-size: 12.69px;
+        font-weight: 600;
+        line-height: 14px;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#38A56F;
+        margin-left: 5px;
+      }
+      .forgotPassword{
+        font-family: Inter;
+        font-size: 12.69px;
+        font-weight: 600;
+        line-height: 14px;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#1D1D1F;
+        margin-left: 4px;
+    }
+  }
+  
+  /* For tablets */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .loginContainer {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+      }
+    
+      .loginImage {
+        min-width: 100vw;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .imageContainer {
+        width: 100vw;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: #f5f5f5;
+
+      }
+    
+      .logoImage{
+        margin-top: 2em;
+        width: 243.43px;
+        height: 54.21px;
+        margin-bottom: 1em;
+      }
+      
+      .formContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+      }
+      .fieldContainer{
+        width: 481px;
+        height: 561px;
+        border-radius: 8px;
+        border: 1.2px;
+        opacity: 0px;
+        background-color: #FFFFFF;
+      }
+      .loginHeader{
+        width: 300px;
+        height: 21px;
+        margin: 20px;
+        font-family: Inter;
+        font-size: 20.02px;
+        font-weight: 700;
+        line-height: 21px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #224750;
+      }
+      .fieldLabel{
+        width: 86.96px;
+        height: 20px;
+        gap: 0px;
+        opacity: 0px;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #224750;
+        margin: 21px 0 10.5px 20px;
+      }
+      .fieldBox{
+        width: 440.61px;
+        height: 45px;
+        border-radius: 8px;
+        border: 0.6px;
+        border-color: red;
+        background: #FFFFFF;
+        margin-left: 20px;
+        border: 1.2px solid #ECE8E5
+      }
+      
+      .loginButton{
+        border: 1.3px solid #07875CB2;
+        background: #38A56F;
+        width: 441px;
+        height: 50px;
+        top: 295px;
+        left: 20px;
+        padding: 14px 0px 16px 0px;
+        gap: 0px;
+        border-radius: 8px;
+        border: 1.3px;
+        opacity: 0px;
+        color: #FFFFFF;
+        margin: 13px 0 13px 20px;
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    
+      }
+      .prompt{
+        font-family: Inter;
+        font-size: 15.63px;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        width: 349.56px;
+        height: 19.2px;
+        color: #666666;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .create{
+        font-family: Inter;
+        font-size: 15.25px;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: left;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #38A56F;
+        width: 137.71px;
+        height: 19.2px;
+        top: 684.85px;
+        left: 1109.33px;
+        gap: 0px;
+        opacity: 0px;
+      }
+      .termsAndCondition{
+        display: flex
+      }
+      .termsAndCondition input{
+        margin-left: 20px;
+      }
+      .termsAndCondition p{
+        font-family: Inter;
+        font-size: 12.69px;
+        font-weight: 600;
+        line-height: 14px;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#38A56F;
+        margin-left: 5px;
+      }
+      .forgotPassword{
+        font-family: Inter;
+        font-size: 12.69px;
+        font-weight: 600;
+        line-height: 14px;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#1D1D1F;
+        margin-left: 4px;
+    }
+  }
+  
+  /* For desktops */
+  @media (min-width: 1025px) {
+    .loginContainer {
+        display: flex;
+        height: 100vh;
+      }
+    
+      .loginImage {
+        max-width: 100vw;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .imageContainer {
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #f5f5f5;
+      }
+    
+      .logoImage{
+        width: 243.43px;
+        height: 54.21px;
+        margin-bottom: 10px;
+      }
+      
+      .formContainer {
+        width: 50%;
+        /* padding: 40px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+      }
+      .fieldContainer{
+        width: 481px;
+        height: 561px;
+        border-radius: 8px;
+        border: 1.2px;
+        opacity: 0px;
+        background-color: #FFFFFF;
+      }
+      .loginHeader{
+        width: 300px;
+        height: 21px;
+        margin: 20px;
+        font-family: Inter;
+        font-size: 20.02px;
+        font-weight: 700;
+        line-height: 21px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #224750;
+      }
+      .fieldLabel{
+        width: 86.96px;
+        height: 20px;
+        gap: 0px;
+        opacity: 0px;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #224750;
+        margin: 21px 0 10.5px 20px;
+      }
+      .fieldBox{
+        width: 440.61px;
+        height: 45px;
+        border-radius: 8px;
+        border: 0.6px;
+        border-color: red;
+        background: #FFFFFF;
+        margin-left: 20px;
+        border: 1.2px solid #ECE8E5
+      }
+      
+      .loginButton{
+        border: 1.3px solid #07875CB2;
+        background: #38A56F;
+        width: 441px;
+        height: 50px;
+        top: 295px;
+        left: 20px;
+        padding: 14px 0px 16px 0px;
+        gap: 0px;
+        border-radius: 8px;
+        border: 1.3px;
+        opacity: 0px;
+        color: #FFFFFF;
+        margin: 13px 0 13px 20px;
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    
+      }
+      .prompt{
+        font-family: Inter;
+        font-size: 15.63px;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        width: 349.56px;
+        height: 19.2px;
+        color: #666666;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .create{
+        font-family: Inter;
+        font-size: 15.25px;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: left;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #38A56F;
+        width: 137.71px;
+        height: 19.2px;
+        top: 684.85px;
+        left: 1109.33px;
+        gap: 0px;
+        opacity: 0px;
+      }
+      .termsAndCondition{
+        display: flex
+      }
+      .termsAndCondition input{
+        margin-left: 20px;
+      }
+      .termsAndCondition p{
+        font-family: Inter;
+        font-size: 12.69px;
+        font-weight: 600;
+        line-height: 14px;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#38A56F;
+        margin-left: 5px;
+      }
+      .forgotPassword{
+        font-family: Inter;
+        font-size: 12.69px;
+        font-weight: 600;
+        line-height: 14px;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#1D1D1F;
+        margin-left: 4px;
+    }
+  }
+  
