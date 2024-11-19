@@ -84,4 +84,28 @@
         height: 25px;
     }
 
+    /* Ditch the task list when theres no space for it. */
+    @media (max-width: 1000px) {
+        .enrolledTasks {
+            display: none;
+        }
+    }
 
+
+    /* heading gets too big for 500px width screens so shrink it */
+    @media (max-width: 500px) {
+        .Title p {
+            font-size: 2rem;
+        }
+        .TitleButton {
+            font-size: 0.8rem;
+        }
+        .TitleIcon {
+            height: 40px;
+            width: 40px;
+        }
+        .TitleIcon img {
+            width: 20px;
+            height: 20px;
+        }
+    }

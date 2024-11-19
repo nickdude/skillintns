@@ -15,7 +15,7 @@ export default function RegisterPage() {
       } else if (width >= 601 && width <= 1024) {
         setImageSrc("/tab_banner.svg"); // Tablet
       } else {
-        setImageSrc(""); // No image for mobile
+        setImageSrc(""); // No image for mobile c
       }
     };
     updateImageSrc();

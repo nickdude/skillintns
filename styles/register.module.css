@@ -193,7 +193,6 @@
         height: 50vh;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
         background-color: #f5f5f5;
 
       }
@@ -362,7 +361,6 @@
         width: 50vw;
         height: 100vh;
         display: flex;
-        align-items: center;
         justify-content: flex-start;
         background-color: #f5f5f5;
       }

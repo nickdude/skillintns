@@ -57,5 +57,54 @@
 
     .skillName {
         font-weight:600;
+    }
+
+    /* Reactivity for text size and image size *in meta data */
+
+    @media (max-width: 1180px) {
+        .linkContainer p{
+            /* font-size:0.9em; */
+            align-content: baseline;
+        }
+        .linkContainer img{
+            padding-right: 0.5em;
+            height: 22px;
+        }
+        .practiceMetaData {
+            flex-direction: column;
+        }
+            .metaData{
+                margin-left: 0;
+                padding-top:1em;
+                /*font-size: 0.7em;*/
+                gap:3em;
+                width:25px;
+            }
+                .skill,.Level{
+                    align-items: center;
+                }
+                .metaData img{
+                    width:25px;
+                }
+                .Level img{
+                    margin-top: -6px;
+                }
+
+        
 
     }
+
+    /* reduce font size when it gets too big for phone 
+    screens and starts colliding with the outer container */
+
+    @media (max-width:640px){
+        .linkContainer p{
+            font-size:0.9em;
+        }
+        .metaData{
+            font-size: 0.7em;
+            gap:3em;
+        }
+    }
+
+    

@@ -1,6 +1,6 @@
 /* Navbar Styles */
 .navbar {
-  max-width: 1706px;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,14 +128,26 @@ gap: 1rem; /* Space between hamburg and user section */
   width: 20px;
   height: 20px;
 }
-
+.buttonsGrid {
+  grid-template-columns: repeat(2, auto);
+  gap: 1.35em;
+}
 
 /* Media Query to Hide Feedback and Logout Buttons on Small Screens */
 @media screen and (max-width: 1010px) {
-.feedbackButton, /* Hide Feedback Button */
-.userSection { /* Hide Logout Button */
+  .feedbackButton, /* Hide Feedback Button */
+  .userSection { /* Hide Logout Button */
     display: none;
     width: 0px;
+  }
+
+  .navbar {
+    padding: 1rem;
+    height: 6rem;
+  }
+  .buttonsGrid{
+    grid-template-columns: repeat(1, auto);
+  }
 }
 
 
@@ -161,15 +173,12 @@ gap: 1rem; /* Space between hamburg and user section */
   margin-right: 0px;
 
 }
-.buttonsGrid {
-  grid-template-columns: repeat(2, auto);
-  gap: 1.35em;
-}
+
 .hamburg{
   display: block;
   padding-top: 0.4em;
 }
-}
+
 /* Navbar Styles for Mobile */
 @media screen and (max-width: 600px) {
 .navbar {
