@@ -1,6 +1,6 @@
-/* Navbar Styles */
+/* Navbar General Styles */
 .navbar {
-  max-width: 100%;
+  max-width: 200%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,129 +11,131 @@
   box-shadow: 0px 16px 32px 0px #E9EEF266;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  position: absolute;
-} 
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    position: absolute;
+  }
 
-/* Buttons Grid */
-.buttonsGrid {
-  font-family: inter;
-  font-size: 1.3rem;
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 3rem; /* Spacing between buttons */
-  margin-left: auto;
-}
+  /* Buttons Grid */
+  .buttonsGrid {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1.35em;
+    margin-left: auto;
+  }
 
-/* Feedback Button */
-.feedbackButton {
-  font-weight: 700;
-  color: #224750;
-  box-sizing: border-box;
-  width: 200px; /* Slightly larger width */
-  height: 60px; /* Slightly larger height */
-  border: 2px solid rgba(34, 71, 80, 0.7);
-  border-radius: 8px;
-  background: none;
-  cursor: pointer;
-}
+    /* Feedback Button */
+    .feedbackButton {
+      font-weight: 700;
+      color: #224750;
+      box-sizing: border-box;
+      width: 200px;
+      height: 60px;
+      border: 2px solid rgba(34, 71, 80, 0.7);
+      border-radius: 8px;
+      background: none;
+      cursor: pointer;
+    }
 
-/* hamburger for small screens */
-.hamburg{
-  display: none;
-}
-/* HamburgLogoutContainer as one item in the grid */
-.hamburgLogoutContainer {
-display: flex;
-align-items: center;
-gap: 1rem; /* Space between hamburg and user section */
-}
+    /* Subscribe Button */
+    .subscribeButton {
+      margin-top: 0.4em;
+      font-weight: 700;
+      height: 55px;
+      width: 200px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      background: linear-gradient(to right, #FFA500, #FF4500);
+      overflow: hidden;
+    }
 
-/* Subscribe Button with Gradient Border */
-.subscribeButton {
-  font-weight: 700;
-  height: 55px; /* Slightly larger height */
-  width: 200px; /* Slightly larger width */
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
-  background: linear-gradient(to right, #FFA500, #FF4500);
-  overflow: hidden;
-}
+    .subscribeButton::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      z-index: 0;
+    }
 
-.subscribeButton::before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  z-index: 0;
-}
+    .subscribeButton img {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      margin-right: 0.5rem;
+      z-index: 1;
+    }
 
-.subscribeButton img {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  margin-right: 0.5rem;
-  z-index: 1;
-}
+    .subscribeButton span {
+      position: relative;
+      color: #E6941F;
+      font-weight: bold;
+      z-index: 1;
+    }
 
-.subscribeButton span {
-  position: relative;
-  color: #E6941F;
-  font-weight: bold;
-  z-index: 1;
-}
+    .subscribeText {
+      display: none;
+    }
 
-/* User Section */
-.userSection {
-  display: flex;
-  align-items: center;
-  background-color: #ffffff;
-  border-radius: 30px;
-  padding: 0.5rem 1rem;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #dadada;
-  gap: 0.8rem;
-}
+    /* Hamburg Menu */
+    .hamburg {
+      display: none;
+    }
 
-.userAvatar {
-  border-radius: 50%;
-  object-fit: cover;
-  width: 30px;
-  height: 30px;
-  margin-left: -0.45rem;
-}
+    /* HamburgLogoutContainer */
+    .hamburgLogoutContainer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
 
-.logoutLink {
-  display: flex;
-  align-items: center;
-  color: #D95454;
-  font-weight: 600;
-  text-decoration: none;
-  gap: 0.3rem;
-}
+    /* User Section */
+    .userSection {
+      display: flex;
+      align-items: center;
+      background-color: #ffffff;
+      border-radius: 30px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border: 2px solid #dadada;
+      gap: 0.8rem;
+    }
 
-.exit {
-  width: 20px;
-  height: 20px;
-}
-.buttonsGrid {
-  grid-template-columns: repeat(2, auto);
-  gap: 1.35em;
-}
+    .userAvatar {
+      border-radius: 50%;
+      object-fit: cover;
+      width: 30px;
+      height: 30px;
+      margin-left: -0.45rem;
+    }
 
-/* Media Query to Hide Feedback and Logout Buttons on Small Screens */
+    .logoutLink {
+      display: flex;
+      align-items: center;
+      color: #D95454;
+      font-weight: 600;
+      text-decoration: none;
+      gap: 0.3rem;
+    }
+
+    .exit {
+      width: 20px;
+      height: 20px;
+    }
+
+/* Media Query: Hide Feedback and Logout Buttons on Small Screens */
 @media screen and (max-width: 1010px) {
   .feedbackButton, /* Hide Feedback Button */
   .userSection { /* Hide Logout Button */
@@ -145,100 +147,64 @@ gap: 1rem; /* Space between hamburg and user section */
     padding: 1rem;
     height: 6rem;
   }
-  .buttonsGrid{
+
+  .buttonsGrid {
     grid-template-columns: repeat(1, auto);
+  }
+  .hamburg{
+    display: block;
   }
 }
 
-
-.subscribeButton {
-  margin-top: 0.4em;
-  font-weight: 700;
-  height: 45px; /* Slightly larger height */
-  width: 55px; /* Slightly larger width */
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-}
-.subscribeText {
-  display: none;
-}
-.subscribeButton img {
-  position: absolute;
-  width: 24px;
-  height: 29px;
-  z-index: 1;
-  margin-right: 0px;
-
-}
-
-.hamburg{
-  display: block;
-  padding-top: 0.4em;
-}
-
-/* Navbar Styles for Mobile */
+/* Mobile Navbar Styles */
 @media screen and (max-width: 600px) {
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1rem;
-  height: 6rem;
-  flex-direction: row;
-}
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    height: 6rem;
+    flex-direction: row;
+  }
 
-/* Logo styling for mobile: smaller size and far-left alignment */
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: -1em;
+  }
 
-.logo img {
-  height: 35px;
-  margin-left:-1.0em;
-}
-/* Buttons Grid adjustments for mobile */
-.buttonsGrid {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-left: auto;
-  margin-right: 0.8rem;
-}
+  .logo img {
+    height: 35px;
+    margin-left: -1.0em;
+  }
 
-/* Hamburg and Subscribe Button positioning */
-.hamburg {
-  display: block;
-  order: 2; /* Appears at the far right */
-  margin-left: auto;
-}
+  .buttonsGrid {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    margin-right: 0.8rem;
+    margin-bottom: -0.4em;
+  }
 
-.subscribeButton {
-  height: 45px;
-  width: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .hamburg {
+    display: block;
+    order: 2; /* Appears at the far right */
+    margin-left: auto;
+  }
 
-/* Subscribe button styling for smaller display */
-.subscribeButton img {
-  width: 20px;
-  height: 20px;
-  margin: 0; /* Center the icon in the button */
-}
+  .subscribeButton {
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.subscribeText {
-  display: none; /* Hide text on small screens */
-}
-.logo{
-  margin-bottom: -1em;
-}
-.buttonsGrid{
-  margin-bottom: -0.4em;
-}
+  .subscribeButton img {
+    width: 20px;
+    height: 20px;
+    margin: 0; /* Center the icon in the button */
+  }
 }

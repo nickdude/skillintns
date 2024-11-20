@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Text Styles for variations in text */
+.boldText {
+    font-size: 3rem;
+    font-family: Helvetica;
+    font-weight: 800;
+    color: #224750;
+}
+  
+.basicTextLarge {
+    font-size: 3rem;
+    font-family: Helvetica;
+    color: #224750;
+}
+  
+
+  
+.basicTextSmallGreen {
+    font-size: 1.2rem;
+    font-family: Helvetica;
+    color: #44B07A;
+}
+
+/* Structure */
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    padding-top: 6em;
+}
+.enrolledTasks{
+    width: 19em;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 1rem;
+    background-color: #FDF9F1;
+}
+
+.rightContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+@media (max-width: 1000px) {
+    .enrolledTasks {
+        display: none;
+    }
+}

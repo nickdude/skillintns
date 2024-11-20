@@ -184,8 +184,7 @@
       }
     
       .loginImage {
-        min-width: 100vw;
-        max-height: 100%;
+        width: 100%;
         object-fit: contain;
       }
       .imageContainer {
@@ -193,8 +192,9 @@
         height: 50vh;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         background-color: #f5f5f5;
-
+        align-items: start;
       }
     
       .logoImage{
@@ -350,6 +350,7 @@
     .loginContainer {
         display: flex;
         height: 100vh;
+        width: auto;
       }
     
       .loginImage {

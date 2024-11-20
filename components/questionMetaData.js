@@ -7,6 +7,7 @@ const PracticeMetaData = ({ breadcrumbLinks, skill, level }) => {
             {/* Breadcrumb Links */}
             <div className={Styles.linkContainer}>
                 <img src="arrowLeft.svg" alt="Go Back" />
+                <div className={Styles.breadcrumbLinks}>
                 {breadcrumbLinks.map((link, index) => (
                     <React.Fragment key={index}>
                         <a className={Styles.greenLink} href={link.href}>
@@ -15,6 +16,7 @@ const PracticeMetaData = ({ breadcrumbLinks, skill, level }) => {
                         {index < breadcrumbLinks.length - 1 && <p>/</p>}
                     </React.Fragment>
                 ))}
+                </div>
             </div>
 
             {/* Meta Data: Skill and Level */}

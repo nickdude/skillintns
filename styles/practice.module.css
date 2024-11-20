@@ -54,6 +54,7 @@
         display: flex;
         flex-direction: row;
         margin-left: auto;
+        align-content: centern;
         gap:1em;
     }
     .TitleButton{
@@ -97,6 +98,15 @@
         .Title p {
             font-size: 2rem;
         }
+        .Title{
+            padding-top: 1em;
+            flex-direction: column;
+        }
+        .TitleButtonCell{
+            margin-top: 0.2em;
+            margin-left: 0px;
+            margin-right: auto;
+        }
         .TitleButton {
             font-size: 0.8rem;
         }
@@ -107,5 +117,8 @@
         .TitleIcon img {
             width: 20px;
             height: 20px;
+        }
+        .mainContainer{
+            padding-top: 3em;
         }
     }

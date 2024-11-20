@@ -66,6 +66,24 @@
 .card{
     display: flex;
 }
+
+.button {
+  font-family: inter;
+  text-wrap: nowrap;
+  background-color: #38A56F;
+  color: #ffffff; /* White text color */
+  font-size: 1rem; /* Adjust font size as needed */
+  font-weight: 600; /* Slightly bold for emphasis */
+  padding: 1rem 4rem; /* Padding for a comfortable size */
+  border: none; /* Removes default button border */
+  border-radius: 12px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.button:hover {
+  background-color: #388E3C; /* Darker shade of green on hover */
+}
 @media (max-width: 1120px) { /* Tablet size */
     .cards {
       grid-template-columns: repeat(3, 1fr); /* Switch to 3 columns */
@@ -82,6 +100,12 @@
 @media (max-width: 480px) { /* Very small screens */
     .cards {
       grid-template-columns: 1fr; /* Switch to 1 column */
+    }
+    .contentHead{
+      flex-direction: column;
+    }
+    .Button{
+      width: 100%;
     }
   }
   

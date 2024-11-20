@@ -33,8 +33,6 @@
             color:#224750;
         }
 
-
-
 /* Main Container for Options */
 .Options {
     display: grid; /* Use grid layout for the two-column structure */
@@ -80,4 +78,13 @@
     white-space: nowrap; /* Prevent text wrapping */
     overflow: hidden; /* Hide overflow text */
     text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+}
+
+@media screen and (max-width: 768px) {
+
+    /* For smaller screens, change to single column layout */
+    .Options {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+    
 }

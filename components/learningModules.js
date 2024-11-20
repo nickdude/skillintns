@@ -1,0 +1,45 @@
+import React from "react";
+import styles from "./LearningBar.module.css";
+
+const LearningBar = ({ title, progress }) => {
+  // Determine completion state
+  const isComplete = progress === 1;
+  const buttonText = isComplete ? "Practice Again" : "Practice Now";
+  const buttonClass = isComplete ? styles.greenButton : styles.defaultButton;
+  const barClass = isComplete ? styles.completed : "";
+
+  return (
+    <div className={`${styles.barContainer} ${barClass}`}>
+      {/* Left Status Bar */}
+      <div className={`${styles.leftBar} ${barClass}`}></div>
+      {/* Title */}
+      <div className={styles.title}>{title}</div>
+
+      {/* Progress Circle */}
+        <div className={styles.progressContainer}>
+          {isComplete ? (
+            <img
+              src="/check_circle.svg"
+              alt="Completed"
+              className={styles.checkMark}
+            />
+          ) : (
+            <div className={styles.progressCircle}>
+              <span>{Math.round(progress * 100)}%</span>
+            </div>
+          )}
+        </div>
+      
+
+      {/* Vertical Separator */}
+      <div className={styles.verticalSeparator}></div>
+
+      {/* Action Button */}
+      <button className={`${styles.actionButton} ${buttonClass}`}>
+        {buttonText}
+      </button>
+    </div>
+  );
+};
+
+export default LearningBar;

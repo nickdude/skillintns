@@ -1,23 +1,31 @@
 .practiceMetaData{
     display: flex;
     flex-direction: row;
-    font-size: 1.2rem;
 
 }
     /* Link container contains the link elements it has flex row for horizontal display with fontsize 1.2 rem*/
     .linkContainer{
         display:flex;
-        flex-direction: row;
+        flex-direction: row;;
+        align-items: center;
+        font-size: 1.2rem;
+
     }
         /* selected image to add gap between image and text */
     .linkContainer img{
         padding-right: 1em;
-        padding-top: 0.2em;
-        height:25px;
+        height:20px;
     }
         /* Added Padding to the Slashes between the links */
     .linkContainer p{
         padding:0 0.25em;
+    }
+    .breadcrumbLinks{
+
+    }
+    .breadcrumbLinks{
+        display: flex;
+        flex-direction: row;
     }
         /* Green Link Decorator */
     .greenLink{
@@ -35,6 +43,7 @@
 
     }
     .metaData{
+        font-size: 1.2rem;
         text-wrap: nowrap;
         margin-left: auto;
         display: flex;
@@ -87,7 +96,6 @@
                     width:25px;
                 }
                 .Level img{
-                    margin-top: -6px;
                 }
 
         
@@ -98,13 +106,45 @@
     screens and starts colliding with the outer container */
 
     @media (max-width:640px){
-        .linkContainer p{
+        .linkContainer p,.linkContainer a{
             font-size:0.9em;
+        }
+        .linkContainer{
+            align-items: center;
+        }
+        .breadcrumbLinks{
+            gap:0.1em;
+        }
+        .linkContainer img{
+            width:28px;
+            margin-right: -2px;
+            margin-top:-2px;
         }
         .metaData{
             font-size: 0.7em;
-            gap:3em;
+            gap:2em;
         }
+        .metaData img,.Level img{
+            width:23px;
+        }
+
     }
 
     
+@media (max-width:400px){
+    .linkContainer p,.linkContainer a{
+        font-size:0.7em;
+    }
+    .metaData{
+        font-size: 0.7em;
+    }
+    .breadcrumbLinks{
+        gap:0.05em;
+    }
+    .metaData img{
+        width:18px;
+        margin-right: -3px;
+    }
+
+    
+}

@@ -21,7 +21,9 @@ export default function Home() {
                     <p className={Styles.basicTextSmall}>Step-by-Step <span className={Styles.basicTextSmallGreen}>Learning</span> to Build Confidence and Knowledge</p>
                 </div>
                 <div className={Styles.ButtonContainer}>
-                  <Button children={'Subscribe Now'}/>
+                <button className={Styles.button}>
+                  Subscribe Now
+                </button>
                 </div>
             </div>
         <div className={Styles.cards}>
