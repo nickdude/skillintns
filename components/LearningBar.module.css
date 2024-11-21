@@ -9,7 +9,7 @@
   margin-bottom: 1rem;
   font-family: "Inter";
   background-color: white;
-  height: 6rem;
+  height: 8rem;
   position: relative;
   padding: 0 1rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -120,4 +120,86 @@
 
 .greenButton {
   background-color: #42b37a;
+}
+
+/* Mobile Styles (Breakpoint: 830px) */
+@media (max-width: 830px) {
+  .barContainer {
+    flex-direction: row; /* Ensure elements are horizontally aligned */
+    height: auto;
+    padding: 1rem;
+    align-items: center; /* Vertically align items in the center */
+    justify-content: space-between;
+  }
+
+  .title {
+    padding: 0; /* Remove padding */
+    padding-left:0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #224750;
+    text-align: left; /* Align title to the left */
+    flex: 1;
+  }
+
+  .groupedSection {
+    display: flex;
+    flex-direction: row; /* Ensure progress and buttons align horizontally */
+    align-items: center;
+    gap: 0.3rem; /* Space between progress circle, separator, and button */
+  }
+
+  .progressContainer {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .progressCircle {
+    width: 40px;
+    height: 40px;
+    font-size: 0.8rem; /* Smaller font for percentage */
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .checkMark {
+    width: 20px;
+    height: 20px;
+  }
+
+  .verticalSeparator {
+    width: 1px; /* Thinner separator */
+    height: 30px; /* Adjusted height for smaller layout */
+    background-color: #dcdcdc;
+    display: inline-block; /* Ensure visibility */
+    margin: 0 0.5rem;
+  }
+
+  .actionButton {
+    width: 120px; /* Fixed button width for consistency */
+    height: 40px; /* Fixed height */
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .defaultButton {
+    background-color: #224750;
+  }
+
+  .greenButton {
+    background-color: #42b37a;
+  }
 }

@@ -59,8 +59,19 @@
     padding-top:1.2rem;
     padding-bottom:2rem;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1350px) {
     .enrolledTasks {
         display: none;
+    }
+}
+
+@media(max-width:830px){
+    .boldText{
+        font-size:2rem;
+
+    }
+    .basicTextSmall{
+        font-size:1.2rem;
+
     }
 }
