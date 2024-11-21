@@ -17,7 +17,7 @@ export default function SelectSkill() {
             <div className={`${Styles.mainContainer} mainContent`}>
                 {/* Enrolled Tasks Section */}
                 <div className={Styles.enrolledTasks}>
-                    <p className={Styles.boldTextSmall}>Enrolled Tasks</p>
+                    <p className={Styles.boldTextSmall}>Tasks In Package</p>
                     <TaskTable 
                         data={[
                             { subject: 'Maths' }, 
@@ -29,8 +29,16 @@ export default function SelectSkill() {
                     />
                 </div>
                 <div className={Styles.rightContainer}>
-                    <div className={Styles.skills}>
-                        <LinkBreadCrumps breadcrumbLinks={breadcrumbLinks} /> 
+                        <div className={Styles.skills}>
+                            <LinkBreadCrumps breadcrumbLinks={breadcrumbLinks} /> 
+                        </div>
+                    <div className={Styles.textContent}>
+                        <div className={Styles.boldText}>
+                            <p>Practice Skill</p>
+                        </div>
+                        <div className={Styles.basicTextSmall}>
+                            <p>Select a skill below to Practice</p>
+                        </div>
                     </div>
                     <div className={Styles.learningModules}>
                         <LearningBar title="Newtons Law" progress={0.5} />

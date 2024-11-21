@@ -1,132 +1,123 @@
 /* Bar Container */
 .barContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    font-family: "Inter", sans-serif;
-    background-color: white;
-    height: 80px;
-    position: relative;
-    padding: 0 1rem;
-  }
-  
-  /* Completed state background */
-  .barContainer.completed {
-    background-color: #224750;
-  }
-  
-  /* Left Status Bar */
-  .leftBar {
-    width: 6px;
-    height: 100%;
-    background-color: #7a8b94;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .leftBar.completed {
-    background-color: #42b37a;
-  }
-  
-  /* Title */
-  .title {
-    font-size: 1rem;
-    font-weight: bold;
-    flex: 1;
-    padding: 0 1rem;
-    color: #224750;
-  }
-  
-  .barContainer.completed .title {
-    color: white;
-  }
-  
-  /* Progress Container */
-  .progressContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 80px;
-    position: relative;
-  }
-  
-  /* Progress Circle */
-  .progressCircle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: bold;
-    background-color: white;
-  }
-  
-  /* Check Mark Icon */
-  .checkMark {
-    width: 24px;
-    height: 24px;
-  }
-  
-  /* Vertical Separator */
-  .verticalSeparator {
-    width: 2px;
-    height: 40px;
-    background-color: #dcdcdc;
-    margin: 0 1rem;
-  }
-  
-  /* Action Button */
-  .actionButton {
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Default Button (not complete) */
-  .defaultButton {
-    background-color: #224750;
-  }
-  
-  /* Completed Button */
-  .greenButton {
-    background-color: #42b37a;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  font-family: "Inter";
+  background-color: white;
+  height: 6rem;
+  position: relative;
+  padding: 0 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  /* Progress Circle Placeholder */
+/* Completed state background */
+.barContainer.completed {
+  background-color: #224750;
+}
+.basicTextSmall {
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: Helvetica;
+    color: #224750;
+}
+/* Left Status Bar */
+.leftBar {
+  width: 10px;
+  height: 100%;
+  background-color: #7a8b94;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.leftBar.completed {
+  background-color: #42b37a;
+}
+
+/* Title */
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex: 1;
+  padding: 0 1rem;
+  color: #224750;
+}
+
+.barContainer.completed .title {
+  color: white;
+}
+
+/* Grouped Section */
+.groupedSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* Progress Container */
+.progressContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
 .progressCircle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: bold;
-    background-color: transparent; /* No background for the placeholder */
-    position: relative;
-  }
-  
-  /* Check Mark Icon */
-  .checkMark {
-    width: 20px; /* Adjust the size to fit neatly */
-    height: 20px;
-    display: block; /* Ensure it's visible */
-    margin: 0; /* No margins or extra styling */
-  }
-  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  background-color: white;
+}
+
+.checkMark {
+  width: 26px;
+  height: 26px;
+}
+
+/* Vertical Separator */
+.verticalSeparator {
+  width: 2px;
+  height: 40px; /* Consistent height */
+  background-color: #dcdcdc;
+  align-self: center;
+  margin: 0; /* Ensure no extra spacing */
+}
+
+/* Action Button */
+.actionButton {
+  width: 140px; /* Fixed width for uniform size */
+  height: 40px; /* Fixed height for consistency */
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Prevent text wrapping */
+  text-align: center; /* Center the text */
+}
+
+.defaultButton {
+  background-color: #224750;
+}
+
+.greenButton {
+  background-color: #42b37a;
+}

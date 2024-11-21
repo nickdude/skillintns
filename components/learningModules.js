@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./LearningBar.module.css";
 
 const LearningBar = ({ title, progress }) => {
-  // Determine completion state
   const isComplete = progress === 1;
   const buttonText = isComplete ? "Practice Again" : "Practice Now";
   const buttonClass = isComplete ? styles.greenButton : styles.defaultButton;
@@ -15,7 +14,9 @@ const LearningBar = ({ title, progress }) => {
       {/* Title */}
       <div className={styles.title}>{title}</div>
 
-      {/* Progress Circle */}
+      {/* Grouped Section */}
+      <div className={styles.groupedSection}>
+        {/* Progress Circle */}
         <div className={styles.progressContainer}>
           {isComplete ? (
             <img
@@ -29,15 +30,15 @@ const LearningBar = ({ title, progress }) => {
             </div>
           )}
         </div>
-      
 
-      {/* Vertical Separator */}
-      <div className={styles.verticalSeparator}></div>
+        {/* Vertical Separator */}
+        <div className={styles.verticalSeparator}></div>
 
-      {/* Action Button */}
-      <button className={`${styles.actionButton} ${buttonClass}`}>
-        {buttonText}
-      </button>
+        {/* Action Button */}
+        <button className={`${styles.actionButton} ${buttonClass}`}>
+          {buttonText}
+        </button>
+      </div>
     </div>
   );
 };

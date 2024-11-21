@@ -14,8 +14,20 @@
     color: #224750;
 }
   
-
+.basicTextSmall {
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-family: 'inter';
+    color: #224750;
+    padding-top:0.2rem;
+}
   
+.boldTextSmall {
+    font-size: 1rem;
+    font-family: 'inter';
+    font-weight: 600;
+    color: #7A8B94;
+}
 .basicTextSmallGreen {
     font-size: 1.2rem;
     font-family: Helvetica;
@@ -26,10 +38,10 @@
 .mainContainer{
     display: flex;
     flex-direction: row;
-    padding-top: 6em;
+    padding-top: 8.5rem;
 }
 .enrolledTasks{
-    width: 19em;
+    width: 30rem;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -42,6 +54,10 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+.textContent{
+    padding-top:1.2rem;
+    padding-bottom:2rem;
 }
 @media (max-width: 1000px) {
     .enrolledTasks {
