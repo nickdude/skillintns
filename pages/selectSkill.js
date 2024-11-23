@@ -41,13 +41,15 @@ export default function SelectSkill() {
                         </div>
                     </div>
                     <div className={Styles.learningModules}>
-                        <LearningBar title="Newtons Law" progress={0.5} />
+                        <LearningBar title="Newtons Law" progress={0.5} href="/practice"/>
                         <LearningBar title="Newtons Law" progress={1} />
-                        <LearningBar title="Newtons Law" progress={0.5} />
-                        <LearningBar title="Newtons Law" progress={0.5} />
-                        <LearningBar title="Newtons Law" progress={0.5} />
-                        <LearningBar title="Newtons Law" progress={0.5} />
-                        <LearningBar title="Newtons Law" progress={0.5} />
+                        <LearningBar title="Newtons Law" progress={0.5} href="/practice"/>
+                        <LearningBar title="Newtons Law" progress={0.5} href="/practice"/>
+                        <LearningBar title="Newtons Law" progress={0.5} href="/practice"/>
+                        <LearningBar title="Newtons Law" progress={0.5} href="/practice"/>
+                        <LearningBar title="Newtons Law" progress={0.5} href="/practice"/>
+                        <LearningBar title="Newtons Law" progress={0.5} href="/practice"/>
+                        
                     </div>
                 </div>
             </div>

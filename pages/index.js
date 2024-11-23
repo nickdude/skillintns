@@ -33,7 +33,7 @@ export default function Home() {
             image ="/image1.png"  // Path to the image for the card
             skillCount={9}  // Number of skills for this course
             isFree={true}  // Whether the course is free
-            title="SAT MATHS Practice Test Practice"  // Title of the course
+            title="SAT MATHS Practice Test Practice"  // Title of the coursebig
             publisher="SAT Maths"  // Publisher name
             />
             <Cards

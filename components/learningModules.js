@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/LearningBar.module.css";
 
-const LearningBar = ({ title, progress }) => {
+const LearningBar = ({ title, progress, href }) => {
   const isComplete = progress === 1;
   const buttonText = isComplete ? "Practice Again" : "Practice Now";
   const buttonClass = isComplete ? styles.greenButton : styles.defaultButton;
@@ -35,9 +35,9 @@ const LearningBar = ({ title, progress }) => {
         <div className={styles.verticalSeparator}></div>
 
         {/* Action Button */}
-        <button className={`${styles.actionButton} ${buttonClass}`}>
+        <a href={href} className={`${styles.actionButton} ${buttonClass}`}>
           {buttonText}
-        </button>
+        </a>
       </div>
     </div>
   );
