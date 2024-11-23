@@ -15,23 +15,24 @@
   /* Image Section */
   .cardImageWrapper {
     position: relative; /* Relative for absolute positioning inside */
-    width: 100%;
-    aspect-ratio: 16/9; /* Image aspect ratio */
     overflow: hidden; /* Crop overflowing image content */
     border-radius: 0.6rem; /* Rounded corners for image */
   }
   
-  /* Image */
-  .cardImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image fills without distortion */
-    mask-image: url(/maskCardShape.svg); /* Applies the mask */
-    mask-size: 120%; /* Adjust mask size for better cropping */
-    mask-position: center; /* Center mask */
-    mask-repeat: no-repeat; /* No mask repetition */
-  }
-  
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: 100%;
+  mask-image: url(/maskCardShape.svg);
+  -webkit-mask-image: url(/maskCardShape.svg); /* Safari support */
+  mask-size:cont; /* Ensures mask scales without distortion */
+  -webkit-mask-size: contain;
+  mask-position: center; /* Centers the mask */
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat; /* Ensures no repetition */
+  -webkit-mask-repeat: no-repeat;
+}
+
   /* Title Overlay on Image */
   .overlay {
     position: absolute;
@@ -93,37 +94,28 @@
     color: #7a8b94; /* Light gray text */
     margin: 0; /* Remove default margin */
   }
-  
-  /* Button Section */
-  .buttonWrapper {
-    width: 100%; /* Full width button */
-    margin-top: auto; /* Push the button to the bottom */
-  }
-  
-  .buttonWrapper > button {
-    width: 100%; /* Make the button span the entire container */
-    padding: 0.8rem; /* Button padding */
-    border-radius: 0.5rem; /* Rounded button corners */
-    background-color: #3cb371; /* Green background */
+  /* Enroll Button */
+.enrollButton {
+    display: block; /* Makes it span the full width */
+    width: 100%; /* Ensures 100% width of parent */
+    text-align: center; /* Centers the text */
+    background-color: #38a56f; /* Green background */
     color: #fff; /* White text */
-    font-weight: bold; /* Bold text */
+    padding: 1rem 1rem; /* Padding for button size */
+    border: none; /* Remove borders */
+    border-radius: 0.5rem; /* Rounded corners */
     font-size: 1rem; /* Font size */
-    display: flex;
-    align-items: center; /* Center align text and icon */
-    justify-content: center; /* Center align button content */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease-in-out; /* Smooth color transition */
+    font-weight: 600; /* Bold text */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease-in-out; /* Smooth hover effect */
   }
   
-  .buttonWrapper > button:hover {
-    background-color: #2e8b57; /* Darker green on hover */
+  .enrollButton:hover {
+    background-color: #1e7c36; /* Darker green on hover */
   }
   
-  .buttonWrapper > button:before {
-    content: '🌟'; /* Add icon before text */
-    margin-right: 0.5rem; /* Space between icon and text */
-    font-size: 1rem; /* Icon size */
-  }
+
   
   /* Responsive Styles */
   @media (max-width: 1120px) {
