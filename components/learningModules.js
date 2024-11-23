@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./LearningBar.module.css";
+import styles from "../styles/LearningBar.module.css";
 
 const LearningBar = ({ title, progress }) => {
   const isComplete = progress === 1;

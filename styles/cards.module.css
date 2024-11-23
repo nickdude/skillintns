@@ -1,80 +1,149 @@
-/* fonts and text size */
-.cardTitle{
-    font-weight:600;
-    font-size: 110%;
-    font-family: Helvetica;
-    color:#224750;
-    
-  }
-  
-.cardPublisher{
-    font-weight: 500;
-    font-size:0.98rem;
-    font-family: Helvetica;
-    color:#7A8B94;
-}
-;
-/* style for card */
-.cardContent{
+/* Card Container */
+.card {
+    width: 360px; /* Card width */
+    height: 450px; /* Card height to maintain aspect ratio */
+    border-radius: 1rem; /* Rounded corners */
+    padding: 1rem; /* Padding inside the card */
+    border: 2px solid #d9d9d9; /* Light gray border */
+    background-color: #fff; /* White background */
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    justify-content: space-between;
-}
-.cardImage{
-    height: auto;
+    overflow: hidden; /* Hide overflow for clean edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* Image Section */
+  .cardImageWrapper {
+    position: relative; /* Relative for absolute positioning inside */
     width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    border-radius: 0.6rem;
-    max-width: none;   /* Removes any intrinsic size limitation */
-
-    height: 12em;
-    mask-image: url(/cardMask.png);
-    background-image: url('../public/image1.png'); /* Replace with the path to your image */
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 0.7rem;
-}
-.card{
-    aspect-ratio: 4/5;
-    width: 360px;
-    height:450px;
-    border-radius: 1rem;
-    padding:1em;
-    border: 2px solid#d9d9d9;
-    background-color: rgb(255, 255, 255);
+    aspect-ratio: 16/9; /* Image aspect ratio */
+    overflow: hidden; /* Crop overflowing image content */
+    border-radius: 0.6rem; /* Rounded corners for image */
+  }
+  
+  /* Image */
+  .cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills without distortion */
+    mask-image: url(/maskCardShape.svg); /* Applies the mask */
+    mask-size: 120%; /* Adjust mask size for better cropping */
+    mask-position: center; /* Center mask */
+    mask-repeat: no-repeat; /* No mask repetition */
+  }
+  
+  /* Title Overlay on Image */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-
-.button{
-    justify-content: flex-end;
-}
-
-@media (max-width: 1120px) { /* Tablet size */
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+    color: #fff; /* White text */
+    font-size: 1.5rem; /* Title size */
+    font-weight: bold; /* Bold title */
+    text-align: center;
+    padding: 0.5rem;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .cardImageWrapper:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+  }
+  
+  /* Skill Count (Bottom-Right) */
+  .skillCountWrapper {
+    position: absolute;
+    bottom: 0.5rem; /* Distance from bottom */
+    right: 0.5rem; /* Distance from right */
+    display: flex;
+    align-items: center; /* Center align icon and text */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    color: #000; /* Black text */
+    font-size: 0.85rem; /* Skill count font size */
+    font-weight: 600; /* Slightly bold */
+    padding: 0.3rem 0.6rem; /* Padding inside the badge */
+    border-radius: 0.3rem; /* Rounded corners */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  /* Skill Icon */
+  .skillIcon {
+    margin-right: 0.3rem; /* Space between icon and text */
+    font-size: 1rem; /* Icon size */
+  }
+  
+  /* Card Content */
+  .cardContent {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    margin-top: 1rem; /* Space above the content */
+    gap: 0.5rem; /* Space between content items */
+  }
+  
+  /* Publisher Text */
+  .cardPublisher {
+    font-size: 0.98rem; /* Publisher font size */
+    font-family: Helvetica, sans-serif; /* Font family */
+    color: #7a8b94; /* Light gray text */
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Button Section */
+  .buttonWrapper {
+    width: 100%; /* Full width button */
+    margin-top: auto; /* Push the button to the bottom */
+  }
+  
+  .buttonWrapper > button {
+    width: 100%; /* Make the button span the entire container */
+    padding: 0.8rem; /* Button padding */
+    border-radius: 0.5rem; /* Rounded button corners */
+    background-color: #3cb371; /* Green background */
+    color: #fff; /* White text */
+    font-weight: bold; /* Bold text */
+    font-size: 1rem; /* Font size */
+    display: flex;
+    align-items: center; /* Center align text and icon */
+    justify-content: center; /* Center align button content */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease-in-out; /* Smooth color transition */
+  }
+  
+  .buttonWrapper > button:hover {
+    background-color: #2e8b57; /* Darker green on hover */
+  }
+  
+  .buttonWrapper > button:before {
+    content: '🌟'; /* Add icon before text */
+    margin-right: 0.5rem; /* Space between icon and text */
+    font-size: 1rem; /* Icon size */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1120px) {
     .card {
-        height:380px;
-        width: 304px;
-
-
+      height: 380px;
+      width: 304px;
     }
   }
   
-@media (max-width: 768px) { /* Smaller screens */
-    .card{
-        height: 414px;
-        width: 331px;
-
+  @media (max-width: 768px) {
+    .card {
+      height: 414px;
+      width: 331px;
     }
   }
   
-@media (max-width: 480px) { /* Very small screens */
+  @media (max-width: 480px) {
     .card {
-        width:414px;
-        height:515px;
+      width: 414px;
+      height: 515px;
     }
   }
   

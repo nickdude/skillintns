@@ -1,6 +1,7 @@
 import styles from '../styles/cards.module.css';
 import Button from '../components/button';
-export default function cards({
+
+export default function Card({
   image,
   skillCount,
   isFree,
@@ -9,25 +10,25 @@ export default function cards({
   className,
 }) {
   return (
-    <div className={styles.card}>
-        <div className={`${styles.cardContent} ${className || ''}`}>
-            {/* Display image */}
-            <img src={image} alt={title} className={styles.cardImage} />
+    <div className={`${styles.card} ${className || ''}`}>
+      <div className={styles.cardImageWrapper}>
+        {/* Display image */}
+        <img src={image} alt={title} className={styles.cardImage} />
+        <span className={styles.skillCount}>{skillCount} Skills</span>
+      </div>
 
-            {/* Display title */}
-            <h2 className={styles.cardTitle}>{title}</h2>
+      <div className={styles.cardContent}>
+        {/* Display title */}
+        <h2 className={styles.cardTitle}>{title}</h2>
 
-            {/* Display publisher */}
-            <p className={styles.cardPublisher}>{publisher}</p>
+        {/* Display publisher */}
+        <p className={styles.cardPublisher}>{publisher}</p>
 
-            {/* Display skill count */}
-            <p className={styles.cardSkills}>{skillCount} Skills</p>
-
-            {/* Enroll Button */} 
-            <div className={styles.button}>
-                <Button children={'Enroll to Task'}/>
-            </div>
+        {/* Enroll Button */}
+        <div className={styles.button}>
+          <Button children="Enroll to Task" />
         </div>
+      </div>
     </div>
   );
 }

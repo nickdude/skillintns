@@ -14,44 +14,43 @@ const questionData = {
     genre: 'Mechanics',
     question: 'What is Newton’s First Law of Motion commonly known as?',
     options: [
-        'The Law of Universal Gravitation',
-        'The Law of Acceleration',
-        'The Law of Inertia',
-        'The Law of Action and Reaction',
-    ]
+        { text: 'The Law of Universal Gravitation', isCorrect: false },
+        { text: 'The Law of Acceleration', isCorrect: false },
+        { text: 'The Law of Inertia', isCorrect: true },
+        { text: 'The Law of Action and Reaction', isCorrect: false },
+    ],
 };
 
 const skill = 'Newtons Law';
 const level = 'Remembering';
 
 export default function Practice() {
+    const handleNext = () => {
+        console.log('Load next question');
+    };
+
     return (
         <div>
             <Navbar />
             <div className={`${Styles.mainContainer} mainContent`}>
-                {/* Enrolled Tasks Section */}
                 <div className={Styles.enrolledTasks}>
                     <p className={Styles.boldTextSmall}>Enrolled Tasks</p>
-                    <TaskTable 
+                    <TaskTable
                         data={[
-                            { subject: 'Maths' }, 
-                            { subject: 'Physics' }, 
-                            { subject: 'Chemistry' }, 
-                            { subject: 'Biology' }, 
-                            { subject: 'English' }
+                            { subject: 'Maths' },
+                            { subject: 'Physics' },
+                            { subject: 'Chemistry' },
+                            { subject: 'Biology' },
+                            { subject: 'English' },
                         ]}
                     />
                 </div>
-
-                {/* Practice Content Section */}
                 <div className={Styles.practiceContent}>
-                    <QuestionMetaData 
-                        breadcrumbLinks={breadcrumbLinks} 
-                        skill={skill} 
-                        level={level} 
+                    <QuestionMetaData
+                        breadcrumbLinks={breadcrumbLinks}
+                        skill={skill}
+                        level={level}
                     />
-
-                    {/* Title Section */}
                     <div className={Styles.Title}>
                         <div className={Styles.TitleContent}>
                             <p className={Styles.boldText}>Practice and Excel</p>
@@ -72,10 +71,11 @@ export default function Practice() {
                         </div>
                     </div>
                     <div className={Styles.question}>
-                        <Question 
-                        genre={questionData.genre}
-                        question={questionData.question}
-                        options={questionData.options}
+                        <Question
+                            genre={questionData.genre}
+                            question={questionData.question}
+                            options={questionData.options}
+                            onNext={handleNext}
                         />
                     </div>
                 </div>

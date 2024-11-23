@@ -67,10 +67,13 @@
     .skillName {
         font-weight:600;
     }
+    .skill,.Level{
+        align-items: center;
+    }
 
     /* Reactivity for text size and image size *in meta data */
 
-    @media (max-width: 1180px) {
+    @media (max-width: 1000px) {
         .linkContainer p{
             /* font-size:0.9em; */
             align-content: baseline;
@@ -81,7 +84,7 @@
         }
         .practiceMetaData {
             flex-direction: column;
-        }
+        }   
             .metaData{
                 margin-left: 0;
                 padding-top:1em;
@@ -121,7 +124,9 @@
             margin-top:-2px;
         }
         .metaData{
-            font-size: 0.7em;
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 1em;
             gap:2em;
         }
         .metaData img,.Level img{
@@ -131,20 +136,18 @@
     }
 
     
-@media (max-width:400px){
+@media (max-width:410px){
     .linkContainer p,.linkContainer a{
         font-size:0.7em;
     }
     .metaData{
-        font-size: 0.7em;
+        font-size: 0.9rem;
     }
     .breadcrumbLinks{
         gap:0.05em;
     }
     .metaData img{
-        width:18px;
+        width: 22px;
         margin-right: -3px;
     }
-
-    
 }

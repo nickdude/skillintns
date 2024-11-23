@@ -1,90 +1,174 @@
-.Question{
-    height:30%;
-    width:100%;
-    background-color: #ffffff;
-    padding:2em 1.5em;
-    padding-top: 1em;
-    border: 2px solid #22475026;
-    border-radius: 0.5em;
-    font-family: 'inter';
+/* Overall container for the Question component */
+.Question {
+    width: 100%; /* Full-width container */
+    background-color: #ffffff; /* White background */
+    padding: 2em 1.5em; /* Padding for spacing */
+    border: 2px solid #E0E0E0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    font-family: 'Inter', sans-serif; /* Modern font family */
 }
 
-.Qbar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+/* Structure 1: Question Bar (top section with genre and question text) */
+.Qbar {
+    display: flex; /* Flexbox layout for horizontal alignment */
+    flex-direction: row; /* Arrange items in a row */
+    justify-content: space-between; /* Space out content */
+    align-items: center; /* Vertically center items */
+    margin-bottom: 1rem; /* Space below the bar */
 }
 
-    .QuestionCell{
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
+    /* Structure 1.1: Cell containing genre and question text */
+    .QuestionCell {
+        display: flex; /* Flexbox layout for vertical alignment */
+        flex-direction: column; /* Stack items vertically */
+        gap: 0.5rem; /* Spacing between genre and question */
     }
 
-        .QuestionGenre{
-            font-size:1.2rem;
-            color:#22475080;
+        /* Structure 1.1.1: Genre text styling */
+        .QuestionGenre {
+            font-size: 1.2rem; /* Larger text for genre */
+            color: #7A869A; /* Neutral gray color for genre */
         }
 
-        .QuestValue{
-            font-size:1rem;
-            font-weight: 600;
-            color:#224750;
+        /* Structure 1.1.2: Question text styling */
+        .QuestValue {
+            font-size: 1rem; /* Medium-sized text */
+            font-weight: 600; /* Semi-bold font */
+            color: #1F2937; /* Darker color for emphasis */
         }
 
-/* Main Container for Options */
+/* Structure 2: Options Container (holds all the answer options) */
 .Options {
-    display: grid; /* Use grid layout for the two-column structure */
-    grid-template-columns: 1fr 1fr; /* Two columns with equal width */
-    gap: 1.5rem; /* Space between rows and columns */
+    display: grid; /* Grid layout for options */
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 1.5rem; /* Space between options */
     padding: 1rem 0; /* Top and bottom padding */
 }
 
-/* Individual Option Container */
-.Option {
-    display: flex; /* Flexbox for aligning label and text */
-    align-items: center; /* Vertically align items */
-    border: 1px solid #E0E0E0; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #F8F9FA; /* Light gray background */
-    overflow: hidden; /* Ensures no overflow for rounded corners */
-    cursor: pointer; /* Change cursor to pointer */
-    transition: all 0.2s ease; /* Smooth transition for hover */
+    /* Structure 2.1: Individual option container */
+    .Option {
+        display: flex; /* Flexbox layout for alignment */
+        align-items: center; /* Vertically center content */
+        border: 1px solid #E0E0E0; /* Default border color */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #F8F9FA; /* Light gray background */
+        cursor: pointer; /* Pointer cursor for interactivity */
+        transition: all 0.2s ease; /* Smooth transition for hover and state changes */
+    }
+
+        /* Structure 2.1.1: Styling for option when hovered */
+        .Option:hover {
+            background-color: #E1E8ED; /* Slightly darker gray on hover */
+            border-color: #AAB8C2; /* Subtle border highlight */
+        }
+
+        /* Structure 2.1.2: Styling for selected option before submission */
+        .Option.selected {
+            background-color: #E1E8ED; /* Slightly darker gray */
+            border-color: #AAB8C2; /* Highlight border color */
+        }
+
+        /* Structure 2.1.3: Styling for correct option after submission */
+        .Option.correct {
+            background-color: #DFF6E3 !important; /* Light green background */
+            border-color: #44B07A !important; /* Green border */
+            color: #224750 !important; /* Darker text color */
+        }
+
+            /* Structure 2.1.3.1: Label styling for correct option */
+            .Option.correct .OptionLabel {
+                background-color: #44B07A !important; /* Green label background */
+                color: #FFFFFF !important; /* White label text */
+            }
+
+        /* Structure 2.1.4: Styling for incorrect option after submission */
+        .Option.incorrect {
+            background-color: #FFEDED !important; /* Light red background */
+            border-color: #E57373 !important; /* Red border */
+            color: #D32F2F !important; /* Dark red text */
+        }
+
+            /* Structure 2.1.4.1: Label styling for incorrect option */
+            .Option.incorrect .OptionLabel {
+                background-color: #E57373 !important; /* Red label background */
+                color: #FFFFFF !important; /* White label text */
+            }
+
+        /* Structure 2.1.5: Option label styling (letter A, B, C, etc.) */
+        .OptionLabel {
+            font-size: 1.2rem; /* Slightly larger font */
+            font-weight: 700; /* Bold text */
+            padding: 1rem; /* Padding for spacing */
+            background-color: #E9ECEF; /* Light gray background */
+            color: #224750; /* Neutral dark text color */
+            flex: 0 0 auto; /* Fixed size for label */
+            transition: all 0.2s ease; /* Smooth transition for state changes */
+        }
+
+        /* Structure 2.1.6: Option text styling */
+        .OptionText {
+            font-size: 1rem; /* Medium font size */
+            color: #3C4852; /* Darker text for readability */
+            padding: 1rem; /* Padding around text */
+            flex: 1; /* Expand text container */
+            transition: all 0.2s ease; /* Smooth transition */
+        }
+
+/* Structure 3: Buttons Container (Submit, Reset, Next buttons) */
+.Buttons {
+    display: flex; /* Flexbox layout for horizontal alignment */
+    justify-content: space-between; /* Space between Reset and Submit/Next buttons */
+    margin-top: 1rem; /* Space above buttons */
 }
 
-/* Hover State */
-.Option:hover {
-    background-color: #F0F4F8; /* Slightly darker gray on hover */
-    border-color: #44B07A; /* Highlight border */
-}
+    /* Structure 3.1: General button styling */
+    .Button {
+        padding: 0.8rem 1.5rem; /* Padding for size */
+        font-size: 1rem; /* Medium font size */
+        font-weight: bold; /* Bold font */
+        border: none; /* No border */
+        border-radius: 8px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor for interactivity */
+        transition: background-color 0.3s ease; /* Smooth background color change */
+    }
 
-/* Option Label (e.g., A., B., etc.) */
-.OptionLabel {
-    font-size: 1.2rem; /* Slightly larger text size */
-    font-weight: 700; /* Bold font */
-    color: #224750; /* Darker text color */
-    padding: 1rem; /* Space around label */
-    background-color: #E9ECEF; /* Slightly darker background for the label */
-    flex: 0 0 auto; /* Label has fixed size */
-}
+        /* Structure 3.1.1: Styling for the Reset button */
+        .Button.reset {
+            background-color: #f0f0f0; /* Neutral gray background */
+            color: #3C4852; /* Darker text for readability */
+            border: 1px solid #d3d3d3; /* Subtle border */
+        }
 
-/* Option Text */
-.OptionText {
-    font-size: 1rem;
-    color: #3C4852; /* Medium dark text color */
-    padding: 1rem; /* Padding around the text */
-    flex: 1; /* Text takes up remaining space */
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflow text */
-    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
-}
+            /* Structure 3.1.1.1: Reset button hover state */
+            .Button.reset:hover {
+                background-color: #e0e0e0; /* Slightly darker gray on hover */
+            }
 
+        /* Structure 3.1.2: Styling for the Submit and Next buttons */
+        .Button.submit {
+            background-color: #44B07A; /* Green background */
+            color: #FFFFFF; /* White text */
+        }
+
+            /* Structure 3.1.2.1: Submit/Next button hover state */
+            .Button.submit:hover {
+                background-color: #37985C; /* Darker green on hover */
+            }
+
+        /* Structure 3.1.3: Disabled state for all buttons */
+        .Button:disabled {
+            background-color: #D3D3D3; /* Light gray for disabled state */
+            cursor: not-allowed; /* Disabled cursor */
+        }
+
+/* Responsive Adjustments */
 @media screen and (max-width: 768px) {
-
-    /* For smaller screens, change to single column layout */
+    /* Structure 4: Options container in single-column layout for smaller screens */
     .Options {
         grid-template-columns: 1fr; /* Single column layout */
     }
-    
+    .OptionText{
+        padding:0;
+        padding-left: 1rem;
+    }
 }

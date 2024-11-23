@@ -86,7 +86,7 @@
     }
 
     /* Ditch the task list when theres no space for it. */
-    @media (max-width: 1000px) {
+    @media (max-width: 1260px) {
         .enrolledTasks {
             display: none;
         }
@@ -99,11 +99,12 @@
             font-size: 2rem;
         }
         .Title{
-            padding-top: 1em;
+            padding-top: 10px;
             flex-direction: column;
         }
         .TitleButtonCell{
-            margin-top: 0.2em;
+            margin-top: 1em;
+            margin-bottom: -0.5em;
             margin-left: 0px;
             margin-right: auto;
         }
