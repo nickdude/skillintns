@@ -6,7 +6,7 @@ const PracticeMetaData = ({ breadcrumbLinks, skill, level }) => {
         <div className={Styles.practiceMetaData}>
             {/* Breadcrumb Links */}
             <div className={Styles.linkContainer}>
-                <img src="arrowLeft.svg" alt="Go Back" />
+                <img src="../arrowLeft.svg" alt="Go Back" />
                 <div className={Styles.breadcrumbLinks}>
                 {breadcrumbLinks.map((link, index) => (
                     <React.Fragment key={index}>
@@ -23,7 +23,7 @@ const PracticeMetaData = ({ breadcrumbLinks, skill, level }) => {
             <div className={Styles.metaData}>
                 {/* Skill Section */}
                 <div className={Styles.skill}>
-                    <img src="checkbook.svg" alt="Skill Icon" />
+                    <img src="../checkbook.svg" alt="Skill Icon" />
                     <span>Skill</span>
                     <p>:</p>
                     <p className={Styles.skillName}>{skill}</p>
@@ -31,7 +31,7 @@ const PracticeMetaData = ({ breadcrumbLinks, skill, level }) => {
 
                 {/* Level Section */}
                 <div className={Styles.Level}>
-                    <img src="signal_cellular_alt.svg" alt="Level Icon" />
+                    <img src="../signal_cellular_alt.svg" alt="Level Icon" />
                     <span>Level</span>
                     <p>:</p>
                     <p className={Styles.skillName}>{level}</p>

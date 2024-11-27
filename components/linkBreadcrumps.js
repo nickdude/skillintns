@@ -4,7 +4,7 @@ import Styles from '../styles/questionMetaData.module.css';
 const Breadcrumb = ({ breadcrumbLinks }) => {
     return (
         <div className={Styles.linkContainer}>
-            <img src="arrowLeft.svg" alt="Go Back" />
+            <img src="../arrowLeft.svg" alt="Go Back" />
             <div className={Styles.breadcrumbLinks}>
                 {breadcrumbLinks.map((link, index) => (
                     <React.Fragment key={index}>
