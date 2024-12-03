@@ -1,4 +1,4 @@
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from '../styles/subscribePageCard.module.css';
 
 /**
