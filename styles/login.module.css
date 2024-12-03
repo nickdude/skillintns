@@ -84,7 +84,14 @@
         border-color: red;
         background: #FFFFFF;
         margin-left: 20px;
-        border: 1.2px solid #ECE8E5
+        border: 1.2px solid #ECE8E5;
+        display: flex;
+        align-items: center;
+      }
+      .fieldBox input{
+        padding-left: 10px;
+        width: 80%;
+        border: none;
       }
      
       .forgotPassword{
@@ -245,7 +252,14 @@
         border-color: red;
         background: #FFFFFF;
         margin-left: 20px;
-        border: 1.2px solid #ECE8E5
+        border: 1.2px solid #ECE8E5;
+        display: flex;
+        align-items: center;
+      }
+      .fieldBox input{
+        padding-left: 10px;
+        width: 80%;
+        border: none;
       }
      
       .forgotPassword{
@@ -406,7 +420,14 @@
         border-color: red;
         background: #FFFFFF;
         margin-left: 20px;
-        border: 1.2px solid #ECE8E5
+        border: 1.2px solid #ECE8E5;
+        display: flex;
+        align-items: center;
+      }
+      .fieldBox input{
+        padding-left: 10px;
+        width: 80%;
+        border: none;
       }
      
       .forgotPassword{

@@ -83,10 +83,17 @@
         height: 45px;
         border-radius: 8px;
         border: 0.6px;
-        border-color: red;
         background: #FFFFFF;
         margin-left: 20px;
-        border: 1.2px solid #ECE8E5
+        border: 1.2px solid #ECE8E5;
+        display: flex;
+        align-items: center;
+      }
+      .fieldBox input{
+        padding-left: 10px;
+        width: 80%;
+        border: none;
+        background: #FFFFFF;
       }
       
       .loginButton{
@@ -256,9 +263,15 @@
         border-color: red;
         background: #FFFFFF;
         margin-left: 20px;
-        border: 1.2px solid #ECE8E5
+        border: 1.2px solid #ECE8E5;
+        display: flex;
+        align-items: center;
       }
-      
+      .fieldBox input{
+        padding-left: 10px;
+        width: 80%;
+        border: none;
+      }
       .loginButton{
         border: 1.3px solid #07875CB2;
         background: #38A56F;
@@ -425,9 +438,15 @@
         border-color: red;
         background: #FFFFFF;
         margin-left: 20px;
-        border: 1.2px solid #ECE8E5
+        border: 1.2px solid #ECE8E5;
+        display: flex;
+        align-items: center;
       }
-      
+      .fieldBox input{
+        padding-left: 10px;
+        width: 80%;
+        border: none;
+      }
       .loginButton{
         border: 1.3px solid #07875CB2;
         background: #38A56F;

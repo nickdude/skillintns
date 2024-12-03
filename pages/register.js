@@ -13,6 +13,7 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [imageSrc, setImageSrc] = useState("");
+  const [visible,setVisible] = useState(false)
 
   const router = useRouter(); // Initialize the useRouter hook
 
@@ -79,6 +80,14 @@ export default function RegisterPage() {
     }
   };
 
+  const toggleEye = ()=>{
+    setVisible(!visible)
+  }
+
+  const redirectToLoginPage = (taskId) => {
+    router.push(`/`);
+  };
+
   return (
     <div className={styles.loginContainer}>
       <div className={styles.imageContainer}>
@@ -101,37 +110,77 @@ export default function RegisterPage() {
           <h1 className={styles.loginHeader}>Create New Account</h1>
           {error && <p className={styles.errorMessage}>{error}</p>}
           <p className={styles.fieldLabel}>First Name</p>
-          <input
-            type="text"
-            className={styles.fieldBox}
-            placeholder="Enter first name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
+            <div  className={styles.fieldBox}>
+              <input
+                type="text"
+                placeholder="Enter first name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>       
           <p className={styles.fieldLabel}>Last Name</p>
-          <input
-            type="text"
-            className={styles.fieldBox}
-            placeholder="Enter last name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
+            <div className={styles.fieldBox}>
+              <input
+                type="text"
+                placeholder="Enter last name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
           <p className={styles.fieldLabel}>Email Address</p>
-          <input
-            type="email"
-            className={styles.fieldBox}
-            placeholder="name@gmail.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+            <div className={styles.fieldBox}>
+                <span
+                  className="material-symbols-outlined"
+                  style={{ color: "#9AA5B6","padding":"10px"}}
+                >
+                mail
+              </span>
+                <input
+                type="email"
+                placeholder="name@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+           
           <p className={styles.fieldLabel}>Password</p>
-          <input
-            type="password"
-            className={styles.fieldBox}
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <div className={styles.fieldBox}>
+              <span 
+                className="material-symbols-outlined"
+                style={{ color: "#9AA5B6","padding":"10px"}}
+                >
+                lock
+              </span>
+              <input
+                type={visible?"text":"password"}
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {visible ?
+                <span 
+                  className="material-symbols-outlined"
+                  style={{ color: "#9AA5B6","padding":"10px"}}
+                  onClick={toggleEye}
+                  >
+                  visibility
+                </span>
+                :
+                <span 
+                  className="material-symbols-outlined"
+                  style={{ color: "#9AA5B6","padding":"10px"}}
+                  onClick={toggleEye}
+                  >
+                  visibility_off
+                </span>}
+            </div>
+            {/* <input
+              type="password"
+              className={styles.fieldBox}
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            /> */}
           <div className={styles.termsAndCondition}>
             <input
               type="checkbox"
@@ -155,7 +204,7 @@ export default function RegisterPage() {
         </div>
         <p className={styles.prompt}>
           Already have an account?
-          <span className={styles.create}> Log In</span>
+          <span className={styles.create} onClick={redirectToLoginPage}> Log In</span>
         </p>
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function Navbar() {
               />
             </div>
             <div className={styles.userSection}>
-              <Link href="/logout" className={styles.logoutLink}>
+              <Link href="/" className={styles.logoutLink}>
                 <Image
                   src="/profile.png"
                   alt="Logout Icon"

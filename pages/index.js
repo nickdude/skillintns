@@ -11,6 +11,7 @@ export default function LoginPage() {
   const [imageSrc, setImageSrc] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [visible,setVisible] = useState(false)
 
   useEffect(() => {
     const updateImageSrc = () => {
@@ -68,6 +69,16 @@ export default function LoginPage() {
     }
   };
 
+
+  const redirectToRegisterPage = (taskId) => {
+    router.push(`/register`);
+  };
+
+
+  const toggleEye = ()=>{
+    setVisible(!visible)
+  }
+
   return (
     <div className={styles.loginContainer}>
       <div className={styles.imageContainer}>
@@ -79,7 +90,6 @@ export default function LoginPage() {
           />
         )}
       </div>
-
       <div className={styles.formContainer}>
         <img
           src="/logo.png"
@@ -89,21 +99,51 @@ export default function LoginPage() {
         <div className={styles.fieldContainer}>
           <h1 className={styles.loginHeader}>Login to your account</h1>
           <p className={styles.fieldLabel}>Email address</p>
-          <input
-            type="text"
-            className={styles.fieldBox}
-            placeholder="name@gmail.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div className={styles.fieldBox}>
+            <span
+              className="material-symbols-outlined"
+              style={{ color: "#9AA5B6","padding":"10px"}}
+            >
+              mail
+            </span>
+            <input
+              type="text"
+              placeholder="name@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
           <p className={styles.fieldLabel}>Password</p>
-          <input
-            type="password"
-            className={styles.fieldBox}
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className={styles.fieldBox}>
+            <span 
+              className="material-symbols-outlined"
+              style={{ color: "#9AA5B6","padding":"10px"}}
+              >
+              lock
+            </span>
+            <input
+              type={visible?"text":"password"}
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {visible ?
+              <span 
+                className="material-symbols-outlined"
+                style={{ color: "#9AA5B6","padding":"10px"}}
+                onClick={toggleEye}
+                >
+                visibility
+              </span>
+              :
+              <span 
+                className="material-symbols-outlined"
+                style={{ color: "#9AA5B6","padding":"10px"}}
+                onClick={toggleEye}
+                >
+                visibility_off
+              </span>}
+          </div>
           <p className={styles.forgotPassword}>Forgot Password ?</p>
           <button
             className={styles.loginButton}
@@ -116,7 +156,7 @@ export default function LoginPage() {
         {error && <p className={styles.errorMessage}>{error}</p>}
         <p className={styles.prompt}>
           Are you a new User?
-          <span className={styles.create}> Create an account</span>
+          <span className={styles.create} onClick={redirectToRegisterPage}> Create an account</span>
         </p>
       </div>
     </div>

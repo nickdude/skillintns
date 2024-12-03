@@ -6,9 +6,10 @@ const Question = ({ genre, question, options, onNext }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleOptionClick = (index) => {
-        if (!isSubmitted) {
+        setIsSubmitted(true);
+        // if (!isSubmitted) {
             setSelectedOption(index);
-        }
+        // }
     };
 
     const handleSubmit = () => {
@@ -66,7 +67,7 @@ const Question = ({ genre, question, options, onNext }) => {
                 <button onClick={handleReset} className={`${Styles.Button} ${Styles.reset}`}>
                     Reset
                 </button>
-                {!isSubmitted ? (
+                {/* {!isSubmitted ? (
                     <button
                         onClick={handleSubmit}
                         className={`${Styles.Button} ${Styles.submit}`}
@@ -78,7 +79,10 @@ const Question = ({ genre, question, options, onNext }) => {
                     <button onClick={handleNext} className={`${Styles.Button} ${Styles.submit}`}>
                         Next
                     </button>
-                )}
+                )} */}
+                 <button onClick={handleNext} className={`${Styles.Button} ${Styles.submit}`}>
+                        Next
+                 </button>
             </div>
         </div>
     );

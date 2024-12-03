@@ -13,7 +13,8 @@ const breadcrumbLinks = [
 
 export default function SelectSkill() {
     const router = useRouter();
-    const { task_id } = router.query;  // Get task_id from the URL
+    const { task_id } = router.query;  
+    const [tasks, setTasks] = useState([]);
     const [skills, setSkills] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -22,16 +23,36 @@ export default function SelectSkill() {
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
     const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
-
+  
     useEffect(() => {
         const fetchSkills = async () => {
             if (!task_id) return; // Ensure task_id is available
 
             setLoading(true);
             setError(null);
+            const token = localStorage.getItem("token"); 
+            try {
+                const response = await fetch(`${apiUrl}/adaptive_packages/1/tasks`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch tasks");
+                }
+
+                const data = await response.json();
+                setTasks(data);
+            } catch (err) {
+               // setError(err.message);
+               console.log(err.message)
+            } 
 
             try {
-                const token = localStorage.getItem("token");  // Get token from localStorage
+                
                 const response = await fetch(`${apiUrl}/get_task_skills`, {
                     method: "POST",
                     headers: {
@@ -57,6 +78,10 @@ export default function SelectSkill() {
         fetchSkills();
     }, [task_id, apiUrl]);
 
+    const handleTaskClick = (taskId) => {
+        router.push(`/selectSkill/${taskId}`);
+    };
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
@@ -67,7 +92,13 @@ export default function SelectSkill() {
                 {/* Enrolled Tasks Section */}
                 <div className={Styles.enrolledTasks}>
                     <p className={Styles.boldTextSmall}>Tasks In Package</p>
-                    <TaskTable 
+                    <TaskTable
+                        data={tasks.map((task) => ({
+                            subject: task.adaptive_task_name,
+                            onClick: () => handleTaskClick(task.adaptive_task_id),
+                        }))}
+                    />
+                    {/* <TaskTable 
                         data={[
                             { subject: 'Maths' }, 
                             { subject: 'Physics' }, 
@@ -75,7 +106,7 @@ export default function SelectSkill() {
                             { subject: 'Biology' }, 
                             { subject: 'English' }
                         ]}
-                    />
+                    /> */}
                 </div>
                 <div className={Styles.rightContainer}>
                     <div className={Styles.skills}>

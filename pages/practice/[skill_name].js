@@ -14,7 +14,8 @@ const breadcrumbLinks = [
 
 export default function Practice() {
     const router = useRouter();
-    const { skill_name } = router.query; // Get the skill_name from the URL
+    const { skill_name } = router.query;
+    const [tasks, setTasks] = useState([]);
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -34,6 +35,26 @@ export default function Practice() {
         const fetchQuestionData = async () => {
             setLoading(true);
             setError(null);
+
+            try {
+                const response = await fetch(`${apiUrl}/adaptive_packages/1/tasks`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch tasks");
+                }
+
+                const data = await response.json();
+                setTasks(data);
+            } catch (err) {
+               // setError(err.message);
+               console.log(err.message)
+            } 
 
             try {
                 const response = await fetch(
@@ -80,6 +101,10 @@ export default function Practice() {
         }
     };
 
+    const handleTaskClick = (taskId) => {
+        router.push(`/selectSkill/${taskId}`);
+    };
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
@@ -90,6 +115,12 @@ export default function Practice() {
                 <div className={Styles.enrolledTasks}>
                     <p className={Styles.boldTextSmall}>Enrolled Tasks</p>
                     <TaskTable
+                        data={tasks.map((task) => ({
+                            subject: task.adaptive_task_name,
+                            onClick: () => handleTaskClick(task.adaptive_task_id),
+                        }))}
+                    />
+                    {/* <TaskTable
                         data={[
                             { subject: 'Maths' },
                             { subject: 'Physics' },
@@ -97,7 +128,7 @@ export default function Practice() {
                             { subject: 'Biology' },
                             { subject: 'English' },
                         ]}
-                    />
+                    /> */}
                 </div>
                 <div className={Styles.practiceContent}>
                     <QuestionMetaData
