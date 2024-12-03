@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Text Styles for variations in text */
+.boldText {
+    font-size: 3rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #224750;
+}
+.basicTextSmall {
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-family: Helvetica;
+    color: #224750;
+}
+
+.basicText {
+    font-size: 1.4rem;
+    font-family: 'Inter', sans-serif;
+    color: #224750;
+}
+
+.basicTextLarge {
+    font-size: 3rem;
+    font-family: 'Inter', sans-serif;
+    color: #224750;
+}
+
+/* Structure */
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    padding-top: 8.5rem;
+}
+
+.textContainer {
+    padding-top: 1.2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.cardsContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+@media (max-width: 1350px) {
+
+}
+
+@media (max-width: 830px) {
+    .boldText {
+        font-size: 1.6rem;
+    }
+    .basicText {
+        font-size: 0.8rem;
+    }
+    .basicTextLarge {
+        font-size: 1.6rem;
+    }
+    .mainContainer {
+        padding-top: 4rem;
+    }
+    .textContent {
+        padding-top: 0.2rem;
+    }
+}
