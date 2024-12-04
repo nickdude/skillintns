@@ -24,8 +24,8 @@ export default function FeedbackForm({ isOpen, onClose }) {
    
 
     const payload = {
-      user_id: "km@coolmail.com",
-      student_id: "10",
+      user_id: localStorage.getItem("email"),
+      student_id: localStorage.getItem("student_id"),
       task_name: "None",
       feedback,
       pageTitle: "Available Packages",

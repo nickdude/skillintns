@@ -34,6 +34,7 @@ export default function LoginPage() {
 
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
+  const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -41,8 +42,7 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
-
+    
       const response = await axios.post(
         `${apiUrl}/authenticate_user`,
         {
@@ -58,7 +58,9 @@ export default function LoginPage() {
 
       if (response.data.match) {
         localStorage.setItem("token", response.data.token);
-        router.push("/landing");
+        localStorage.setItem("email", response.data.user_profile.email);
+        localStorage.setItem("student_id", response.data.user_profile.student_id);
+        router.push("/subscribePage");
       } else {
         setError("Invalid credentials. Please try again.");
       }

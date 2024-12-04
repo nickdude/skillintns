@@ -13,7 +13,7 @@ import styles from '../styles/subscribePageCard.module.css';
  * @param {string} props.color - The color of the card background, either 'green' or 'black'.
  * @param {string} props.title - The title or golden text above the image (e.g., "Enjoy our premium subscription today!").
  */
-export default function SubscriptionCard({ price, description, benefits, color, title }) {
+export default function SubscriptionCard({ price, description, benefits, color, title, onClick }) {
   // Ensure there are no more than 3 benefits
   const limitedBenefits = benefits.slice(0, 3);
 
@@ -60,7 +60,7 @@ export default function SubscriptionCard({ price, description, benefits, color, 
       {/* Buttons Section */}
       <div className={styles.buttonsContainer}>
         <button className={styles.subscribeButton}>Subscribe</button>
-        <button className={styles.viewTasksButton}>View Tasks</button>
+        <button className={styles.viewTasksButton}  onClick={onClick}>View Tasks</button>
       </div>
     </div>
   );
