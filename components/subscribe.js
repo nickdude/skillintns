@@ -1,7 +1,7 @@
 import styles from '../styles/subscribe.module.css';
 
 export default function SubscriptionPopup({ isOpen, onClose }) {
-  if (!isOpen) return null; // Do not render if not open
+  if (!isOpen) return null; 
 
   return (
     <div className={styles.overlay}>
