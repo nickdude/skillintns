@@ -1,7 +1,7 @@
 /* Card Container */
 .card {
-    width: 360px; /* Card width */
-    height: 450px; /* Card height to maintain aspect ratio */
+    /* width: 360px;
+    height: 450px; */
     border-radius: 1rem; /* Rounded corners */
     padding: 1rem; /* Padding inside the card */
     border: 2px solid #d9d9d9; /* Light gray border */
@@ -119,7 +119,7 @@
 
   
   /* Responsive Styles */
-  @media (max-width: 1120px) {
+  @media (min-width: 1025px) {
     .card {
       height: 380px;
       width: 304px;
@@ -128,15 +128,15 @@
   
   @media (max-width: 768px) {
     .card {
-      height: 414px;
-      width: 331px;
+      height: 39vh;
+      width: 44vw;
     }
   }
   
   @media (max-width: 480px) {
     .card {
-      width: 414px;
-      height: 515px;
+      width: 88vw;
+      height: 44vh;
     }
   }
   
