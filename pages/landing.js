@@ -45,7 +45,7 @@ export default function Home() {
         <div className="mainContent">
           <div className={Styles.contentHead}>
             <div className={Styles.textContainer}>
-              <p>
+              <p style={{"marginTop":"-2vh"}}>
                 <span className={Styles.boldText}>Enroll Tasks </span>
                 <span className={Styles.basicTextLarge}>
                   -Practice. Progress. Succeed.

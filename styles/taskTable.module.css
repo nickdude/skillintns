@@ -4,9 +4,13 @@
 }
 
 .iconCell{
- /* Set the height of the circle (same as width for a circle) */
-    font-size: 1.3rem;
-    color: #7A8B94;
+    /* Set the height of the circle (same as width for a circle) */
+    color: #3C4852;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem; /* 160% */
 }
 
 .iconCell img{

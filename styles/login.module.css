@@ -93,6 +93,17 @@
         width: 80%;
         border: none;
       }
+
+      .fieldBox  input {
+        background-color: white;
+      }
+      
+      .fieldBox input:-webkit-autofill {
+        background-color: transparent !important;
+        box-shadow: 0 0 0 1000px white inset !important; /* Standard property for compatibility */
+        -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Vendor-prefixed property */
+        transition: background-color 5000s ease-in-out 0s;
+      }
      
       .forgotPassword{
         font-family: Inter;
@@ -260,6 +271,17 @@
         padding-left: 10px;
         width: 80%;
         border: none;
+      }
+
+      .fieldBox  input {
+        background-color: white;
+      }
+      
+      .fieldBox input:-webkit-autofill {
+        background-color: transparent !important;
+        box-shadow: 0 0 0 1000px white inset !important; /* Standard property for compatibility */
+        -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Vendor-prefixed property */
+        transition: background-color 5000s ease-in-out 0s;
       }
      
       .forgotPassword{
@@ -429,6 +451,18 @@
         width: 80%;
         border: none;
       }
+
+      .fieldBox  input {
+        background-color: white;
+      }
+      
+      .fieldBox input:-webkit-autofill {
+        background-color: transparent !important;
+        box-shadow: 0 0 0 1000px white inset !important; /* Standard property for compatibility */
+        -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Vendor-prefixed property */
+        transition: background-color 5000s ease-in-out 0s;
+      }
+      
      
       .forgotPassword{
         font-family: Inter;

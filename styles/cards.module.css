@@ -117,26 +117,29 @@
   }
   
 
-  
-  /* Responsive Styles */
-  @media (min-width: 1025px) {
+  @media (min-width: 280px) and (max-width: 414px) {
     .card {
-      height: 380px;
-      width: 304px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .card {
-      height: 39vh;
-      width: 44vw;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .card {
+      height: 24rem;
       width: 88vw;
-      height: 44vh;
     }
   }
-  
+  @media (min-width: 415px) and (max-width: 768px) {
+    .card{
+      height: 23rem;
+      width: 43vw;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 820px) {
+    .card{
+      /* height: 23rem;
+      width: 43vw; */
+      height: 22rem;
+      width: 29vw;
+   }
+ }
+  @media (min-width: 821px) and (max-width: 1024px) {
+    .card {
+      height: 21rem;
+      width: 29vw;
+    }
+  }

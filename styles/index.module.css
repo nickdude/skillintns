@@ -1,34 +1,38 @@
 /* Text Styles for variations in text */
 .boldText {
-    font-size: 3rem;
-    font-family: Helvetica;
-    font-weight: 800;
-    color: #224750;
+  color: #224750;
+  font-family: "Helvetica Neue";
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3.24rem;
+  letter-spacing: -0.027rem;
 }
   
 .basicTextLarge {
-    font-size: 3rem;
-    font-family: Helvetica;
-    color: #224750;
+  color: #224750;
+  font-family: Inter;
+  font-size: 0.96875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 154.839% */
+  letter-spacing: -0.005rem;
 }
   
 .basicTextSmall {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: Helvetica;
     color: #224750;
 }
   
   .basicTextSmallGreen {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: Helvetica;
     color: #44B07A;
 }
 
-
-/* MAIN TEXT CONTENT */
-/* content Head Container Responsible for storing heading text */
 .contentHead {
     gap: 5em;
     display: flex;
@@ -36,28 +40,23 @@
     justify-content: space-between;
     width: 100%;
     align-items: center;
-    padding-bottom: 1rem; /* Add padding to separate from cards */
+    padding-bottom: 1rem;
   }
   
 .textContainer {
-    /* gives as much space possible to text and then the rest goes to the button */
     flex-grow: 1;
 }
   
 .buttonContainer {
-    /* Justified the position of button container to the far end */
     display: flex;
     justify-content: flex-end;
     width:80px;
 }
 
-/* BUTTON */
-
-/* Cards */
 .cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
-    gap: 1.5rem; /* Increased gap between cards */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; 
     padding: 2rem 0;
     max-width:100%;
 
@@ -84,16 +83,40 @@
 .button:hover {
   background-color: #388E3C; /* Darker shade of green on hover */
 }
-@media (max-width: 1120px) { /* Tablet size */
+@media (min-width: 601px) and (max-width: 1024px) { /* Tablet size */
     .cards {
       grid-template-columns: repeat(3, 1fr); /* Switch to 3 columns */
 
     }
+    .contentHead{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-top: 4vh;
+    }
+    .boldText{
+      font-size: 1.8rem;
+    }
+    .basicTextLarge{
+      font-size: 1.8rem;
+    }
   }
   
-@media (max-width: 768px) { /* Smaller screens */
+@media (max-width: 768px) { 
     .cards {
       grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns */
+    }
+    .contentHead{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-top: 4vh;
+    }
+    .boldText{
+      font-size: 1.8rem;
+    }
+    .basicTextLarge{
+      font-size: 1.8rem;
     }
   }
   

@@ -89,24 +89,14 @@ export default function SelectSkill() {
         <div>
             <Navbar />
             <div className={`${Styles.mainContainer} mainContent`}>
-                {/* Enrolled Tasks Section */}
                 <div className={Styles.enrolledTasks}>
-                    <p className={Styles.boldTextSmall}>Tasks In Package</p>
+                    <p className={Styles.boldTextSmall}>TASKS IN (PACKAGE)</p>
                     <TaskTable
                         data={tasks.map((task) => ({
                             subject: task.adaptive_task_name,
                             onClick: () => handleTaskClick(task.adaptive_task_id),
                         }))}
                     />
-                    {/* <TaskTable 
-                        data={[
-                            { subject: 'Maths' }, 
-                            { subject: 'Physics' }, 
-                            { subject: 'Chemistry' }, 
-                            { subject: 'Biology' }, 
-                            { subject: 'English' }
-                        ]}
-                    /> */}
                 </div>
                 <div className={Styles.rightContainer}>
                     <div className={Styles.skills}>

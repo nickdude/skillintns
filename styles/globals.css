@@ -30,6 +30,11 @@
   padding: 2rem 1rem; /* Adjust padding for smaller screens */
 }
 }
+@media (min-width: 601px) and (max-width: 1024px){
+  .mainContent{
+    padding: 1rem 0.5rem;
+  }
+}
 
 /* Main Content Container responsible for storing EVERYTHING */
 

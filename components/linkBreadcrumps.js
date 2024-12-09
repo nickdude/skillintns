@@ -2,6 +2,7 @@ import React from 'react';
 import Styles from '../styles/questionMetaData.module.css';
 
 const Breadcrumb = ({ breadcrumbLinks }) => {
+    console.log("breadcrumbLinks",breadcrumbLinks)
     return (
         <div className={Styles.linkContainer}>
             <img src="../arrowLeft.svg" alt="Go Back" />

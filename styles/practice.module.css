@@ -2,10 +2,13 @@
 
 /* Text Styles for variations in text */
 .boldText {
-    font-size: 3rem;
-    font-family: Helvetica;
-    font-weight: 800;
     color: #224750;
+    font-family: "Helvetica Neue";
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 3.24rem; /* 144% */
+    letter-spacing: -0.027rem;
 }
   
 .basicTextLarge {
@@ -26,7 +29,7 @@
 .mainContainer{
     display: flex;
     flex-direction: row;
-    padding-top: 6em;
+    padding-top: 5.67rem;
 }
 .enrolledTasks{
     width: 19em;

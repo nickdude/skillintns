@@ -9,7 +9,7 @@
   margin-bottom: 2rem;
   font-family: "Inter";
   background-color: white;
-  height: 8rem;
+  height: 5.562rem;
   position: relative;
   padding: 0 1rem;
   border:1.6px solid #ECE8E5;
@@ -42,11 +42,13 @@
 
 /* Title */
 .title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  flex: 1;
-  padding: 0 1rem;
   color: #224750;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.25rem; /* 133.333% */
+  margin-left: 1.07rem;
 }
 
 .barContainer.completed .title {
@@ -104,8 +106,12 @@
   height: 40px; /* Fixed height for consistency */
   border: none;
   border-radius: 20px;
-  font-size: 1rem;
-  font-weight: bold;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25rem;
   cursor: pointer;
   color: white;
   display: flex;
@@ -123,8 +129,8 @@
   background-color: #42b37a;
 }
 
-/* Mobile Styles (Breakpoint: 830px) */
-@media (max-width: 830px) {
+
+@media (max-width: 678px) {
   .barContainer {
     flex-direction: row; /* Ensure elements are horizontally aligned */
     height: auto;
@@ -135,10 +141,12 @@
 
   .title {
     padding: 0; /* Remove padding */
-    padding-left:0.8rem;
-    font-size: 1rem;
-    font-weight: 500;
     color: #224750;
+    font-family: Inter;
+    font-size: 0.82481rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.09975rem; /* 133.333% */
     text-align: left; /* Align title to the left */
     flex: 1;
   }
@@ -185,10 +193,13 @@
   .actionButton {
     width: 120px; /* Fixed button width for consistency */
     height: 40px; /* Fixed height */
-    font-size: 0.9rem;
     text-align: center;
     border-radius: 20px;
-    font-weight: bold;
+    font-family: Inter;
+    font-size: 0.76981rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.09975rem; 
     color: white;
     display: flex;
     align-items: center;

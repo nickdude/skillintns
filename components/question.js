@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Styles from '../styles/questions.module.css';
+import DropDown from '../components/dropDown'
 
 const Question = ({ genre, question, options, onNext }) => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -31,7 +32,10 @@ const Question = ({ genre, question, options, onNext }) => {
             {/* Question Bar */}
             <div className={Styles.Qbar}>
                 <div className={Styles.QuestionCell}>
-                    <div className={Styles.QuestionGenre}>{genre}</div>
+                    <div className={Styles.QuestionGenre}>
+                        {genre} 
+                        {/* <DropDown/> */}
+                    </div>
                     <div className={Styles.QuestValue}>Q. {question}</div>
                 </div>
             </div>
@@ -64,9 +68,9 @@ const Question = ({ genre, question, options, onNext }) => {
 
             {/* Buttons */}
             <div className={Styles.Buttons}>
-                <button onClick={handleReset} className={`${Styles.Button} ${Styles.reset}`}>
-                    Reset
-                </button>
+                <div onClick={handleReset} className={`${Styles.reset}`}>
+                Reset to previous level
+                </div>
                 {/* {!isSubmitted ? (
                     <button
                         onClick={handleSubmit}

@@ -2,14 +2,14 @@
 
 /* Text Styles for variations in text */
 .boldText {
-    font-size: 3rem;
+    font-size: 2.25rem;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     color: #224750;
 }
 .basicTextSmall {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 0.96875rem;
     font-family: Helvetica;
     color: #224750;
 }
@@ -46,11 +46,8 @@
     flex-direction: row;
     gap: 1.5rem;
 }
-@media (max-width: 1350px) {
 
-}
-
-@media (max-width: 830px) {
+@media (max-width: 678px) {
     .boldText {
         font-size: 1.6rem;
     }
@@ -65,5 +62,11 @@
     }
     .textContent {
         padding-top: 0.2rem;
+    }
+    .cardsContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
     }
 }

@@ -13,32 +13,42 @@
     }
         /* selected image to add gap between image and text */
     .linkContainer img{
-        padding-right: 1em;
-        height:20px;
+        padding-right: 0.6rem;;
+        height:1rem;
     }
         /* Added Padding to the Slashes between the links */
     .linkContainer p{
         padding:0 0.25em;
     }
     .breadcrumbLinks{
-
-    }
-    .breadcrumbLinks{
         display: flex;
         flex-direction: row;
+        align-items: center;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 400;
     }
         /* Green Link Decorator */
     .greenLink{
-        text-wrap: nowrap;
-        font-family: Helvetica;
-        color: #44B07A;
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
+        color: #38A56F;
+        font-family: Inter;
+        font-size: 1.0625rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.38125rem; /* 130% */
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
     }
 
     .metaData img{
         padding-right: 0.3em;
-        width:31px;
+        width: 1.5rem;
+        height: 1.5rem;
+        flex-shrink: 0;
 
 
     }
@@ -66,9 +76,21 @@
 
     .skillName {
         font-weight:600;
+        color: #3C4852;
+        font-family: Inter;
+        font-size: 0.9375rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.5rem;
     }
     .skill,.Level{
         align-items: center;
+        color: #3C4852;
+        font-family: Inter;
+        font-size: 0.9375rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.5rem; /* 160% */
     }
 
     /* Reactivity for text size and image size *in meta data */
@@ -132,6 +154,37 @@
         .metaData img,.Level img{
             width:23px;
         }
+        .skill{
+            display: flex;
+            flex-direction: row;
+            gap:0.2em;
+
+        }
+        .Level{
+            gap:0.2em;
+            display: flex;
+            flex-direction: row;
+        }
+
+    .skillName {
+        font-weight:600;
+        color: #3C4852;
+        font-family: Inter;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.5rem;
+    }
+    .skill,.Level{
+        align-items: center;
+        color: #3C4852;
+        font-family: Inter;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.5rem; /* 160% */
+    }
+
 
     }
 

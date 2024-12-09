@@ -95,6 +95,18 @@
         border: none;
         background: #FFFFFF;
       }
+
+      .fieldBox  input {
+        background-color: white;
+      }
+      
+      .fieldBox input:-webkit-autofill {
+        background-color: transparent !important;
+        box-shadow: 0 0 0 1000px white inset !important; /* Standard property for compatibility */
+        -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Vendor-prefixed property */
+        transition: background-color 5000s ease-in-out 0s;
+      }
+     
       
       .loginButton{
         border: 1.3px solid #07875CB2;
@@ -278,6 +290,18 @@
         width: 80%;
         border: none;
       }
+
+      .fieldBox  input {
+        background-color: white;
+      }
+      
+      .fieldBox input:-webkit-autofill {
+        background-color: transparent !important;
+        box-shadow: 0 0 0 1000px white inset !important; /* Standard property for compatibility */
+        -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Vendor-prefixed property */
+        transition: background-color 5000s ease-in-out 0s;
+      }
+     
       .loginButton{
         border: 1.3px solid #07875CB2;
         background: #38A56F;
@@ -456,6 +480,17 @@
         width: 80%;
         border: none;
       }
+      .fieldBox  input {
+        background-color: white;
+      }
+      
+      .fieldBox input:-webkit-autofill {
+        background-color: transparent !important;
+        box-shadow: 0 0 0 1000px white inset !important; /* Standard property for compatibility */
+        -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Vendor-prefixed property */
+        transition: background-color 5000s ease-in-out 0s;
+      }
+     
       .loginButton{
         border: 1.3px solid #07875CB2;
         background: #38A56F;

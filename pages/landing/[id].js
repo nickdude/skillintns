@@ -49,16 +49,11 @@ export default function Home() {
           <div className={Styles.contentHead}>
             <div className={Styles.textContainer}>
               <p>
-                <span className={Styles.boldText}>Enroll Tasks </span>
-                <span className={Styles.basicTextLarge}>
-                  -Practice. Progress. Succeed.
-                </span>
+                <span className={Styles.boldText}>Available Tasks for High School</span>
               </p>
               <br />
               <p className={Styles.basicTextSmall}>
-                Step-by-Step{" "}
-                <span className={Styles.basicTextSmallGreen}>Learning</span> to
-                Build Confidence and Knowledge
+                 Step-by-Step Learning to Build Confidence and Knowledge
               </p>
             </div>
             <div className={Styles.ButtonContainer}>

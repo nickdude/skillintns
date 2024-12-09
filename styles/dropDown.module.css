@@ -1,0 +1,75 @@
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdownBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: 7.1875rem;
+    height: 1.9375rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ECE8E5;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 0.875rem;
+    color: #667085;
+    font-variant-numeric: lining-nums tabular-nums stacked-fractions;
+    font-feature-settings: 'dlig' on;
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .dropdownList {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    width: 10.886rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ECE8E5;
+    background: #FFF;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.10);
+    list-style: none;
+    padding: 0.5rem 0;
+    z-index: 1000;
+    color: #224750;
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; /* 142.857% */
+  }
+  
+  .dropdownList li {
+    padding: 0.5rem 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.875rem;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .dropdownList li:hover {
+    border-radius: 0.25rem;
+    background-color: #224750;
+    box-shadow: #224750;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem;
+  }
+
+  .dropdown:hover .dropdownList {
+    display: block;
+  }
+  

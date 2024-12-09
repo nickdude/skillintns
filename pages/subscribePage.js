@@ -9,18 +9,18 @@ export default function Package() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Environment variables for base API URL and CORS proxy
+  
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const email = localStorage.getItem("email"); 
     const fetchPackages = async () => {
       try {
         const response = await fetch(
-          `${apiUrl}/adaptive_user_packages?user_id=km@coolmail.com`,
+          `${apiUrl}/adaptive_user_packages?user_id=${email}`,
           {
             method: "GET",
             headers: {
@@ -47,7 +47,6 @@ export default function Package() {
   }, [apiUrl]);
 
   const handleCardClick = (id) => {
-    console.log("<<<<<<<",id)
     router.push(`/landing/${id}`);
   };
 

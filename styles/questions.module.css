@@ -1,11 +1,14 @@
 /* Overall container for the Question component */
 .Question {
-    width: 100%; /* Full-width container */
+    width: 53.5625rem;
+    height: 21.25rem;
+    flex-shrink: 0;
     background-color: #ffffff; /* White background */
-    padding: 2em 1.5em; /* Padding for spacing */
+    padding: 1.5rem 1.61rem;
     border: 2px solid #E0E0E0; /* Light gray border */
     border-radius: 8px; /* Rounded corners */
     font-family: 'Inter', sans-serif; /* Modern font family */
+    /* width: 50rem; */
 }
 
 /* Structure 1: Question Bar (top section with genre and question text) */
@@ -15,26 +18,40 @@
     justify-content: space-between; /* Space out content */
     align-items: center; /* Vertically center items */
     margin-bottom: 1rem; /* Space below the bar */
+    width: 100%;
 }
 
     /* Structure 1.1: Cell containing genre and question text */
     .QuestionCell {
         display: flex; /* Flexbox layout for vertical alignment */
         flex-direction: column; /* Stack items vertically */
-        gap: 0.5rem; /* Spacing between genre and question */
+        gap: 1rem; /* Spacing between genre and question */
     }
 
         /* Structure 1.1.1: Genre text styling */
         .QuestionGenre {
-            font-size: 1.2rem; /* Larger text for genre */
-            color: #7A869A; /* Neutral gray color for genre */
+            color: rgba(34, 71, 80, 0.50);
+            font-family: Inter;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.25rem; /* 100% */
+            letter-spacing: 0.0125rem;
+            display: flex;
+            justify-content: space-between;
+            width: 56vw;
         }
 
         /* Structure 1.1.2: Question text styling */
         .QuestValue {
-            font-size: 1rem; /* Medium-sized text */
-            font-weight: 600; /* Semi-bold font */
-            color: #1F2937; /* Darker color for emphasis */
+            color: #224750;
+            font-family: Inter;
+            font-size: 0.9375rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.25rem; /* 133.333% */
+            letter-spacing: 0.00938rem;
+            margin-top: -0.6rem;
         }
 
 /* Structure 2: Options Container (holds all the answer options) */
@@ -54,6 +71,9 @@
         background-color: #F8F9FA; /* Light gray background */
         cursor: pointer; /* Pointer cursor for interactivity */
         transition: all 0.2s ease; /* Smooth transition for hover and state changes */
+        width: 24.58144rem;
+        height: 3.4515rem;
+        flex-shrink: 0;
     }
 
         /* Structure 2.1.1: Styling for option when hovered */
@@ -103,6 +123,11 @@
             color: #224750; /* Neutral dark text color */
             flex: 0 0 auto; /* Fixed size for label */
             transition: all 0.2s ease; /* Smooth transition for state changes */
+            width: 3.4375rem;
+            height: 3.4515rem;
+            flex-shrink: 0;
+            border-radius: 0.25rem 0rem 0rem 0.25rem;
+            background: rgba(34, 71, 80, 0.07);
         }
 
         /* Structure 2.1.6: Option text styling */
@@ -130,13 +155,24 @@
         border-radius: 8px; /* Rounded corners */
         cursor: pointer; /* Pointer cursor for interactivity */
         transition: background-color 0.3s ease; /* Smooth background color change */
+        display: flex;
+        width: 8.0625rem;
+        padding: 0.875rem 0rem;
+        justify-content: center;
+        align-items: center;
     }
 
         /* Structure 3.1.1: Styling for the Reset button */
-        .Button.reset {
-            background-color: #f0f0f0; /* Neutral gray background */
-            color: #3C4852; /* Darker text for readability */
-            border: 1px solid #d3d3d3; /* Subtle border */
+        .reset {
+            color: #7A8B94;
+            font-family: Inter;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.25rem; /* 142.857% */
+            letter-spacing: 0.00875rem;
+            display: flex;
+            align-items: center;
         }
 
             /* Structure 3.1.1.1: Reset button hover state */
@@ -162,13 +198,158 @@
         }
 
 /* Responsive Adjustments */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 678px) {
     /* Structure 4: Options container in single-column layout for smaller screens */
+    .Question {
+        width: 20rem;
+        height: 32.5rem;
+        flex-shrink: 0;
+        background-color: #ffffff; /* White background */
+        padding: 1.5rem 1.61rem;
+        border: 2px solid #E0E0E0; /* Light gray border */
+        border-radius: 8px; /* Rounded corners */
+        font-family: 'Inter', sans-serif; /* Modern font family */
+        /* width: 50rem; */
+    }
     .Options {
         grid-template-columns: 1fr; /* Single column layout */
+    }
+    .Option{
+        width: 16.5rem;
+        height: 3rem;
+        margin-top: -0.2rem;
     }
     .OptionText{
         padding:0;
         padding-left: 1rem;
     }
+    .QuestValue {
+        color: #224750;
+        font-family: Inter;
+        font-size: 0.9375rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.25rem; /* 133.333% */
+        letter-spacing: 0.00938rem;
+        margin-top: 1rem;
+    }
+    .OptionText {
+        font-size: 0.875rem;
+        color: #224750;/* Darker text for readability */
+        padding: 1rem; /* Padding around text */
+        flex: 1; /* Expand text container */
+        transition: all 0.2s ease; /* Smooth transition */
+        line-height: 1rem;
+
+    }
+
+      .OptionLabel {
+            font-size: 1.2rem; /* Slightly larger font */
+            font-weight: 700; /* Bold text */
+            padding: 1rem; /* Padding for spacing */
+            background-color: #E9ECEF; /* Light gray background */
+            color: #224750; /* Neutral dark text color */
+            flex: 0 0 auto; /* Fixed size for label */
+            transition: all 0.2s ease; /* Smooth transition for state changes */
+            width: 3.4375rem;
+            height: 3rem;
+            flex-shrink: 0;
+            border-radius: 0.50rem 0rem 0rem 0.50rem;
+            background: rgba(34, 71, 80, 0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .Buttons {
+            display: flex; /* Flexbox layout for horizontal alignment */
+            margin-top: 0.5rem; /* Space above buttons */
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .Button {
+            padding: 0.8rem 1.5rem; /* Padding for size */
+            font-size: 1rem; /* Medium font size */
+            font-weight: bold; /* Bold font */
+            border: none; /* No border */
+            border-radius: 8px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor for interactivity */
+            transition: background-color 0.3s ease; /* Smooth background color change */
+            display: flex;
+            width: 16.875rem;
+            padding: 0.875rem 0rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .reset {
+            color: #7A8B94;
+            font-family: Inter;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.25rem; /* 142.857% */
+            letter-spacing: 0.00875rem;
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
 }
+
+
+@media (min-width: 678px) and (max-width: 1024px) {
+    .Question {
+        width: 48rem;
+        height: 21.25rem;
+        flex-shrink: 0;
+        background-color: #ffffff; /* White background */
+        padding: 1.5rem 1.61rem;
+        border: 2px solid #E0E0E0; /* Light gray border */
+        border-radius: 8px; /* Rounded corners */
+        font-family: 'Inter', sans-serif; /* Modern font family */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* width: 50rem; */
+    }
+    .QuestValue {
+        color: #224750;
+        font-family: Inter;
+        font-size: 0.9375rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.25rem; /* 133.333% */
+        letter-spacing: 0.00938rem;
+        margin-top: 0.5rem;
+    }
+    .Qbar {
+        display: flex; /* Flexbox layout for horizontal alignment */
+        flex-direction: row; /* Arrange items in a row */
+        justify-content: space-between; /* Space out content */
+        align-items: center; /* Vertically center items */
+        margin-bottom: 0.5rem; /* Space below the bar */
+        width: 100%;
+    }
+    
+    .Option {
+        display: flex; /* Flexbox layout for alignment */
+        align-items: center; /* Vertically center content */
+        border: 1px solid #E0E0E0; /* Default border color */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #F8F9FA; /* Light gray background */
+        cursor: pointer; /* Pointer cursor for interactivity */
+        transition: all 0.2s ease; /* Smooth transition for hover and state changes */
+        width: 21.5rem;
+        height: 3.4515rem;
+        flex-shrink: 0;
+    }
+    .Buttons {
+        display: flex; /* Flexbox layout for horizontal alignment */
+        justify-content: space-between; /* Space between Reset and Submit/Next buttons */
+        margin-top: 1rem; /* Space above buttons */
+        width: 44rem;
+    }
+
+  }
+  

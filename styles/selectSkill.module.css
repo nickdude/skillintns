@@ -2,10 +2,13 @@
 
 /* Text Styles for variations in text */
 .boldText {
-    font-size: 3rem;
-    font-family: Helvetica;
-    font-weight: 800;
     color: #224750;
+    font-family: "Helvetica Neue";
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 3.24rem; /* 144% */
+    letter-spacing: -0.027rem;
 }
   
 .basicTextLarge {
@@ -23,10 +26,13 @@
 }
   
 .boldTextSmall {
-    font-size: 1rem;
-    font-family: 'inter';
-    font-weight: 600;
-    color: #7A8B94;
+    color: #224750;
+    font-family: Inter;
+    font-size: 0.96875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem; /* 154.839% */
+    letter-spacing: -0.005rem;
 }
 .basicTextSmallGreen {
     font-size: 1.2rem;
@@ -38,7 +44,7 @@
 .mainContainer{
     display: flex;
     flex-direction: row;
-    padding-top: 8.5rem;
+    padding-top: 5.74rem;
 }
 .enrolledTasks{
     width: 30rem;
@@ -58,6 +64,27 @@
 .textContent{
     padding-top:1.2rem;
     padding-bottom:2rem;
+}
+
+@media(max-width:678px){
+    .boldText{
+        color: #224750;
+        font-family: "Helvetica Neue";
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 2.125rem; /* 141.667% */
+        letter-spacing: -0.027rem;
+    }
+    .basicTextSmall{
+        color: #224750;
+        font-family: Inter;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.5rem; /* 200% */
+        letter-spacing: -0.005rem;
+    }
 }
 @media (max-width: 1350px) {
     .enrolledTasks {

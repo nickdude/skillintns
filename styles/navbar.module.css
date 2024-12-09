@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5.5rem;
+  padding: 1rem 5vw;
   background-color: #FDF9F1;
   border-bottom: 2px solid #abb3b966;
   height: 7.5rem;
@@ -136,7 +136,7 @@
     }
 
 /* Media Query: Hide Feedback and Logout Buttons on Small Screens */
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 600px) {
   .feedbackButton, /* Hide Feedback Button */
   .userSection { /* Hide Logout Button */
     display: none;
