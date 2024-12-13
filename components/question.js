@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Styles from '../styles/questions.module.css';
 import DropDown from '../components/dropDown'
 
-const Question = ({ genre, question, options, onNext }) => {
+const Question = ({ genre, question, options, onNext, id }) => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -34,7 +34,7 @@ const Question = ({ genre, question, options, onNext }) => {
                 <div className={Styles.QuestionCell}>
                     <div className={Styles.QuestionGenre}>
                         {genre} 
-                        {/* <DropDown/> */}
+                        <DropDown question={question} id={id} />
                     </div>
                     <div className={Styles.QuestValue}>Q. {question}</div>
                 </div>

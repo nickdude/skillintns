@@ -7,9 +7,21 @@ import Styles from "/styles/index.module.css";
 
 export default function Home() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = router.query || {};
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
+  const [currentId, setCurrentId] = useState(id);
+
+  useEffect(() => {
+    if (!id) {
+      const pathId = router.asPath.split("/")[2]; 
+      if (pathId) {
+        setCurrentId(pathId); 
+      }
+    } else {
+      setCurrentId(id); 
+    }
+  }, [id, router.asPath]);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -26,20 +38,23 @@ export default function Home() {
         const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
         const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
       
-        const response = await axios.get(`${apiUrl}/adaptive_packages/${id}/tasks`, {
+        const response = await axios.get(`${apiUrl}/adaptive_packages/${currentId}/tasks`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setTasks(response.data); 
+        setError("")
       } catch (err) {
         console.log(err)
         setError("Failed to load tasks. Please try again.");
       }
     };
 
-    fetchTasks();
-  }, []);
+    if (currentId) {
+      fetchTasks();
+    }
+  }, [currentId]);
 
   return (
     <div>
@@ -53,7 +68,7 @@ export default function Home() {
               </p>
               <br />
               <p className={Styles.basicTextSmall}>
-                 Step-by-Step Learning to Build Confidence and Knowledge
+                 Step-by-Step <span style={{"color":"#44B07A"}}>Learning</span> to Build Confidence and Knowledge
               </p>
             </div>
             <div className={Styles.ButtonContainer}>
@@ -71,6 +86,7 @@ export default function Home() {
                 isFree={true} // Placeholder for free status
                 title={task.adaptive_task_description} // API data
                 publisher={task.adaptive_task_name} // API data
+                currentId={currentId}
               />
             ))}
           </div>

@@ -1,6 +1,7 @@
 import styles from '../styles/taskTable.module.css';
 
 export default function SubjectList({ data }) {
+  
   return (
     <div className={styles.container}>
       <table className={styles.table}>

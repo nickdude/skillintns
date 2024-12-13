@@ -6,14 +6,11 @@ import TaskTable from '../../components/taskTable';
 import LinkBreadCrumps from '@/components/linkBreadcrumps';
 import LearningBar from "../../components/learningModules";
 
-const breadcrumbLinks = [
-    { text: 'Tasks', href: '#' },
-    { text: 'Practice Skill', href: '#' }
-];
+
 
 export default function SelectSkill() {
     const router = useRouter();
-    const { task_id } = router.query;  
+    const { task_id,currentId } = router.query;  
     const [tasks, setTasks] = useState([]);
     const [skills, setSkills] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -24,6 +21,11 @@ export default function SelectSkill() {
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
     const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
   
+    const breadcrumbLinks = [
+        { text: 'Tasks', href: `/landing/${currentId}` },
+        { text: 'Practice Skill', href: '#' }
+    ];
+
     useEffect(() => {
         const fetchSkills = async () => {
             if (!task_id) return; // Ensure task_id is available
@@ -117,7 +119,7 @@ export default function SelectSkill() {
                                     key={index}
                                     title={skill[1]}  // Skill name
                                     progress={0.5}  // Sample progress value
-                                    href={`/practice/${skill[2]}`}  // Assuming you have a practice page for each skill
+                                    href={`/practice/${skill[2]}?task_id=${task_id}&currentId=${currentId}`}  // Assuming you have a practice page for each skill
                                 />
                             ))
                         ) : (

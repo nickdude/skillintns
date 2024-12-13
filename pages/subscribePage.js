@@ -61,7 +61,7 @@ export default function Package() {
               <p>Available Packages</p>
             </div>
             <div className={Styles.basicTextSmall}>
-              <p>Subscribe to available Packages below.</p>
+              <p>Subscribe to the available packages to practice skills.</p>
             </div>
           </div>
 
