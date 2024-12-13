@@ -10,10 +10,10 @@ export default function HintCard({ isOpen, onClose, taskId, id, question }) {
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
 
-  const token = localStorage.getItem("token");
-
   useEffect(() => {
     if (!isOpen || !taskId) return;
+
+    const token = localStorage.getItem("token");
 
     const fetchHints = async () => {
       setLoading(true);
@@ -41,7 +41,7 @@ export default function HintCard({ isOpen, onClose, taskId, id, question }) {
     };
 
     fetchHints();
-  }, [isOpen, taskId, apiUrl, token]);
+  }, [isOpen, taskId, apiUrl]);
 
   if (!isOpen) return null;
 
