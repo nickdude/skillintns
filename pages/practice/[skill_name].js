@@ -28,7 +28,7 @@ export default function Practice() {
     
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        const token = typeof window !== "undefined" ? localStorage.getItem("token") :""
         const studentId = 10;
 
         if (!skill_name) return;
@@ -436,7 +436,7 @@ export default function Practice() {
         };
 
         fetchQuestionData();
-    }, [skill_name, apiUrl]);
+    }, [skill_name, apiUrl, typeof window]);
 
     const handleNext = () => {
         if (currentQuestionIndex < questions.length - 1) {
