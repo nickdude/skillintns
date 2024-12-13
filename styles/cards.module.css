@@ -12,6 +12,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   }
   
+  
   /* Image Section */
   .cardImageWrapper {
     position: relative; /* Relative for absolute positioning inside */
