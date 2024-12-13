@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import styles from "../styles/hintCard.module.css";
+import styles from "../styles/conceptCard.module.css";
 
-export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
+export default function ConceptCard({ isOpen, onClose, taskId, id, question , skill_name}) {
   const [error, setError] = useState(null);
-  const [steps, setSteps] = useState([]);
+  const [concepts, setConcepts] = useState([]);
+  const [examples,setExamples] = useState([])
   const [loading, setLoading] = useState(false);
+  const [summary, setSummary] = useState('')
 
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
 
- 
-
   useEffect(() => {
     if (!isOpen || !taskId) return;
+
     const token = localStorage.getItem("token");
 
     const fetchHints = async () => {
@@ -22,7 +23,7 @@ export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
       setError(null);
 
       try {
-        const response = await fetch(`${apiUrl}/step_by_step_answers/${taskId}`, {
+        const response = await fetch(`${apiUrl}/get_topic_summary?skill=linear_equations`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -34,7 +35,10 @@ export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
         }
 
         const data = await response.json();
-        setSteps(data.step_by_step_answers || []);
+        setConcepts(data[0]?.concepts || []);
+        setExamples(data[0]?.examples || [])
+        setSummary(data[0]?.summary || '')
+        console.log(data[0])
       } catch (err) {
         setError(err.message);
       } finally {
@@ -52,7 +56,7 @@ export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
       <div className={styles.overlay}>
         <div className={styles.popup}>
           <div className={styles.topBar}>
-            <h1>Hints</h1>
+            <h1>Concepts</h1>
             <button className={styles.closeButton} onClick={onClose} aria-label="Close">
               ×
             </button>
@@ -65,16 +69,29 @@ export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
               <p className={styles.errorMessage}>{error}</p>
             ) : (
               <div className={styles.feedbackText}>
-                <h2 className={styles.question}>Q. {question}</h2>
-                {steps.length > 0 ? (
-                  steps.map((step, index) => (
-                    <p key={index}>
-                     <MathJax>{step}</MathJax>
-                    </p>
-                  ))
-                ) : (
-                  <p>No hints available for this task.</p>
-                )}
+                  <h1 className={styles.title}>Skill: {skill_name}</h1>
+                  <h2 className={styles.subTitle}>Summary:</h2>
+                  <p className={styles.summary}>
+                     <MathJax>{summary}</MathJax>
+                  </p>
+
+                  <h2 className={styles.subTitle}>Example Problems and Solution:</h2>
+                  {examples.length > 0 ? (
+                    examples.map((example, index) => (
+                    <>
+                      <p className={styles.question}>
+                          <strong>Problem: </strong>
+                          <MathJax inline>{example.problem}</MathJax>
+                      </p>
+                      <p className={styles.answer}>
+                          <strong>Solution: </strong>
+                          <MathJax inline>{example.solution}</MathJax>
+                      </p>
+                    </>
+                    ))
+                  ) : (
+                    <p>No hints available for this task.</p>
+                  )} 
               </div>
             )}
           </div>

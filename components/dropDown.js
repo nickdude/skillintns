@@ -1,17 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 import Styles from "../styles/dropDown.module.css";
+import ConceptCard from "./conceptCard";
 import HintCard from "./hintCard";
 import StepByStep from "./stepByStep";
 
-const DropDown = ({ question, id }) => {
+const DropDown = ({ question, id, skill_name }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hintOpen, setHintOpen] = useState(false)
-  const [topicOpen,setTopicOpen] = useState(false)
+  const [conceptOpen,setConceptOpen] = useState(false)
   const [stepByStepOpen,setStepByStepOpen] = useState(false)
   const taskId = id; 
     
   const closeHintCard  = () =>{ 
     setHintOpen(false)
+  };
+
+  const closeConceptCard  = () =>{ 
+    setConceptOpen(false)
   };
 
   const closeStepsCard  = () =>{ 
@@ -48,8 +53,8 @@ const DropDown = ({ question, id }) => {
     setHintOpen(!hintOpen)
     setIsOpen(false); 
   };
-  const handleTopicToggle = () => {
-    setTopicOpen(!topicOpen)
+  const handleConceptToggle = () => {
+    setConceptOpen(!conceptOpen)
     setIsOpen(false); 
   };
   const handleStepByStepToggle = () => {
@@ -82,7 +87,7 @@ const DropDown = ({ question, id }) => {
           <li
             role="menuitem"
             tabIndex="1"
-            onClick={() => handleTopicToggle()}
+            onClick={() => handleConceptToggle()}
           >
             Topic Concepts
           </li>
@@ -98,6 +103,7 @@ const DropDown = ({ question, id }) => {
     </div>
     <HintCard isOpen={hintOpen} onClose={closeHintCard} taskId={taskId} question={question}/>
     <StepByStep isOpen={stepByStepOpen} onClose={closeStepsCard} taskId={taskId} question={question}/>
+    <ConceptCard isOpen={conceptOpen} onClose={closeConceptCard} taskId={taskId} question={question} skill_name={skill_name}/>
     </>
   );
 };

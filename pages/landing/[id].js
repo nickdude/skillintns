@@ -7,7 +7,7 @@ import Styles from "/styles/index.module.css";
 
 export default function Home() {
   const router = useRouter();
-  const { id } = router.query || {};
+  const { id } = router.query;
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
   const [currentId, setCurrentId] = useState(id);
@@ -22,7 +22,7 @@ export default function Home() {
       setCurrentId(id); 
     }
   }, [id, router.asPath]);
-
+   
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -52,6 +52,7 @@ export default function Home() {
     };
 
     if (currentId) {
+      console.log(typeof currentId,"<<<<<<<<")
       fetchTasks();
     }
   }, [currentId]);

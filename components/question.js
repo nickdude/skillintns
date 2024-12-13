@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 import Styles from '../styles/questions.module.css';
 import DropDown from '../components/dropDown'
 
-const Question = ({ genre, question, options, onNext, id }) => {
+const Question = ({ genre, question, options, onNext, id, skill_name }) => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -28,13 +29,14 @@ const Question = ({ genre, question, options, onNext, id }) => {
     };
 
     return (
+        <MathJaxContext>
         <div className={Styles.Question}>
             {/* Question Bar */}
             <div className={Styles.Qbar}>
                 <div className={Styles.QuestionCell}>
                     <div className={Styles.QuestionGenre}>
                         {genre} 
-                        <DropDown question={question} id={id} />
+                        <DropDown question={question} id={id} skill_name={skill_name}/>
                     </div>
                     <div className={Styles.QuestValue}>Q. {question}</div>
                 </div>
@@ -61,7 +63,7 @@ const Question = ({ genre, question, options, onNext, id }) => {
                         <span className={Styles.OptionLabel}>
                             {String.fromCharCode(65 + index)}.
                         </span>
-                        <span className={Styles.OptionText}>{option.text}</span>
+                        <span className={Styles.OptionText}><MathJax inline>{option.text}</MathJax></span>
                     </div>
                 ))}
             </div>
@@ -71,24 +73,12 @@ const Question = ({ genre, question, options, onNext, id }) => {
                 <div onClick={handleReset} className={`${Styles.reset}`}>
                 Reset to previous level
                 </div>
-                {/* {!isSubmitted ? (
-                    <button
-                        onClick={handleSubmit}
-                        className={`${Styles.Button} ${Styles.submit}`}
-                        disabled={selectedOption === null}
-                    >
-                        Submit
-                    </button>
-                ) : (
-                    <button onClick={handleNext} className={`${Styles.Button} ${Styles.submit}`}>
-                        Next
-                    </button>
-                )} */}
                  <button onClick={handleNext} className={`${Styles.Button} ${Styles.submit}`}>
                         Next
                  </button>
             </div>
         </div>
+        </MathJaxContext>
     );
 };
 

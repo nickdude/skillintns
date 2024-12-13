@@ -14,7 +14,8 @@ export default function Practice() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
- 
+    const [level, setLevel] = useState('')
+
    
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -28,7 +29,7 @@ export default function Practice() {
     
 
     useEffect(() => {
-        const token = typeof window !== "undefined" ? localStorage.getItem("token") :""
+        const token = localStorage.getItem("token");
         const studentId = 10;
 
         if (!skill_name) return;
@@ -424,7 +425,8 @@ export default function Practice() {
                         text: choice.slice(3),
                         isCorrect: choice.startsWith(item.correct_answer),
                     })),
-                    _id: item._id
+                    _id: item._id,
+                    level:item.level
                 }));
 
                 setQuestions(transformedQuestions);
@@ -436,7 +438,7 @@ export default function Practice() {
         };
 
         fetchQuestionData();
-    }, [skill_name, apiUrl, typeof window]);
+    }, [skill_name, apiUrl]);
 
     const handleNext = () => {
         if (currentQuestionIndex < questions.length - 1) {
@@ -447,7 +449,7 @@ export default function Practice() {
     };
 
     const handleTaskClick = async(skill_name) => {
-        const token = typeof window !== "undefined" ? localStorage.getItem("token") :""
+        const token = localStorage.getItem("token");
       try {
         const response = await fetch(`${apiUrl}/get_task_skills`, {
             method: "POST",
@@ -483,8 +485,8 @@ export default function Practice() {
                     <p className={Styles.boldTextSmall}>Enrolled Tasks</p>
                     <TaskTable
                         data={tasks.map((skill) => ({
-                            subject: skill[1], // Skill name
-                            onClick: () => handleTaskClick(skill[2]), // Skill identifier
+                            subject: skill[1],
+                            onClick: () => handleTaskClick(skill[2]), 
                         }))}
                     />
                 </div>
@@ -492,21 +494,36 @@ export default function Practice() {
                     <QuestionMetaData
                         breadcrumbLinks={breadcrumbLinks}
                         skill={skill_name}
-                        level="Understanding" // You can make this dynamic if needed
+                        level={questions[currentQuestionIndex]?.level}
                     />
                     <div className={Styles.Title}>
                         <div className={Styles.TitleContent}>
                             <p className={Styles.boldText}>Practice and Excel</p>
                         </div>
+                        <div className={Styles.TitleButtonCell}>
+                            <div className={Styles.TitleButton}>
+                                <div className={Styles.TitleIcon}>
+                                    <img src="../previous.svg" />
+                                </div>
+                                previous
+                            </div>
+                            <div className={Styles.TitleButton}>
+                                <div className={Styles.TitleIcon}>
+                                    <img src="../reload.svg" />
+                                </div>
+                                Load Question
+                            </div>
+                        </div>
                     </div>
                     <div className={Styles.question}>
                         {questions.length > 0 ? (
                             <Question
-                                genre={questions[currentQuestionIndex].genre}
-                                question={questions[currentQuestionIndex].question}
-                                options={questions[currentQuestionIndex].options}
+                                genre={questions[currentQuestionIndex]?.genre}
+                                question={questions[currentQuestionIndex]?.question}
+                                options={questions[currentQuestionIndex]?.options}
                                 onNext={handleNext}
-                                id={questions[currentQuestionIndex]._id}
+                                id={questions[currentQuestionIndex]?._id}
+                                skill_name={skill_name}
                             />
                         ) : (
                             <p>No question available</p>

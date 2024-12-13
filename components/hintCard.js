@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 import styles from "../styles/hintCard.module.css";
 
 export default function HintCard({ isOpen, onClose, taskId, id, question }) {
@@ -46,7 +47,8 @@ export default function HintCard({ isOpen, onClose, taskId, id, question }) {
   if (!isOpen) return null;
 
   return (
-    <div className={styles.overlay}>
+    <MathJaxContext>
+      <div className={styles.overlay}>
       <div className={styles.popup}>
         <div className={styles.topBar}>
           <h1>Hints</h1>
@@ -66,7 +68,7 @@ export default function HintCard({ isOpen, onClose, taskId, id, question }) {
               {hints.length > 0 ? (
                 hints.map((hint, index) => (
                   <p key={index}>
-                     {hint}
+                     <MathJax>{hint}</MathJax>
                   </p>
                 ))
               ) : (
@@ -77,5 +79,6 @@ export default function HintCard({ isOpen, onClose, taskId, id, question }) {
         </div>
       </div>
     </div>
+    </MathJaxContext>
   );
 }

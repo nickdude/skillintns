@@ -10,6 +10,16 @@
     line-height: 3.24rem; /* 144% */
     letter-spacing: -0.027rem;
 }
+.boldTextSmall{
+    color: #7A8B94;
+    font-family: Inter;
+    font-size: 0.90313rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.125rem; /* 160% */
+    text-transform: uppercase;
+    padding-bottom: 0.8rem;
+}
   
 .basicTextLarge {
     font-size: 3rem;
