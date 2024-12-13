@@ -447,7 +447,7 @@ export default function Practice() {
     };
 
     const handleTaskClick = async(skill_name) => {
-        const token = localStorage.getItem("token");
+        const token = typeof window !== "undefined" ? localStorage.getItem("token") :""
       try {
         const response = await fetch(`${apiUrl}/get_task_skills`, {
             method: "POST",
