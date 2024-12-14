@@ -52,10 +52,9 @@ export default function Home() {
     };
 
     if (currentId) {
-      console.log(typeof currentId,"<<<<<<<<")
       fetchTasks();
     }
-  }, [currentId]);
+  }, [currentId, error]);
 
   return (
     <div>

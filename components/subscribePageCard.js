@@ -1,19 +1,63 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import styles from '../styles/subscribePageCard.module.css';
 
 
-export default function SubscriptionCard({ price, description, benefits, color, title, onClick }) {
+export default function SubscriptionCard({ price, description, benefits, color, title, onClick, subscription_id }) {
 
   const limitedBenefits = benefits.slice(0, 3);
-
-
   const backgroundImage = color === 'green' ? '/subscribebg.svg' : '/subscribebgblack.svg';
+   
+  const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
+  const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
+  const [refresh,setRefresh] = useState(false)
+  
+ 
+  const handleSubscription = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const email = localStorage.getItem("email");
+      const student_id = localStorage.getItem("email");
+
+      const response = await fetch(`${apiUrl}/update_user_subscription`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          subscription_id: subscription_id,
+          subscription_status: 'ACTIVE',
+          user_id: student_id
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setRefresh(!refresh)
+        console.log('Subscription updated successfully!');
+      } else {
+        console.error('Subscription update failed:', data);
+      }
+    } catch (error) {
+      console.error('Error while updating subscription:', error);
+    }
+  };
+
 
   return (
-    <div className={styles.subscriptionCard}>
-     
-      <div className={styles.subscriptionBox} style={{ backgroundImage: `url(${backgroundImage})` }}>
-       
+    <div className={color === "green" ? styles.subscriptionCardPurchased : styles.subscriptionCard}>
+       {color == 'green' &&
+        <div className={styles.isSubscription}>
+          <img src='../subscription.svg'/>
+          <p>SUBSCRIBED</p>
+        </div>}
+      <div className={styles.subscriptionBox} 
+          style={{ backgroundImage: `url(${backgroundImage})` ,
+          height: color === "green" ? "24.5rem" : undefined,}}
+          >
         <div className={styles.premium}>
           <p>{title}</p>
         </div>
@@ -46,7 +90,7 @@ export default function SubscriptionCard({ price, description, benefits, color, 
       </div>
 
       <div className={styles.buttonsContainer}>
-        <button className={styles.subscribeButton}>Subscribe</button>
+       {color !== 'green' && <button className={styles.subscribeButton} onClick={handleSubscription}>Subscribe</button>}
         <button className={styles.viewTasksButton}  onClick={onClick}>View Tasks</button>
       </div>
     </div>

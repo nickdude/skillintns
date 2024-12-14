@@ -79,6 +79,7 @@ export default function Package() {
                   color={pkg.subscription_status === "ACTIVE" ? "green" : "black"}
                   title={pkg.adaptive_package_name}
                   onClick={() => handleCardClick(pkg.adaptive_package_id)}
+                  subscription_id={pkg.subscription_id}
                 />
               ))}
           </div>

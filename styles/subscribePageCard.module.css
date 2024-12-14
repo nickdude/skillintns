@@ -1,3 +1,43 @@
+.subscriptionCardPurchased{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 24.3125rem;
+  height: 31.625rem;
+  border-radius: 0.75rem;
+  border: 1.554px solid #FDD999;
+  background: linear-gradient(166deg, rgba(254, 215, 131, 0.15) 7.44%, rgba(254, 215, 131, 0.02) 89.97%);
+}
+.isSubscription{
+  display: flex;
+  width: 8.125rem;
+  height: 2.25rem;
+  padding: 0.57088rem 0.91825rem 0.52rem 0.91513rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 3.125rem;
+  border: 1.554px solid #FDD999;
+  background: #FFF;
+  margin-top: -2.5rem;
+}
+.isSubscription p{
+  font-family: Inter;
+  font-size: 0.76069rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.03031rem; /* 135.45% */
+  text-transform: uppercase;
+  background: linear-gradient(113deg, #E6941F 0%, #E58D13 99.42%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 0.3rem;
+}
 .subscriptionCard {
   display: flex;
   flex-direction: column;
