@@ -7,7 +7,7 @@ import Styles from "/styles/index.module.css";
 
 export default function Home() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, package_name } = router.query;
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
   const [currentId, setCurrentId] = useState(id);
@@ -64,7 +64,7 @@ export default function Home() {
           <div className={Styles.contentHead}>
             <div className={Styles.textContainer}>
               <p>
-                <span className={Styles.boldText}>Available Tasks for High School</span>
+                <span className={Styles.boldText}>Available Tasks for {package_name}</span>
               </p>
               <br />
               <p className={Styles.basicTextSmall}>

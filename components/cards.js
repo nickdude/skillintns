@@ -28,7 +28,7 @@ export default function Card({
         {/* Enroll Button */}
         <div className={styles.button}>
           <a href={`/selectSkill/${skillCount}?currentId=${currentId}`} className={styles.enrollButton}>
-            Enroll Now
+           Skills
           </a>
         </div>
       </div>
