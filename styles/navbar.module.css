@@ -207,4 +207,74 @@
     height: 20px;
     margin: 0; /* Center the icon in the button */
   }
+
+
+.userSectionMob {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #dadada;
+  gap: 0.8rem;
+  width: 40vw;
+}
+
+.userAvatar {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  margin-left: -0.45rem;
+}
+
+.logoutLinkMob {
+  display: flex;
+  align-items: center;
+  color: #D95454;
+  font-weight: 600;
+  text-decoration: none;
+  gap: 0.3rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60vw;
+  height: 100%;
+  background-color: #ffffff;
+  color: #333;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transform: translateX(0); /* For animation */
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebarMenu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebarMenu li {
+  margin: 15px 0;
+}
+
+.sidebarMenu a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 }

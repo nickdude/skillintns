@@ -10,7 +10,7 @@ import LearningBar from "../../components/learningModules";
 
 export default function SelectSkill() {
     const router = useRouter();
-    const { task_id,currentId } = router.query;  
+    const { task_id,currentId, adaptive_task_name } = router.query;  
     const [tasks, setTasks] = useState([]);
     const [skills, setSkills] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -27,6 +27,7 @@ export default function SelectSkill() {
     ];
 
     useEffect(() => {
+        localStorage.setItem("adaptive_task_name",adaptive_task_name)
         const fetchSkills = async () => {
             if (!task_id) return; // Ensure task_id is available
 

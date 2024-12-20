@@ -12,7 +12,7 @@ export default function ConceptCard({ isOpen, onClose, taskId, id, question , sk
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
-
+      console.log(skill_name)
   useEffect(() => {
     if (!isOpen || !taskId) return;
 
@@ -23,7 +23,7 @@ export default function ConceptCard({ isOpen, onClose, taskId, id, question , sk
       setError(null);
 
       try {
-        const response = await fetch(`${apiUrl}/get_topic_summary?skill=linear_equations`, {
+        const response = await fetch(`${apiUrl}/get_topic_summary?skill=${skill_name}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

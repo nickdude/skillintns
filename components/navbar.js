@@ -6,9 +6,11 @@ import FeedbackForm from './feedbackForm';
 
 export default function Navbar() {
   const [isFeedbackOpen, setFeedbackOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const openFeedback = () => setFeedbackOpen(true);
   const closeFeedback = () => setFeedbackOpen(false);
+  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
 
   return (
     <>
@@ -22,7 +24,7 @@ export default function Navbar() {
             Give Feedback
           </button>
           <div className={styles.hamburgLogoutContainer}>
-            <div className={styles.hamburg}>
+            <div className={styles.hamburg} onClick={toggleSidebar}>
               <Image
                 src="/hamburg.svg"
                 alt="Hamburg Icon"
@@ -33,13 +35,13 @@ export default function Navbar() {
             </div>
             <div className={styles.userSection}>
               <Link href="/" className={styles.logoutLink}>
-                <Image
+                {/* <Image
                   src="/profile.png"
                   alt="Logout Icon"
                   width="30"
                   height="30"
                   className={styles.userAvatar}
-                />
+                /> */}
                 Log Out
                 <Image
                   src="/exit.svg"
@@ -53,6 +55,37 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+      {/* Sidebar */}
+      {isSidebarOpen && (
+        <div className={styles.sidebar}>
+          <button className={styles.closeButton} onClick={toggleSidebar}>
+            ✕
+          </button>
+          <ul className={styles.sidebarMenu}>
+            <li>
+            <div className={styles.userSectionMob}>
+              <Link href="/" className={styles.logoutLinkMob}>
+                {/* <Image
+                  src="/profile.png"
+                  alt="Logout Icon"
+                  width="30"
+                  height="30"
+                  className={styles.userAvatar}
+                /> */}
+                Log Out
+                <Image
+                  src="/exit.svg"
+                  alt="Exit Icon"
+                  width="20"
+                  height="20"
+                  className={styles.exitMob}
+                />
+              </Link>
+            </div>
+            </li>
+          </ul>
+        </div>
+      )}
       {/* FeedbackForm component, rendered conditionally */}
       <FeedbackForm isOpen={isFeedbackOpen} onClose={closeFeedback} />
     </>

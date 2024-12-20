@@ -26,9 +26,9 @@ export default function FeedbackForm({ isOpen, onClose }) {
     const payload = {
       user_id: localStorage.getItem("email"),
       student_id: localStorage.getItem("student_id"),
-      task_name: "None",
+      task_name: localStorage.getItem("adaptive_task_name"),
       feedback,
-      pageTitle: "Available Packages",
+      pageTitle: localStorage.getItem("adaptive_package_name"),
     };
 
     try {

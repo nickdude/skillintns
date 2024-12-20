@@ -1,5 +1,6 @@
 import styles from '../styles/cards.module.css';
 import Button from '../components/button';
+import { useEffect } from 'react';
 
 export default function Card({
   image,
@@ -9,7 +10,7 @@ export default function Card({
   publisher,
   className,
   currentId
-}) {
+}) {  
   return (
     <div className={`${styles.card} ${className || ''}`}>
       <div className={styles.cardImageWrapper}>
@@ -27,7 +28,7 @@ export default function Card({
 
         {/* Enroll Button */}
         <div className={styles.button}>
-          <a href={`/selectSkill/${skillCount}?currentId=${currentId}`} className={styles.enrollButton}>
+          <a href={`/selectSkill/${skillCount}?currentId=${currentId}&adaptive_task_name=${publisher}`} className={styles.enrollButton}>
            Skills
           </a>
         </div>

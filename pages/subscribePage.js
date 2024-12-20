@@ -48,6 +48,8 @@ export default function Package() {
 
   const handleCardClick = (id, package_name) => {
     router.push(`/landing/${id}?package_name=${package_name}`);
+    localStorage.setItem("adaptive_package_name", package_name);
+    localStorage.setItem("adaptive_package_id", id);
   };
 
 

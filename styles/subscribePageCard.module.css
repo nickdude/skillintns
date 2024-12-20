@@ -197,6 +197,21 @@
 }
 
 @media (max-width: 678px) {
+  .subscriptionCardPurchased{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 21.3125rem;
+    height: 31.625rem;
+    border-radius: 0.75rem;
+    border: 1.554px solid #FDD999;
+    background: linear-gradient(166deg, rgba(254, 215, 131, 0.15) 7.44%, rgba(254, 215, 131, 0.02) 89.97%);
+  }
+
   .subscriptionCard {
     display: flex;
     flex-direction: column;

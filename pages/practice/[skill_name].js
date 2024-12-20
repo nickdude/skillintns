@@ -27,13 +27,11 @@ export default function Practice() {
         { text: 'Practice', href: '#' }
     ];
     
-
     useEffect(() => {
         const token = localStorage.getItem("token");
         const studentId = 10;
 
         if (!skill_name) return;
-
         const fetchQuestionData = async () => {
             setLoading(true);
             setError(null);
@@ -53,7 +51,7 @@ export default function Practice() {
                 }
 
                 const data = await response.json();
-
+                    
                 // const data = {
                 //     "skills": [
                 //         [
@@ -214,222 +212,19 @@ export default function Practice() {
                 }
 
                 const data = await response.json();
-
-                // const data = [
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e459",
-                //         "correct_answer": "A",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 10",
-                //             "B. 8",
-                //             "C. 7",
-                //             "D. 6"
-                //         ],
-                //         "question": "Find the value of y when x = 2 in the equation y = 3x + 4.",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e45a",
-                //         "correct_answer": "B",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 3",
-                //             "B. 4",
-                //             "C. 5",
-                //             "D. 6"
-                //         ],
-                //         "question": "What is the value of x in the equation 2x + 3 = 11?",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e45b",
-                //         "correct_answer": "C",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 5",
-                //             "B. 6",
-                //             "C. 7",
-                //             "D. 8"
-                //         ],
-                //         "question": "Solve for x: 4x - 5 = 19.",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e45c",
-                //         "correct_answer": "B",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. y = 2x + 1",
-                //             "B. y = 2x",
-                //             "C. y = x + 2",
-                //             "D. y = 3x - 1"
-                //         ],
-                //         "question": "If a line passes through the points (1, 2) and (3, 6), what is the equation of the line?",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e45d",
-                //         "correct_answer": "D",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 3",
-                //             "B. 5",
-                //             "C. 7",
-                //             "D. 1"
-                //         ],
-                //         "question": "Given the equation 2x + y = 7, find the y-value when x = 2.",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e45e",
-                //         "correct_answer": "A",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. y = 3x + 4",
-                //             "B. y = 3x - 4",
-                //             "C. y = 4x + 3",
-                //             "D. y = 3x + 0"
-                //         ],
-                //         "question": "Find the equation of the line that passes through the point (0, 4) with a slope of 3.",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e45f",
-                //         "correct_answer": "A",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 2",
-                //             "B. 4",
-                //             "C. 5",
-                //             "D. 3"
-                //         ],
-                //         "question": "What is the x-value for the equation y = 2x + 3 when y = 11?",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e460",
-                //         "correct_answer": "A",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 2",
-                //             "B. -2",
-                //             "C. 4",
-                //             "D. -4"
-                //         ],
-                //         "question": "Find the value of y in the equation y = -2x + 8 when x = 3.",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e461",
-                //         "correct_answer": "B",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 5",
-                //             "B. -5",
-                //             "C. -10",
-                //             "D. 10"
-                //         ],
-                //         "question": "Given the linear equation 5x - 2y = 10, find the value of y when x = 0.",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     },
-                //     {
-                //         "_id": "66ccb4b3820161f1ed24e462",
-                //         "correct_answer": "B",
-                //         "level": "Applying",
-                //         "level_num": 3,
-                //         "multiple_choices": [
-                //             "A. 2",
-                //             "B. 8",
-                //             "C. -2",
-                //             "D. 4"
-                //         ],
-                //         "question": "If the equation of a line is y = -3x + 5, what is the value of y when x = -1?",
-                //         "skill": "linear_equations",
-                //         "skill_id": 1,
-                //         "skill_name": "Applying-linear_equations",
-                //         "subject": "Math",
-                //         "subject_area": "Algebra",
-                //         "subject_area_id": 2,
-                //         "subject_id": 1
-                //     }
-                // ]
-
                 const transformedQuestions = data.map((item) => ({
                     genre: item.subject,
                     question: item.question,
                     options: item.multiple_choices.map((choice) => ({
-                        text: choice.slice(3),
+                        text: choice,
                         isCorrect: choice.startsWith(item.correct_answer),
                     })),
                     _id: item._id,
                     level:item.level
                 }));
-
+                
                 setQuestions(transformedQuestions);
+               
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -482,7 +277,7 @@ export default function Practice() {
             <Navbar />
             <div className={`${Styles.mainContainer} mainContent`}>
                 <div className={Styles.enrolledTasks}>
-                    <p className={Styles.boldTextSmall}>Enrolled Tasks</p>
+                    <p className={Styles.boldTextSmall}>Skills</p>
                     <TaskTable
                         data={tasks.map((skill) => ({
                             subject: skill[1],
@@ -511,7 +306,7 @@ export default function Practice() {
                                 <div className={Styles.TitleIcon}>
                                     <img src="../reload.svg" />
                                 </div>
-                                Load Question
+                                Load Questions
                             </div>
                         </div>
                     </div>
