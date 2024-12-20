@@ -62,7 +62,7 @@ const Question = ({ genre, question, options, onNext, id, skill_name }) => {
                     >
                         <span className={Styles.OptionLabel}>
                             {String.fromCharCode(65 + index)}.
-                        </span>{console.log(option.text,"<<<<<<<<")}
+                        </span>
                         <span className={Styles.OptionText}><MathJax inline>{option.text}</MathJax></span>
                     </div>
                 ))}
