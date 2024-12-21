@@ -16,7 +16,6 @@ export default function Practice() {
     const [error, setError] = useState(null);
     const [level, setLevel] = useState('')
 
-   
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
     const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
@@ -26,10 +25,10 @@ export default function Practice() {
         { text: 'Practice Skill', href: `/selectSkill/${task_id}?currentId=${currentId}` },
         { text: 'Practice', href: '#' }
     ];
-    
+
     useEffect(() => {
         const token = localStorage.getItem("token");
-        const studentId = 10;
+        const studentId = localStorage.getItem("student_id");
 
         if (!skill_name) return;
         const fetchQuestionData = async () => {
@@ -51,12 +50,10 @@ export default function Practice() {
                 }
 
                 const data = await response.json();
-                    
                 setTasks(data?.skills || []);
             
             } catch (err) {
-               // setError(err.message);
-               console.log(err.message)
+                console.log(err.message);
             } 
 
             try {
@@ -75,7 +72,6 @@ export default function Practice() {
                 }
 
                 const data = await response.json();
-               
                 const transformedQuestions = data.map((item) => ({
                     genre: item.subject,
                     question: item.question,
@@ -84,7 +80,8 @@ export default function Practice() {
                         isCorrect: choice.startsWith(item.correct_answer),
                     })),
                     _id: item._id,
-                    level:item.level
+                    level: item.level,
+                    selected: null
                 }));
                 
                 setQuestions(transformedQuestions);
@@ -98,14 +95,47 @@ export default function Practice() {
 
         fetchQuestionData();
     }, [skill_name, apiUrl]);
-        console.log("<<<<<<<<<<<<",questions)
-    const handleNext = () => {
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
+
+    const handleNext = async () => {
+        if (questions[currentQuestionIndex]?.selected === null) return;
+        if (currentQuestionIndex === questions.length - 1) {
+            const token = localStorage.getItem("token");
+            const studentId = localStorage.getItem("student_id"); 
+            const skillId = localStorage.getItem("skill_id");
+            const skillName = localStorage.getItem("skill_name");
+            const progressData = questions.map((question) => ({
+                student_id: studentId,
+                skill_id: skillId,
+                skill_name: skillName,
+                correct: question.selected === question.options.findIndex(option => option.isCorrect) ? 1 : 0,
+                level: question.level,
+            }));
+    
+            try {
+                const response = await fetch(`${apiUrl}/update_progress`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(progressData),
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Failed to submit progress');
+                }
+    
+                const responseData = await response.json();
+                console.log('Progress updated successfully', responseData);
+    
+            } catch (err) {
+                console.error('Error updating progress:', err.message);
+            }
         } else {
-            alert("You've reached the end of the questions!");
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
     };
+    
 
     const handleTaskClick = async(skill_name) => {
         const token = localStorage.getItem("token");
@@ -133,10 +163,19 @@ export default function Practice() {
     } 
     };
 
-   
+    const handleOptionSelect = (index) => {
+        if (questions[currentQuestionIndex].selected === null) {
+            setQuestions((prevQuestions) => {
+                const updatedQuestions = [...prevQuestions];
+                updatedQuestions[currentQuestionIndex].selected = index;
+                return updatedQuestions;
+            });
+        }
+    };
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
-        
+
     const isPreviousDisabled = currentQuestionIndex === 0;
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
@@ -172,12 +211,6 @@ export default function Practice() {
                         <div className={Styles.TitleButtonCell}>
                             <div className={Styles.TitleButton}>
                                 <div className={Styles.TitleIcon}>
-                                    <img src="../previous.svg" />
-                                </div>
-                                previous
-                            </div>
-                            <div className={Styles.TitleButton}>
-                                <div className={Styles.TitleIcon}>
                                     <img src="../reload.svg" />
                                 </div>
                                 Load Questions
@@ -196,6 +229,8 @@ export default function Practice() {
                                 skill_name={skill_name}
                                 isPreviousDisabled={isPreviousDisabled}
                                 isLastQuestion={isLastQuestion}
+                                selected={questions[currentQuestionIndex]?.selected}
+                                onOptionSelect={handleOptionSelect}
                             />
                         ) : (
                             <p>No question available</p>
