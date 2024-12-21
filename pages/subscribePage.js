@@ -37,6 +37,27 @@ export default function Package() {
         const data = await response.json();
         setPackages(data);
       } catch (err) {
+      //   const data = [
+      //     {
+      //         "adaptive_package_description": "A package designed for high school curriculum tasks",
+      //         "adaptive_package_id": 1,
+      //         "adaptive_package_name": "High School Package",
+      //         "payment_plan_id": "P-6SD49150GW878284MM3NYAMQ",
+      //         "subscription_id": "I-R50MS7CTVUCK",
+      //         "subscription_plan_id": "P-6SD49150GW878284MM3NYAMQ",
+      //         "subscription_status": "ACTIVE"
+      //     },
+      //     {
+      //         "adaptive_package_description": "Architecture Package",
+      //         "adaptive_package_id": 2,
+      //         "adaptive_package_name": "Architecture Package",
+      //         "payment_plan_id": "P-98V49136GF892240PM4YCQFA",
+      //         "subscription_id": null,
+      //         "subscription_plan_id": null,
+      //         "subscription_status": null
+      //     }
+      // ]
+       // setPackages(data);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -75,7 +96,7 @@ export default function Package() {
               packages.map((pkg) => (
                 <SubscriptionCard
                   key={pkg.adaptive_package_id}
-                  price={pkg.subscription_status === "ACTIVE" ? "$28" : "$28"}
+                  price={pkg.subscription_status === "ACTIVE" ? "28" : "28"}
                   description="Enjoy complete and uninterrupted access to all features on Skillintens."
                   benefits={['For high school curriculum tasks', 'Ad- free experience', 'Early access to new features']}
                   color={pkg.subscription_status === "ACTIVE" ? "green" : "black"}

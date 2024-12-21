@@ -12,8 +12,7 @@
     z-index: 1000;
     backdrop-filter: blur(8px); /* Adds a subtle blur to the background */
   }
-  
-  /* Popup Container */
+
   .popup {
     border-radius: 0.79944rem;
     background: #FFF;
@@ -27,14 +26,13 @@
     font-family: 'Inter', sans-serif;
   }
   
-  /* Top Bar */
   .popup .topBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #FFF;
-    padding: 1rem;
-    height: 15%;
+    padding: 0 1.5rem;
+    height: 12%;
   }
   
   .popup .topBar h1 {
@@ -58,178 +56,113 @@
     cursor: pointer;
     outline: none;
   }
-  .subscriptSection{
-    width: 20.625rem;
-    height: 20.0625rem;
-    flex-shrink: 0;
-    fill: linear-gradient(152deg, rgba(255, 255, 255, 0.10) 33.65%, rgba(255, 255, 255, 0.00) 69.34%);
-    background-color: red;
+  .detailContainer{
+    display: flex;
+    align-items: center;
+    height: 32rem;
+    flex-direction: column;
   }
-  
-  /* Middle Section */
-  /* .popup .middleSection {
-    height: 100%;
-    background: #FFF;
-    padding: 15px;
-    text-align: center;
-  }
-  
-  .popup .middleSection h2 {
-    font-size: 0.9375rem;
-    font-weight: bold;
-    color: #224750;
-    margin-bottom: 8px;
-  }
-  
-  .popup .middleSection p {
-    font-size: 13px;
-    font-weight: 400;
-    color: #224750;
-    margin-bottom: 15px;
-  }
-  .popup .middleSection h2 {
+
+  .subscriptionBox {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
     text-align: left;
-    color: #224750;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.61rem;
+    width: 21.5625rem;
+    height: 20.5rem;
+  }
+
+  .paymentText{
+    text-align: left;
+    width: 21rem;
+    padding: 0.7rem 0;
+    color: #7A8B94;
+  }
+
+  .header{
+    color: #FDC14E;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: #000;
     font-family: Inter;
     font-size: 0.9375rem;
     font-style: normal;
-    font-weight: 600;
-    line-height: 1.25rem; 
-    letter-spacing: 0.00938rem;
-    margin-left: 1.57rem;
-    margin-bottom: 1.56rem;
+    font-weight: 700;
+    line-height: 1.35356rem; /* 144.378% */
+    letter-spacing: 0.0375rem;
+    text-transform: uppercase;
   }
-  
-  .popup .middleSection p{
-    color: #224750;
+
+  .subHeader{
+    color: rgba(255, 255, 255, 0.70);
     font-family: Inter;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3125rem; /* 140% */
+    letter-spacing: -0.005rem;
+    margin-top: 0.61rem;
+  }
+
+  .benefitHeader{
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.70313rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 1.4375rem; 
-    letter-spacing: 0.0175rem;
-    text-align: left;
-    margin-left: 1.57rem;
-    margin-bottom: 0.94rem;
+    line-height: 1.125rem; 
+    margin-top: 0.95rem;
   }
-  .popup .middleSection .textbox {
-    background: white;
-    width: 100%;
-    height: 50%;
-    border: 1px solid #22475026; 
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 14px;
-    color: #224750;
-    resize: none;
-    outline: none;
-  } */
-  
-  /* Bottom Bar */
-  .popup .bottomBar {
-    display: flex;
-    justify-content: flex-end; /* Aligns buttons to the right */
-    padding: 10px 15px;
-    background: white;
-    border-top: 1px solid #FEFAF1; /* Border facing the middle section */
+
+  .benefitContainer{
+    width: 18.40481rem;
+    height: 8.25356rem;
+    border-radius: 0.25rem;
+    background: #FFF;
+    margin-top: 0.7rem;
   }
-  
-  .feedbackText {
-    padding: 2rem 0rem;
-  }
-  
-  .popup .bottomBar .cancelButton,
-  .popup .bottomBar .submitButton {
-    border-radius: 8px;
-    padding: 8px 15px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-    margin-left: 10px; /* Adds spacing between buttons */
-  }
-  
-  /* Cancel Button */
-  .popup .bottomBar .cancelButton {
-    background: white;
-    border: 1px solid #38A56F;
-    color: #38A56F;
-  }
-  
-  /* Submit Button */
-  .popup .bottomBar .submitButton {
-    background: #38A56F;
-    border: none;
-    color: white;
-  }
-  
-  /* Buttons Hover Effect */
-  .popup .bottomBar .cancelButton:hover {
-    background: #f5f5f5;
-  }
-  
-  .popup .bottomBar .submitButton:hover {
-    background: #2f8f5e;
-  }
-  
-  /* Remark Label */
-  .textboxLabel {
-    display: block;
-    font-size: 0.8rem;
-    margin-left: 8px;
+  .price{
+    color: #FFF;
+    text-align: right;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
     font-weight: 600;
-    color: #224750;
-    margin-bottom: 5px; /* Adds spacing between label and textarea */
-    text-align: left; /* Align text to the left */
+    line-height: normal;
   }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 600px) {
-    .popup {
-      width: 90vw; /* Expand to occupy more space */
-      height: 60vh; /* Expand height */
-    }
-  
-    .popup .topBar {
-      padding: 1rem; /* Reduce padding */
-      height: 15%; /* Adjust height */
-    }
-  
-    .popup .topBar h1 {
-      font-size: 0.9rem; /* Smaller heading */
-    }
-  
-    .popup .closeButton {
-      width: 25px;
-      height: 25px;
-      font-size: 14px; /* Adjust size for smaller screens */
-    }
-  
-    .popup .middleSection {
-      padding: 10px; /* Reduce padding */
-    }
-  
-    .popup .middleSection h2 {
-      font-size: 16px; /* Smaller heading */
-    }
-  
-    .popup .middleSection p {
-      font-size: 12px; /* Smaller paragraph */
-    }
-  
-    .popup .middleSection .textbox {
-      height: 60%; /* Reduce height of textarea */
-      font-size: 12px; /* Smaller font size */
-    }
-  
-    .popup .bottomBar {
-      padding: 10px; /* Reduce padding */
-    }
-  
-    .popup .bottomBar .cancelButton,
-    .popup .bottomBar .submitButton {
-      padding: 6px 10px; /* Smaller buttons */
-      font-size: 11px; /* Adjust font size */
-    }
+  .unit{
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.01875rem;
+    margin-top: 1.04rem;
   }
-  
+  .paypalButtons{
+    margin-top: 1rem;
+    width: 22rem;
+  }
+  @media (max-width: 768px) {
+    .subscriptionBox {
+        width: 19rem;
+    }
+    .paymentText{
+        width: 19rem;
+    }
+
+  .benefitContainer{
+    width: 16.40481rem;
+   }
+   .paypalButtons{
+        margin-top: 1rem;
+        width: 18rem;
+    }
+}

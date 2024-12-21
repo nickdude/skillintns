@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import styles from '../styles/subscribePageCard.module.css';
-// import PayPalCard from './paypalCard';
+import PayPalCard from './paypalCard';
 
 
 export default function SubscriptionCard({ price, description, benefits, color, title, onClick, subscription_id }) {
+
+  const [refresh,setRefresh] = useState(false)
+
+  const [isOpenPayment, setIsOpenPayment] = useState(false);
+  const openPayment = () => setIsOpenPayment(true);
+  const closePayment = () => setIsOpenPayment(false);
 
   const limitedBenefits = benefits.slice(0, 3);
   const backgroundImage = color === 'green' ? '/subscribebg.svg' : '/subscribebgblack.svg';
@@ -12,14 +18,13 @@ export default function SubscriptionCard({ price, description, benefits, color, 
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
-  const [refresh,setRefresh] = useState(false)
   
- 
+  
   const handleSubscription = async () => {
     try {
       const token = localStorage.getItem("token");
       const email = localStorage.getItem("email");
-      const student_id = localStorage.getItem("email");
+      const student_id = localStorage.getItem("student_id");
 
       const response = await fetch(`${apiUrl}/update_user_subscription`, {
         method: 'POST',
@@ -85,17 +90,17 @@ export default function SubscriptionCard({ price, description, benefits, color, 
               </div>
               
                 <div className={styles.pricing}>
-                  <span className={styles.price}>{price}</span>
+                  <span className={styles.price}>${price}</span>
                   <span className={styles.perMonth}>/month</span>
                 </div>
             </div>
 
             <div className={styles.buttonsContainer}>
-            {color !== 'green' && <button className={styles.subscribeButton} onClick={handleSubscription}>Subscribe</button>}
+            {color !== 'green' && <button className={styles.subscribeButton} onClick={openPayment}>Subscribe</button>}
               <button className={styles.viewTasksButton}  onClick={onClick}>View Tasks</button>
             </div>
         </div>
-        {/* <PayPalCard isOpen={true} onClose={true} taskId  id  question /> */}
+        <PayPalCard isOpen={isOpenPayment} onClose={closePayment} price={price} subscription_id={subscription_id}/>
     </>
    
   );

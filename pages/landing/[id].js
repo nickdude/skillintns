@@ -5,6 +5,7 @@ import Cards from "../../components/cards";
 import Navbar from "../../components/navbar";
 import Styles from "/styles/index.module.css";
 import LinkBreadCrumps from '@/components/linkBreadcrumps';
+import PayPalCard from "@/components/paypalCard";
 
 export default function Home() {
   const router = useRouter();
@@ -12,6 +13,10 @@ export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
   const [currentId, setCurrentId] = useState(id);
+
+  const [isOpenPayment, setIsOpenPayment] = useState(false);
+  const openPayment = () => setIsOpenPayment(true);
+  const closePayment = () => setIsOpenPayment(false);
 
   const breadcrumbLinks = [
     { text: 'Packages', href: `/subscribePage` },
@@ -63,44 +68,47 @@ export default function Home() {
   }, [currentId, error]);
 
   return (
-    <div>
-      <Navbar />
-      <main>
-        <div className="mainContent">
-          <div className={Styles.contentHead}>
-            <div className={Styles.textContainer}>
-              <p>
-                <span className={Styles.boldText}>Available Tasks for {package_name}</span>
-              </p>
-              <br />
-              <p className={Styles.basicTextSmall}>
-                 Step-by-Step <span style={{"color":"#44B07A"}}>Learning</span> to Build Confidence and Knowledge
-              </p>
-              <p style={{'marginTop':'1vh'}}>
-                 <LinkBreadCrumps breadcrumbLinks={breadcrumbLinks} /> 
-              </p>
+     <>
+        <div>
+          <Navbar />
+          <main>
+            <div className="mainContent">
+              <div className={Styles.contentHead}>
+                <div className={Styles.textContainer}>
+                  <p>
+                    <span className={Styles.boldText}>Available Tasks for {package_name}</span>
+                  </p>
+                  <br />
+                  <p className={Styles.basicTextSmall}>
+                    Step-by-Step <span style={{"color":"#44B07A"}}>Learning</span> to Build Confidence and Knowledge
+                  </p>
+                  <p style={{'marginTop':'1vh'}}>
+                    <LinkBreadCrumps breadcrumbLinks={breadcrumbLinks} /> 
+                  </p>
+                </div>
+                <div className={Styles.ButtonContainer}>
+                  <button className={Styles.button} onClick={openPayment}>Subscribe Now</button>
+                </div>
+              </div>
+              <div className={Styles.cards}>
+                {error && <p className={Styles.error}>{error}</p>}
+                {tasks.map((task) => (
+                  <Cards
+                    key={task.adaptive_task_id} // Unique key for each card
+                    Styles={Styles.card}
+                    image="/image1.png" // Default image path
+                    skillCount={task.adaptive_task_id} // Placeholder for skills count
+                    isFree={true} // Placeholder for free status
+                    title={task.adaptive_task_description} // API data
+                    publisher={task.adaptive_task_name} // API data
+                    currentId={currentId}
+                  />
+                ))}
+              </div>
             </div>
-            <div className={Styles.ButtonContainer}>
-              <button className={Styles.button}>Subscribe Now</button>
-            </div>
-          </div>
-          <div className={Styles.cards}>
-            {error && <p className={Styles.error}>{error}</p>}
-            {tasks.map((task) => (
-              <Cards
-                key={task.adaptive_task_id} // Unique key for each card
-                Styles={Styles.card}
-                image="/image1.png" // Default image path
-                skillCount={task.adaptive_task_id} // Placeholder for skills count
-                isFree={true} // Placeholder for free status
-                title={task.adaptive_task_description} // API data
-                publisher={task.adaptive_task_name} // API data
-                currentId={currentId}
-              />
-            ))}
-          </div>
+          </main>
         </div>
-      </main>
-    </div>
+        <PayPalCard isOpen={isOpenPayment} onClose={closePayment}/>
+     </>
   );
 }
