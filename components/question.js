@@ -45,8 +45,8 @@ const Question = ({
             }
     
             const data = await response.json();
-            console.log('Reset successful', data);
-            // You can update state or UI based on the response if necessary
+            window.location.reload();
+           
         } catch (error) {
             console.error('Error resetting to previous level:', error.message);
         }

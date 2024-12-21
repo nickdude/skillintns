@@ -14,7 +14,7 @@ export default function Practice() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [level, setLevel] = useState('')
+    const [refresh, setRefresh] = useState(false)
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -27,6 +27,7 @@ export default function Practice() {
     ];
 
     useEffect(() => {
+        setCurrentQuestionIndex(0)
         const token = localStorage.getItem("token");
         const studentId = localStorage.getItem("student_id");
 
@@ -94,7 +95,7 @@ export default function Practice() {
         };
 
         fetchQuestionData();
-    }, [skill_name, apiUrl]);
+    }, [skill_name, apiUrl,refresh]);
 
     const handleNext = async () => {
         if (questions[currentQuestionIndex]?.selected === null) return;
@@ -209,7 +210,7 @@ export default function Practice() {
                             <p className={Styles.boldText}>Practice and Excel</p>
                         </div>
                         <div className={Styles.TitleButtonCell}>
-                            <div className={Styles.TitleButton}>
+                            <div className={Styles.TitleButton} onClick={()=>setRefresh(!refresh)}>
                                 <div className={Styles.TitleIcon}>
                                     <img src="../reload.svg" />
                                 </div>
