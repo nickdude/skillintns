@@ -3,15 +3,15 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
 import Styles from '../styles/questions.module.css';
 import DropDown from '../components/dropDown'
 
-const Question = ({ genre, question, options, onNext, id, skill_name }) => {
+const Question = ({ genre, question, options, onNext,onPrev, id, skill_name,isPreviousDisabled,isLastQuestion }) => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleOptionClick = (index) => {
         setIsSubmitted(true);
-        // if (!isSubmitted) {
+         if (!isSubmitted) {
             setSelectedOption(index);
-        // }
+         }
     };
 
     const handleSubmit = () => {
@@ -27,6 +27,10 @@ const Question = ({ genre, question, options, onNext, id, skill_name }) => {
         onNext();
         handleReset();
     };
+
+    const handlePrevious = () =>{
+        onPrev();
+    }
 
     return (
         <MathJaxContext>
@@ -73,9 +77,20 @@ const Question = ({ genre, question, options, onNext, id, skill_name }) => {
                 <div onClick={handleReset} className={`${Styles.reset}`}>
                 Reset to previous level
                 </div>
-                 <button onClick={handleNext} className={`${Styles.Button} ${Styles.submit}`}>
-                        Next
-                 </button>
+                <div className={`${Styles.buttonContainer}`}>
+                    <button onClick={handlePrevious} 
+                      disabled={isPreviousDisabled}
+                      className={`${Styles.Button} ${Styles.previous} ${
+                          isPreviousDisabled ? Styles.disabled : ''
+                      }`}>
+                            Previous
+                    </button>
+                    <button
+                        onClick={handleNext}
+                        className={`${Styles.Button} ${Styles.submit}`}>
+                            {isLastQuestion ? 'Submit' : 'Next'}
+                    </button>
+                </div>
             </div>
         </div>
         </MathJaxContext>

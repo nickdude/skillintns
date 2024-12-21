@@ -52,143 +52,6 @@ export default function Practice() {
 
                 const data = await response.json();
                     
-                // const data = {
-                //     "skills": [
-                //         [
-                //             1,
-                //             "Linear Equations",
-                //             "linear_equations",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             3,
-                //             "Quadratic Equations",
-                //             "quadratic_equations",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             4,
-                //             "Inequalities",
-                //             "inequalities",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             5,
-                //             "Ratios Proportions and Percents",
-                //             "ratios_proportions_and_percents",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             6,
-                //             "Data Interpretation",
-                //             "data_interpretation",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             7,
-                //             "Statistics",
-                //             "statistics",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             8,
-                //             "Probability",
-                //             "Probability",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             9,
-                //             "Complex Numbers",
-                //             "complex_numbers",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             10,
-                //             "Polynomial Division",
-                //             "polynomial_division",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             11,
-                //             "Rational Exponents and Radicals",
-                //             "rational_exponents_and_radicals",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             12,
-                //             "Properties of Angles",
-                //             "properties_of_angles",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             13,
-                //             "Properties of Triangles",
-                //             "properties_of_triangles",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             14,
-                //             "Congruence and Similarity",
-                //             "congruence_and_similarity",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             16,
-                //             "Properties of Quadrilaterals",
-                //             "properties_of_quadrilaterals",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             17,
-                //             "Interior and Exterior Angles of Polygons",
-                //             "interior_and_exterior_angles_of_polygons",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             18,
-                //             "Circles",
-                //             "Circles",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             21,
-                //             "Coordinate Geometry",
-                //             "coordinate_geometry",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             25,
-                //             "Volume and Surface Area",
-                //             "volume_and_surface_area",
-                //             1,
-                //             "SAT"
-                //         ],
-                //         [
-                //             26,
-                //             "Transformations",
-                //             "transformations",
-                //             1,
-                //             "SAT"
-                //         ]
-                //     ]
-                // }
                 setTasks(data?.skills || []);
             
             } catch (err) {
@@ -212,6 +75,7 @@ export default function Practice() {
                 }
 
                 const data = await response.json();
+               
                 const transformedQuestions = data.map((item) => ({
                     genre: item.subject,
                     question: item.question,
@@ -234,7 +98,7 @@ export default function Practice() {
 
         fetchQuestionData();
     }, [skill_name, apiUrl]);
-
+        console.log("<<<<<<<<<<<<",questions)
     const handleNext = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -269,8 +133,18 @@ export default function Practice() {
     } 
     };
 
+   
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
+        
+    const isPreviousDisabled = currentQuestionIndex === 0;
+    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+
+    const handlePrevious = () => {
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+        }
+    };
 
     return (
         <div>
@@ -317,8 +191,11 @@ export default function Practice() {
                                 question={questions[currentQuestionIndex]?.question}
                                 options={questions[currentQuestionIndex]?.options}
                                 onNext={handleNext}
+                                onPrev={handlePrevious}
                                 id={questions[currentQuestionIndex]?._id}
                                 skill_name={skill_name}
+                                isPreviousDisabled={isPreviousDisabled}
+                                isLastQuestion={isLastQuestion}
                             />
                         ) : (
                             <p>No question available</p>
