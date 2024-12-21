@@ -21,6 +21,7 @@ export default function Practice() {
     const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
 
     const breadcrumbLinks = [
+        { text: 'Packages', href: `/subscribePage` },
         { text: 'Tasks', href: `/landing/${currentId}` },
         { text: 'Practice Skill', href: `/selectSkill/${task_id}?currentId=${currentId}` },
         { text: 'Practice', href: '#' }

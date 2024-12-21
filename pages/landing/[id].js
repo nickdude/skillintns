@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Cards from "../../components/cards";
 import Navbar from "../../components/navbar";
 import Styles from "/styles/index.module.css";
+import LinkBreadCrumps from '@/components/linkBreadcrumps';
 
 export default function Home() {
   const router = useRouter();
@@ -11,6 +12,11 @@ export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
   const [currentId, setCurrentId] = useState(id);
+
+  const breadcrumbLinks = [
+    { text: 'Packages', href: `/subscribePage` },
+  ];
+
 
   useEffect(() => {
     if (!id) {
@@ -69,6 +75,9 @@ export default function Home() {
               <br />
               <p className={Styles.basicTextSmall}>
                  Step-by-Step <span style={{"color":"#44B07A"}}>Learning</span> to Build Confidence and Knowledge
+              </p>
+              <p style={{'marginTop':'1vh'}}>
+                 <LinkBreadCrumps breadcrumbLinks={breadcrumbLinks} /> 
               </p>
             </div>
             <div className={Styles.ButtonContainer}>
