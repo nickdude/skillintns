@@ -1,6 +1,7 @@
 import React from "react";
 import { MathJaxContext } from "better-react-mathjax";
 import Styles from "../styles/questions.module.css";
+import DropDown from "./dropDown";
 
 const Question = ({
     genre,
@@ -12,6 +13,8 @@ const Question = ({
     onOptionSelect,
     isPreviousDisabled,
     isLastQuestion,
+    id,
+    skill_name
 }) => {
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
@@ -61,6 +64,7 @@ const Question = ({
                     <div className={Styles.QuestionCell}>
                         <div className={Styles.QuestionGenre}>
                             {genre}
+                            <DropDown question={question} id={id} skill_name={skill_name}/>
                         </div>
                         <div className={Styles.QuestValue}>Q. {question}</div>
                     </div>
