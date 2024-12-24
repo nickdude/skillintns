@@ -75,8 +75,8 @@ export default function Practice() {
                 }
 
                 const data = await response.json();
-                localStorage.getItem("skill_id",data[0]?.skill_id);
-                localStorage.getItem("skill_name",data[0]?.skill_name);
+                localStorage.setItem("skill_id",data[0]?.skill_id);
+                localStorage.setItem("skill_name",data[0]?.skill_name);
                 const transformedQuestions = data.map((item) => ({
                     genre: item.subject,
                     question: item.question,
