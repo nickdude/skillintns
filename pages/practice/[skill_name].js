@@ -32,6 +32,7 @@ export default function Practice() {
         setCurrentQuestionIndex(0)
         const token = localStorage.getItem("token");
         const studentId = localStorage.getItem("student_id");
+        localStorage.setItem("skill_name",skill_name);
 
         if (!skill_name) return;
         const fetchQuestionData = async () => {

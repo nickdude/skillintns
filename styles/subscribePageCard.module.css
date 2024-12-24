@@ -285,7 +285,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 21.3125rem;
-    height: 31.625rem;
+    height: fit-content;
     border-radius: 0.75rem;
     border: 1.554px solid #FDD999;
     background: linear-gradient(166deg, rgba(254, 215, 131, 0.15) 7.44%, rgba(254, 215, 131, 0.02) 89.97%);
