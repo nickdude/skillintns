@@ -6,6 +6,13 @@
     display: flex;
     margin-top: 20px;
 }
+.fieldBox input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 1000px white inset !important; /* Standard property for compatibility */
+  -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Vendor-prefixed property */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 /* For mobile devices */
 @media (max-width: 600px) {
     .loginContainer {

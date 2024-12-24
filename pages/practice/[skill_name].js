@@ -15,6 +15,7 @@ export default function Practice() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [refresh, setRefresh] = useState(false)
+    const [isPopUpVisible, setIsPopUpVisible] = useState(false)
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -129,6 +130,7 @@ export default function Practice() {
     
                 const responseData = await response.json();
                 console.log('Progress updated successfully', responseData);
+                setIsPopUpVisible(true)
     
             } catch (err) {
                 console.error('Error updating progress:', err.message);
@@ -175,6 +177,11 @@ export default function Practice() {
         }
     };
 
+    const reload = ()=>{
+        setRefresh(!refresh)
+        setIsPopUpVisible(false)
+    }
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
@@ -187,6 +194,14 @@ export default function Practice() {
         }
     };
 
+    const review = () => {
+        setCurrentQuestionIndex(0)
+        setIsPopUpVisible(false)
+    }
+
+    const closePopUp = () =>{
+        setIsPopUpVisible(false)
+    }
     return (
         <div>
             <Navbar />
@@ -233,6 +248,10 @@ export default function Practice() {
                                 isLastQuestion={isLastQuestion}
                                 selected={questions[currentQuestionIndex]?.selected}
                                 onOptionSelect={handleOptionSelect}
+                                review={review}
+                                isPopUpVisible={isPopUpVisible}
+                                closePopUp={closePopUp}
+                                reload={reload}
                             />
                         ) : (
                             <p>No question available</p>

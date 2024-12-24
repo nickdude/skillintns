@@ -216,6 +216,34 @@
             display: flex;
             gap:1rem;
         }
+
+        .PopUp{
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .PopUpCard{
+            width: 20rem;
+            height: 20rem;
+            background-color: #D3D3D3;
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+        .popButton{
+            width: 14rem;
+            margin-top: 1rem;
+            padding: 1rem;
+        }
     
 
 /* Responsive Adjustments */

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MathJaxContext } from "better-react-mathjax";
 import Styles from "../styles/questions.module.css";
 import DropDown from "./dropDown";
@@ -14,8 +14,14 @@ const Question = ({
     isPreviousDisabled,
     isLastQuestion,
     id,
-    skill_name
+    skill_name,
+    review,
+    isPopUpVisible,
+    closePopUp,
+    reload
 }) => {
+
+    // const [isPopUpVisible, setIsPopUpVisible] = useState(true);
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -54,6 +60,10 @@ const Question = ({
             console.error('Error resetting to previous level:', error.message);
         }
     };
+
+    const handleCancel = ()=>{
+        closePopUp()
+    }
 
     
     return (
@@ -118,6 +128,15 @@ const Question = ({
                     </div>
                 </div>
             </div>
+            {isPopUpVisible && (
+                <div className={Styles.PopUp}>
+                    <div className={Styles.PopUpCard}>
+                            <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={review}>Review</button>
+                            <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={reload}>Fetch New Question</button>
+                            <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={handleCancel}>Cancel</button>
+                    </div>
+                </div>)
+                }
         </MathJaxContext>
     );
 };
