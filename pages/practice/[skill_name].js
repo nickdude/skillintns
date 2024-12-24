@@ -32,7 +32,6 @@ export default function Practice() {
         setCurrentQuestionIndex(0)
         const token = localStorage.getItem("token");
         const studentId = localStorage.getItem("student_id");
-        localStorage.setItem("skill_name",skill_name);
 
         if (!skill_name) return;
         const fetchQuestionData = async () => {
@@ -76,6 +75,8 @@ export default function Practice() {
                 }
 
                 const data = await response.json();
+                localStorage.getItem("skill_id",data[0]?.skill_id);
+                localStorage.getItem("skill_name",data[0]?.skill_name);
                 const transformedQuestions = data.map((item) => ({
                     genre: item.subject,
                     question: item.question,
