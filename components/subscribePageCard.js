@@ -11,6 +11,10 @@ export default function SubscriptionCard({ price, description, benefits, color, 
   const [isOpenPayment, setIsOpenPayment] = useState(false);
   const openPayment = () => setIsOpenPayment(true);
   const closePayment = () => setIsOpenPayment(false);
+  const [showSubscribtionDetail , setShowSubscribtionDetail] = useState(false)
+  const [loading, setLoading] = useState(false); 
+  const [error, setError] = useState(null); 
+  const [subscribtionDetail , setSubscribtionDetail] = useState(null)
 
   const limitedBenefits = benefits.slice(0, 3);
   const backgroundImage = color === 'green' ? '/subscribebg.svg' : '/subscribebgblack.svg';
@@ -52,7 +56,55 @@ export default function SubscriptionCard({ price, description, benefits, color, 
     }
   };
 
+  const details = async()=>{
+    setShowSubscribtionDetail(true)
+    setLoading(true);  // Set loading state to true
+    setError(null);    // Clear any previous error
 
+    // Get token and subscription_id from localStorage
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        setError("Missing token or subscription ID");
+        setLoading(false);
+        return;
+    }
+
+    try {
+        // API call
+        const response = await fetch(
+            `${apiUrl}/get_subscription_details?subscription_id=${subscription_id}`,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                },
+            }
+        );
+
+        // Check if the response is successful
+        if (!response.ok) {
+            throw new Error("Failed to fetch subscription details");
+        }
+
+        const data = await response.json();
+        console.log(data,"<<<<<<<")
+        setSubscribtionDetail(data);  // Update state with the fetched details
+
+    } catch (err) {
+      console.log(err)
+        setError(err.message);  // Handle any errors
+    } finally {
+        setLoading(false);  // Set loading to false after request is done
+    }
+
+    
+  }
+
+  const closeDetail = () =>{
+    setShowSubscribtionDetail(false)
+  }
+    console.log("<<<<<",subscribtionDetail)
   return (<>
         <div className={color === "green" ? styles.subscriptionCardPurchased : styles.subscriptionCard}>
             {color == 'green' &&
@@ -96,11 +148,42 @@ export default function SubscriptionCard({ price, description, benefits, color, 
             </div>
 
             <div className={styles.buttonsContainer}>
-            {color !== 'green' && <button className={styles.subscribeButton} onClick={openPayment}>Subscribe</button>}
+            {color !== 'green' ? 
+            <button className={styles.subscribeButton} onClick={openPayment}>Subscribe</button>
+            :
+            <button className={styles.subscribeButton} onClick={details}>Detail</button>
+            }
               <button className={styles.viewTasksButton}  onClick={onClick}>View Tasks</button>
             </div>
         </div>
         <PayPalCard isOpen={isOpenPayment} onClose={closePayment} price={price} subscription_id={subscription_id}/>
+            {loading && <p>Loading...</p>}  {/* Display loading state */}
+            {error && <p style={{ color: "red" }}>{error}</p>}  {/* Display error if exists */}
+          {!error && showSubscribtionDetail && <div className={styles.subscribtionDetailContainer}>
+              <div className={styles.subscribtionDetailCard}>
+                <div className={styles.topBar}>
+                  <h1>Subscription Detail</h1>
+                  <button className={styles.closeButton} aria-label="Close" onClick={closeDetail}>
+                    ×
+                  </button>
+                </div>
+                <div className={styles.subContainer}>
+                  <div className={styles.subscribtionDetailDiv}>
+                     <p className={styles.subscribtionDetailPara}>Status: {subscribtionDetail?.status}</p>
+                     <p className={styles.subscribtionDetailPara}>Status Updated On: {subscribtionDetail?.status_update_time}</p>
+                     <p className={styles.subscribtionDetailPara}>Subscription ID: {subscribtionDetail?.id}</p>
+                     <p className={styles.subscribtionDetailPara}>Plan ID: {subscribtionDetail?.plan_id}</p> 
+                  </div>
+                  <div className={styles.subscribtionDetailDiv}>
+                      <p className={styles.subscribtionDetailPara}>Start Time: {subscribtionDetail?.start_time}</p>
+                      <p className={styles.subscribtionDetailPara}>Email: {subscribtionDetail?.subscriber?.email_address}</p>
+                      <p className={styles.subscribtionDetailPara}>Subscriber Name: {subscribtionDetail?.subscriber?.name?.given_name}</p>
+                      <p className={styles.subscribtionDetailPara}>Next Billing Time:{subscribtionDetail?.billing_info?.next_billing_time}</p> 
+                  </div>
+                </div>
+                 
+              </div>
+          </div>}
     </>
    
   );
