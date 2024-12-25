@@ -17,6 +17,7 @@ export default function Practice() {
     const [refresh, setRefresh] = useState(false)
     const [isPopUpVisible, setIsPopUpVisible] = useState(false)
     const [isLevelChanged, setIsLevelChanged] = useState(false)
+    const [isInReview, setIsInReview] = useState(false)
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -31,6 +32,7 @@ export default function Practice() {
 
     useEffect(() => {
         setCurrentQuestionIndex(0)
+        setIsInReview(false)
         const token = localStorage.getItem("token");
         const studentId = localStorage.getItem("student_id");
 
@@ -104,7 +106,7 @@ export default function Practice() {
 
     const handleNext = async () => {
         if (questions[currentQuestionIndex]?.selected === null) return;
-        if (currentQuestionIndex === questions.length - 1) {
+        if (currentQuestionIndex === questions.length - 1 && !isInReview) {
             const token = localStorage.getItem("token");
             const studentId = localStorage.getItem("student_id"); 
             const skillId = localStorage.getItem("skill_id");
@@ -140,11 +142,10 @@ export default function Practice() {
                 console.error('Error updating progress:', err.message);
             }
         } else {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
+            currentQuestionIndex !== questions.length - 1 && setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
     };
     
-
     const handleTaskClick = async(skill_name) => {
         const token = localStorage.getItem("token");
       try {
@@ -200,6 +201,7 @@ export default function Practice() {
 
     const review = () => {
         setCurrentQuestionIndex(0)
+        setIsInReview(true)
         setIsPopUpVisible(false)
     }
 
@@ -227,7 +229,7 @@ export default function Practice() {
                     />
                     <div className={Styles.Title}>
                         <div className={Styles.TitleContent}>
-                            <p className={Styles.boldText}>Practice and Excel</p>
+                            <p className={Styles.boldText}>Practice and Excel {isInReview && <span style={{"color":"#38A56F"}}>(Review Mode)</span>}</p>
                         </div>
                         <div className={Styles.TitleButtonCell}>
                             <div className={Styles.TitleButton} onClick={()=>setRefresh(!refresh)}>
@@ -257,6 +259,7 @@ export default function Practice() {
                                 closePopUp={closePopUp}
                                 reload={reload}
                                 isLevelChanged={isLevelChanged}
+                                isInReview={isInReview}
                             />
                         ) : (
                             <p>No question available</p>

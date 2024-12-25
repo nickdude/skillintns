@@ -19,10 +19,9 @@ const Question = ({
     isPopUpVisible,
     closePopUp,
     reload,
-    isLevelChanged
+    isLevelChanged,
+    isInReview
 }) => {
-
-    // const [isPopUpVisible, setIsPopUpVisible] = useState(true);
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -124,7 +123,7 @@ const Question = ({
                         <button
                             onClick={onNext}
                             className={`${Styles.Button} ${Styles.submit} ${selected === null ? Styles.disabled : '' }`}>
-                                {isLastQuestion ? 'Submit' : 'Next'}
+                                {isLastQuestion && !isInReview ? 'Submit' : 'Next'}
                         </button>
                     </div>
                 </div>
