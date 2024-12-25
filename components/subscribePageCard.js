@@ -151,7 +151,7 @@ export default function SubscriptionCard({ price, description, benefits, color, 
             {color !== 'green' ? 
             <button className={styles.subscribeButton} onClick={openPayment}>Subscribe</button>
             :
-            <button className={styles.subscribeButton} onClick={details}>Detail</button>
+            <button className={styles.subscribeButton} onClick={details}>Subscription Details</button>
             }
               <button className={styles.viewTasksButton}  onClick={onClick}>View Tasks</button>
             </div>
