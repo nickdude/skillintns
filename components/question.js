@@ -18,7 +18,8 @@ const Question = ({
     review,
     isPopUpVisible,
     closePopUp,
-    reload
+    reload,
+    isLevelChanged
 }) => {
 
     // const [isPopUpVisible, setIsPopUpVisible] = useState(true);
@@ -128,15 +129,22 @@ const Question = ({
                     </div>
                 </div>
             </div>
-            {isPopUpVisible && (
+             {isPopUpVisible && ( 
                 <div className={Styles.PopUp}>
                     <div className={Styles.PopUpCard}>
+                                {
+                                isLevelChanged?
+                                <p className={Styles.title}>You Passed This Level</p>
+                                :
+                                <p className={Styles.title}>You didn't Passed This Level</p>
+                                }
                             <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={review}>Review</button>
-                            <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={reload}>Fetch New Question</button>
+                            <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={reload}> {
+                                isLevelChanged?'Fetch Questions':'Fetch Questions Again'}</button>
                             <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={handleCancel}>Cancel</button>
                     </div>
-                </div>)
-                }
+                </div>
+            )} 
         </MathJaxContext>
     );
 };

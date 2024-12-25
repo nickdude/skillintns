@@ -244,7 +244,14 @@
             margin-top: 1rem;
             padding: 1rem;
         }
-    
+        .title{
+            color: #224750;
+            font-family: Inter;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 540;
+            line-height: normal;
+        }
 
 /* Responsive Adjustments */
 @media screen and (max-width: 678px) {

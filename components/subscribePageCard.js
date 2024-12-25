@@ -157,9 +157,7 @@ export default function SubscriptionCard({ price, description, benefits, color, 
             </div>
         </div>
         <PayPalCard isOpen={isOpenPayment} onClose={closePayment} price={price} subscription_id={subscription_id}/>
-            {loading && <p>Loading...</p>}  {/* Display loading state */}
-            {error && <p style={{ color: "red" }}>{error}</p>}  {/* Display error if exists */}
-          {!error && showSubscribtionDetail && <div className={styles.subscribtionDetailContainer}>
+          {showSubscribtionDetail && <div className={styles.subscribtionDetailContainer}>
               <div className={styles.subscribtionDetailCard}>
                 <div className={styles.topBar}>
                   <h1>Subscription Detail</h1>
@@ -167,7 +165,9 @@ export default function SubscriptionCard({ price, description, benefits, color, 
                     ×
                   </button>
                 </div>
-                <div className={styles.subContainer}>
+               {loading && <p>Loading...</p>}
+               {error && <p>{error}</p>} 
+               {!loading && !error && showSubscribtionDetail && <div className={styles.subContainer}>
                   <div className={styles.subscribtionDetailDiv}>
                      <p className={styles.subscribtionDetailPara}>Status: {subscribtionDetail?.status}</p>
                      <p className={styles.subscribtionDetailPara}>Status Updated On: {subscribtionDetail?.status_update_time}</p>
@@ -180,7 +180,7 @@ export default function SubscriptionCard({ price, description, benefits, color, 
                       <p className={styles.subscribtionDetailPara}>Subscriber Name: {subscribtionDetail?.subscriber?.name?.given_name}</p>
                       <p className={styles.subscribtionDetailPara}>Next Billing Time:{subscribtionDetail?.billing_info?.next_billing_time}</p> 
                   </div>
-                </div>
+                </div>}
                  
               </div>
           </div>}

@@ -16,6 +16,7 @@ export default function Practice() {
     const [error, setError] = useState(null);
     const [refresh, setRefresh] = useState(false)
     const [isPopUpVisible, setIsPopUpVisible] = useState(false)
+    const [isLevelChanged, setIsLevelChanged] = useState(false)
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -131,6 +132,7 @@ export default function Practice() {
                 }
     
                 const responseData = await response.json();
+                setIsLevelChanged(responseData?.is_level_changed)
                 console.log('Progress updated successfully', responseData);
                 setIsPopUpVisible(true)
     
@@ -254,6 +256,7 @@ export default function Practice() {
                                 isPopUpVisible={isPopUpVisible}
                                 closePopUp={closePopUp}
                                 reload={reload}
+                                isLevelChanged={isLevelChanged}
                             />
                         ) : (
                             <p>No question available</p>
