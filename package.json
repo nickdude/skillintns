@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.7.0",
     "axios": "^1.7.7",
     "better-react-mathjax": "^2.0.4-beta1",
     "next": "15.0.3",

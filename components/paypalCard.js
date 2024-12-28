@@ -1,122 +1,77 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/paypalCard.module.css";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useRouter } from "next/navigation"; // For navigation
+
+
 
 export default function PayPalCard({ isOpen, onClose, subscription_id, price }) {
-   
-  const [sdkLoaded, setSdkLoaded] = useState(false);
-  const [error, setError] = useState(null);
-
-  const loadPayPalSDK = (clientId, retries = 3) => {
-    return new Promise((resolve, reject) => {
-      const tryLoad = (attemptsRemaining) => {
-        if (attemptsRemaining === 0) {
-          reject(new Error("PayPal SDK failed to load after multiple attempts"));
-          return;
-        }
-
-        if (window.paypal) {
-          resolve();
-          return;
-        }
-
-        const script = document.createElement("script");
-        script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-        script.async = true;
-        script.onload = () => resolve();
-        script.onerror = () => {
-          console.log(`Failed to load PayPal SDK, attempts remaining: ${attemptsRemaining}`);
-          setTimeout(() => tryLoad(attemptsRemaining - 1), 2000); // Retry after 2 seconds
-        };
-        document.body.appendChild(script);
-      };
-
-      tryLoad(retries);
-    });
-  };
-
-  useEffect(() => {
-    if (!isOpen || sdkLoaded) return;
-
-    loadPayPalSDK("AYiWbQ92P51XP6sFkS9he6cdy8OoSpGq_NeRPsB56dG1wqqi0Q8SHdAPSlUctqaHYB01dFLirOPLzqOi") // Replace with your PayPal client ID
-      .then(() => {
-        setSdkLoaded(true);
-        setError(null);
-      })
-      .catch((error) => {
-        setError(error.message);
-        console.error("PayPal SDK loading error:", error.message);
-      });
-  }, [isOpen, sdkLoaded]);
-
-  useEffect(() => {
-    if (!sdkLoaded) return;
-
-    // Only render PayPal buttons once
-    if (window.paypal && !document.getElementById("paypal-button-placeholder").childElementCount) {
-      window.paypal
-        .Buttons({
-          createOrder: (data, actions) => {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: price,
-                  },
-                },
-              ],
-            });
-          },
-          onApprove: (data, actions) => {
-            console.log(actions.order.get(),"<<<<<<<<<<<<<<<<<<<<")
-            handleSubscription()
-            return actions.order.capture().then((details) => {
-              alert(`Transaction completed by ${details.payer.name.given_name}`);
-              onClose(); 
-            });
-          },
-          onError: (err) => {
-            console.error("PayPal error:", err);
-            alert("Payment failed. Please try again.");
-          },
-        })
-        .render("#paypal-button-placeholder");
-    }
-  }, [sdkLoaded]);
+  
+  const [message, setMessage] = useState(null);
+  const router = useRouter(); // Initialize router
 
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
   
-  
-  const handleSubscription = async () => {
+  const initialOptions = {
+    clientId: "AYiWbQ92P51XP6sFkS9he6cdy8OoSpGq_NeRPsB56dG1wqqi0Q8SHdAPSlUctqaHYB01dFLirOPLzqOi", // Use the provided client ID
+    "enable-funding": "card",
+    "disable-funding": "paylater",
+    vault: "true",
+    intent: "subscription",
+  };
+
+  const handlePaymentSuccess = async (subscriptionData) => {
+    const token = localStorage.getItem('token')
     try {
-      const token = localStorage.getItem("token");
-      const email = localStorage.getItem("email");
-      const student_id = localStorage.getItem("student_id");
+      // Extract the subscription ID from PayPal's response
+      const { subscriptionID } = subscriptionData;
 
+      // Get the user_id from sessionStorage
+      const userId = localStorage.getItem('email');
+
+      // Ensure user_id exists in sessionStorage
+      if (!userId) {
+        setMessage('User ID is missing. Please log in again.');
+        return;
+      }
+
+      // Set the subscription status to sessionStorage
+      localStorage.setItem('subscriptionStatus', 'premium');
+      localStorage.setItem('subscription_id', subscriptionID);
+
+      // Prepare the data to send the subscription ID, status, and user_id to the API
+      const subscriptionDetails = {
+        subscription_id: subscriptionID,
+        subscription_status: 'premium', // Set subscription status to 'premium'
+        user_id: userId, // Include the user_id from sessionStorage
+      };
+
+      // Call the API to update the user's subscription status using axios
       const response = await fetch(`${apiUrl}/update_user_subscription`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json", // Ensure the request is JSON
+          "Authorization": `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          subscription_id: subscription_id,
-          subscription_status: 'ACTIVE',
-          user_id: student_id
-        }),
+        body: JSON.stringify(subscriptionDetails), // Convert data to JSON string
       });
+      
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setRefresh(!refresh)
-        console.log('Subscription updated successfully!');
+      if (response.status === 200) {
+        // Show success message and redirect after success
+        setMessage('Subscription Successful! Redirecting...');
+        setTimeout(() => {
+          // router.push("/subscribePage");
+          onClose()
+        }, 1000);
       } else {
-        console.error('Subscription update failed:', data);
+        setMessage('Failed to update subscription status.');
       }
     } catch (error) {
-      console.error('Error while updating subscription:', error);
+      console.error('Error updating subscription status:', error);
+      setMessage('An error occurred while updating subscription.');
     }
   };
 
@@ -145,7 +100,37 @@ export default function PayPalCard({ isOpen, onClose, subscription_id, price }) 
                 <p className={styles.unit}><span className={styles.price}>$19.99</span>/month</p>
             </div>
             <p className={styles.paymentText}>Payment Methods</p>
-            <div id="paypal-button-placeholder" className={styles.paypalButtons}></div>
+            {message}
+            {/* <div id="paypal-button-placeholder" className={styles.paypalButtons}></div> */}
+            <PayPalScriptProvider options={initialOptions}>
+                    <PayPalButtons
+                      style={{
+                        shape: "rect",
+                        layout: "vertical",
+                      }}
+                      createSubscription={async (_, actions) => {
+                        // Ensure actions.subscription is defined before using it
+                        if (actions && actions.subscription) {
+                          return await actions.subscription.create({
+                            plan_id: 'P-6SD49150GW878284MM3NYAMQ', // Plan ID provided by you
+                          });
+                        }
+                        return Promise.reject('Subscription creation failed');
+                      }}
+                      onApprove={async (_, actions) => {
+                        // Ensure actions.subscription and actions.subscription.get are defined before using them
+                        if (actions && actions.subscription && actions.subscription.get) {
+                          const details = await actions.subscription.get();
+                          const subscriptionData = {
+                            subscriptionID: details.id, // Only use the subscription ID
+                          };
+                          handlePaymentSuccess(subscriptionData);
+                        } else {
+                          return Promise.reject('Subscription approval failed');
+                        }
+                      }}
+                    />
+                  </PayPalScriptProvider>
       </div>
     </div>
   </div>
