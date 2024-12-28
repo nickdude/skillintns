@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MathJaxContext } from "better-react-mathjax";
+import { MathJaxContext, MathJax } from "better-react-mathjax";
 import Styles from "../styles/questions.module.css";
 import DropDown from "./dropDown";
 
@@ -73,7 +73,7 @@ const Question = ({
                 <div className={Styles.Qbar}>
                     <div className={Styles.QuestionCell}>
                         <div className={Styles.QuestionGenre}>
-                            {genre}
+                           <MathJax> {genre}</MathJax>
                             <DropDown question={question} id={id} skill_name={skill_name}/>
                         </div>
                         <div className={Styles.QuestValue}>Q. {question}</div>
@@ -101,7 +101,7 @@ const Question = ({
                                 {String.fromCharCode(65 + index)}.
                             </span>
                             <span className={Styles.OptionText}>
-                                {option.text}
+                               <MathJax>{option.text}</MathJax> 
                             </span>
                         </div>
                     ))}
