@@ -15,6 +15,9 @@ export default function SelectSkill() {
     const [skills, setSkills] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [profile,setProfile] = useState([])
+
+    const bloomLevels = ['Remembering', 'Understanding', 'Applying', 'Analyzing', 'Evaluating'];
 
     // API Base URL
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
@@ -24,17 +27,31 @@ export default function SelectSkill() {
     const breadcrumbLinks = [
         { text: 'Packages', href: `/subscribePage` },
         { text: 'Tasks', href: `/landing/${currentId}` },
-        { text: 'Practice Skill', href: '#' }
+        { text: 'Skills', href: '#' }
     ];
 
+    const getProgressForSkill = (skillName) => {
+        const profileItem = profile.find((p) => p.bloom_skill_name.toLowerCase().includes(skillName.toLowerCase()));
+        if (profileItem) {
+          const bloomLevel = profileItem.bloom_skill_name.split('-')[0];
+          const index = bloomLevels.indexOf(bloomLevel);
+          if (index !== -1) {
+            // Each level contributes 20% (100% / 5 levels)
+            return ((index + 1) / bloomLevels.length);
+          }
+        }
+        return 0;
+      };
+
     useEffect(() => {
+        const token = localStorage.getItem("token"); 
         localStorage.setItem("adaptive_task_name",adaptive_task_name)
         const fetchSkills = async () => {
             if (!task_id) return; // Ensure task_id is available
 
             setLoading(true);
             setError(null);
-            const token = localStorage.getItem("token"); 
+        
             try {
                 const response = await fetch(`${apiUrl}/adaptive_packages/1/tasks`, {
                     method: "GET",
@@ -79,7 +96,39 @@ export default function SelectSkill() {
             }
         };
 
+        const fetchProfile = async () => {
+            const student_id = localStorage.getItem('student_id');
+            if (!student_id) {
+             console.log("student_id is not there in local storage")
+              return;
+            }
+      
+            try {
+                const response = await fetch(`${apiUrl}/get_student_profile?student_id=${student_id}`,{
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (response.ok) {
+                  const profileResponse = await response.json();
+                  if (profileResponse && Array.isArray(profileResponse.skills)) {
+                    setProfile(profileResponse.skills); // Set the profile to the skills array
+                  } else {
+                    console.log("Profile failed");
+                  }
+                } else {
+                  console.log("Failed to fetch profile:", response.statusText);
+                }
+              } catch (error) {
+                console.log(error.message);
+              }
+              
+          };
+
         fetchSkills();
+        fetchProfile()
     }, [task_id, apiUrl]);
 
     const handleTaskClick = (taskId) => {
@@ -120,7 +169,7 @@ export default function SelectSkill() {
                                 <LearningBar
                                     key={index}
                                     title={skill[1]}  // Skill name
-                                    progress={0.5}  // Sample progress value
+                                    progress={getProgressForSkill(skill[2])}  
                                     href={`/practice/${skill[2]}?task_id=${task_id}&currentId=${currentId}`}  // Assuming you have a practice page for each skill
                                 />
                             ))

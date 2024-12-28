@@ -8,6 +8,8 @@ export default function ConceptCard({ isOpen, onClose, taskId, id, question , sk
   const [examples,setExamples] = useState([])
   const [loading, setLoading] = useState(false);
   const [summary, setSummary] = useState('')
+  const [images, setImages] = useState([])
+  const [links, setLinks] = useState([])
 
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -34,10 +36,13 @@ export default function ConceptCard({ isOpen, onClose, taskId, id, question , sk
           throw new Error("Failed to fetch hints.");
         }
 
-        const data = await response.json();
+       const data = await response.json();
+
         setConcepts(data[0]?.concepts || []);
         setExamples(data[0]?.examples || [])
-        setSummary(data[0]?.summary || '')
+        setSummary(data[0]?.summary || '');
+        setImages(data[0]?.images || []);
+        setLinks(data[0]?.relevant_links || []);
         console.log(data[0])
       } catch (err) {
         setError(err.message);
@@ -92,6 +97,35 @@ export default function ConceptCard({ isOpen, onClose, taskId, id, question , sk
                   ) : (
                     <p>No hints available for this task.</p>
                   )} 
+
+                  <h2 className={styles.subTitle}>Links:</h2>
+                  {links.length > 0 ? (
+                      links.map((link,index)=>(
+                        <p className={styles.question}>
+                        <strong>Link: </strong>
+                        <a href={link?.url} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                          {link?.title}
+                        </a>
+                      </p>
+                      ))
+                  ) : (
+                    <p>No hints Links for this task.</p>
+                  )}
+
+                  <h2 className={styles.subTitle}>Images:</h2>
+                    {images.length > 0 ? (
+                      images.map((image,index)=>(
+                        <>
+                        <p className={styles.question}>
+                          <strong>Description: </strong>
+                          <img src={`${image.url}`} />
+                          <MathJax inline>{image?.description}</MathJax>
+                        </p>
+                        </>
+                      ))
+                  ) : (
+                     <p>No hints Images for this task.</p>
+                     )}
               </div>
             )}
           </div>

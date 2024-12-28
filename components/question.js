@@ -133,9 +133,9 @@ const Question = ({
                     <div className={Styles.PopUpCard}>
                                 {
                                 isLevelChanged?
-                                <p className={Styles.title}>You Passed This Level</p>
+                                <p className={Styles.title}>You Pass The Level</p>
                                 :
-                                <p className={Styles.title}>You didn't Passed This Level</p>
+                                <p className={Styles.title}>You didn't Pass The Level</p>
                                 }
                             <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={review}>Review</button>
                             <button  className={`${Styles.Button} ${Styles.submit} ${Styles.popButton}`} onClick={reload}> {

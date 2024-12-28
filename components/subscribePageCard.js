@@ -170,15 +170,15 @@ export default function SubscriptionCard({ price, description, benefits, color, 
                {!loading && !error && showSubscribtionDetail && <div className={styles.subContainer}>
                   <div className={styles.subscribtionDetailDiv}>
                      <p className={styles.subscribtionDetailPara}>Status: {subscribtionDetail?.status}</p>
-                     <p className={styles.subscribtionDetailPara}>Status Updated On: {subscribtionDetail?.status_update_time}</p>
+                     <p className={styles.subscribtionDetailPara}>Status Updated On: {subscribtionDetail?.status_update_time ? new Date(subscribtionDetail.status_update_time).toLocaleDateString("en-GB") : 'N/A'}</p>
                      <p className={styles.subscribtionDetailPara}>Subscription ID: {subscribtionDetail?.id}</p>
                      <p className={styles.subscribtionDetailPara}>Plan ID: {subscribtionDetail?.plan_id}</p> 
                   </div>
                   <div className={styles.subscribtionDetailDiv}>
-                      <p className={styles.subscribtionDetailPara}>Start Time: {subscribtionDetail?.start_time}</p>
+                      <p className={styles.subscribtionDetailPara}>Start Time: {subscribtionDetail?.start_time ?  new Date(subscribtionDetail.start_time).toLocaleDateString("en-GB") : 'N/A'}</p>
                       <p className={styles.subscribtionDetailPara}>Email: {subscribtionDetail?.subscriber?.email_address}</p>
                       <p className={styles.subscribtionDetailPara}>Subscriber Name: {subscribtionDetail?.subscriber?.name?.given_name}</p>
-                      <p className={styles.subscribtionDetailPara}>Next Billing Time:{subscribtionDetail?.billing_info?.next_billing_time}</p> 
+                      <p className={styles.subscribtionDetailPara}>Next Billing Time:{subscribtionDetail?.billing_info?.next_billing_time ? new Date(subscribtionDetail.billing_info.next_billing_time).toLocaleDateString("en-GB") : 'N?A'}</p> 
                   </div>
                 </div>}
                  

@@ -1,4 +1,5 @@
 import React from "react";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import styles from "../styles/LearningBar.module.css";
 
 const LearningBar = ({ title, progress, href }) => {
@@ -25,9 +26,40 @@ const LearningBar = ({ title, progress, href }) => {
               className={styles.checkMark}
             />
           ) : (
-            <div className={styles.progressCircle}>
-              <span>{Math.round(progress * 100)}%</span>
-            </div>
+            // <div 
+            //   className={styles.progressCircle}
+            //   style={{ '--progress': `${progress * 100}%` }}
+            //   >
+            //   <span>{Math.round(progress * 100)}%</span>
+            // </div>
+          //   <div style={{ width: 50, height: 50,display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          //     <CircularProgressbar
+          //       value={progress * 100}
+          //       text={`${progress * 100}%`}
+          //       styles={buildStyles({
+          //         textSize: '24px',
+          //         pathColor: '#4caf50',
+          //         textColor: '#000',
+          //         trailColor: '#d6d6d6',
+          //         textAlign: 'center',
+          //         textAnchor: 'middle'
+          //       })}
+          //       x={50}
+          //       y={50}
+          //     />
+          // </div>
+          <div style={{ width: 50, height: 50 }}>
+            <CircularProgressbar
+              value={progress * 100}
+              text={`${Math.round(progress * 100)}%`}
+              styles={buildStyles({
+                textSize: '24px', // Adjust for proper size within the circle
+                pathColor: '#4caf50', // Progress bar color
+                textColor: '#000', // Centered text color
+                trailColor: '#d6d6d6', // Background path color
+              })}
+            />
+          </div>
           )}
         </div>
 

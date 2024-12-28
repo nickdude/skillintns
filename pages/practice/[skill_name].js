@@ -26,7 +26,7 @@ export default function Practice() {
     const breadcrumbLinks = [
         { text: 'Packages', href: `/subscribePage` },
         { text: 'Tasks', href: `/landing/${currentId}` },
-        { text: 'Practice Skill', href: `/selectSkill/${task_id}?currentId=${currentId}` },
+        { text: 'Skills', href: `/selectSkill/${task_id}?currentId=${currentId}` },
         { text: 'Practice', href: '#' }
     ];
 

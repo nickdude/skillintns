@@ -86,7 +86,7 @@
         letter-spacing: -0.005rem;
     }
 }
-@media (max-width: 1350px) {
+@media (max-width: 1260px) {
     .enrolledTasks {
         display: none;
     }

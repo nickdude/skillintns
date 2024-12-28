@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem; /* Adjust gap between sections */
-  padding: 4rem 3rem; /* Modify padding for spacing */
+  padding: 4rem 1rem; /* Modify padding for spacing */
   width:95%;
   margin: 0 auto;
 }

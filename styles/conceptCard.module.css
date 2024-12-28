@@ -185,7 +185,7 @@
     font-weight: 600;
     line-height: 1.25rem; /* 133.333% */
     letter-spacing: 0.00938rem;
-    /* margin-bottom: 1.56rem */
+    margin-top: 1.56rem;
   }
   
   .summary{
@@ -208,6 +208,15 @@
   }
   .answer{
     margin-bottom: 0.7rem;
+  }
+
+  .link {
+    color: #007bff; /* Example blue color */
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
   }
   /* Responsive Adjustments */
   @media (max-width: 600px) {
