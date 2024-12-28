@@ -67,6 +67,7 @@ export default function PayPalCard({ isOpen, onClose, subscription_id, price }) 
             });
           },
           onApprove: (data, actions) => {
+            console.log(actions.order.get(),"<<<<<<<<<<<<<<<<<<<<")
             handleSubscription()
             return actions.order.capture().then((details) => {
               alert(`Transaction completed by ${details.payer.name.given_name}`);

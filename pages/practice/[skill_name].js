@@ -80,12 +80,13 @@ export default function Practice() {
                 const data = await response.json();
                 localStorage.setItem("skill_id",data[0]?.skill_id);
                 localStorage.setItem("skill_name",data[0]?.skill_name);
+           
                 const transformedQuestions = data.map((item) => ({
                     genre: item.subject,
                     question: item.question,
-                    options: item.multiple_choices.map((choice) => ({
+                    options: item.multiple_choices.map((choice, index) => ({
                         text: choice,
-                        isCorrect: choice.startsWith(item.correct_answer),
+                        isCorrect: index === "ABCD".indexOf(item.correct_answer),
                     })),
                     _id: item._id,
                     level: item.level,

@@ -25,14 +25,26 @@
   margin: 0 auto;
 }
 
+.mainContent-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Adjust gap between sections */
+  padding: 0.5rem 1rem; /* Modify padding for spacing */
+  width:95%;
+  margin: 0 auto;
+}
+
 @media (max-width: 768px) { /* Smaller screens */
-.mainContent {
+.mainContent .mainContent-sub  {
   padding: 2rem 1rem; /* Adjust padding for smaller screens */
 }
 }
 @media (min-width: 601px) and (max-width: 1024px){
-  .mainContent{
+  .mainContent {
     padding: 1rem 0.5rem;
+  }
+  .mainContent-sub {
+    padding: 0.5rem 0.5rem;
   }
 }
 

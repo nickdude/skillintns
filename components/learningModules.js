@@ -57,6 +57,7 @@ const LearningBar = ({ title, progress, href }) => {
                 pathColor: '#4caf50', // Progress bar color
                 textColor: '#000', // Centered text color
                 trailColor: '#d6d6d6', // Background path color
+                textAnchor: 'middle'
               })}
             />
           </div>

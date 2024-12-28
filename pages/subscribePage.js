@@ -57,7 +57,7 @@ export default function Package() {
     <div>
       <Navbar />
       <main>
-        <div className="mainContent">
+        <div className="mainContent-sub">
           <div className={Styles.textContainer}>
             <div className={Styles.boldText}>
               <p>Available Packages</p>
