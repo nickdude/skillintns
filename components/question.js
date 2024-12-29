@@ -65,9 +65,15 @@ const Question = ({
         closePopUp()
     }
 
+    const config = {
+        loader: {
+          load: ["input/tex", "output/chtml"],
+          paths: { mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5" },
+        },
+      };
     
     return (
-        <MathJaxContext>
+        <MathJaxContext config={config}>
             <div className={Styles.Question}>
                 {/* Question Bar */}
                 <div className={Styles.Qbar}>
