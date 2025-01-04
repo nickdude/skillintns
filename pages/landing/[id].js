@@ -78,8 +78,9 @@ export default function Home() {
         setError("Failed to load tasks. Please try again.");
       }
     };
-
-    if (currentId !== '[id]' ) {
+console.log("currentId:",currentId)
+    if (currentId && currentId !== '[id]' ) {
+      console.log("inside")
       fetchTasks();
     }
   }, [currentId, error]);
