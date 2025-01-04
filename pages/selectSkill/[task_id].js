@@ -132,7 +132,7 @@ export default function SelectSkill() {
     }, [task_id, apiUrl]);
 
     const handleTaskClick = (taskId) => {
-        router.push(`/selectSkill/${taskId}`);
+        router.push(`/selectSkill/${taskId}?currentId=${currentId}`);
     };
 
     if (loading) return <div>Loading...</div>;
