@@ -80,6 +80,7 @@ export default function Home() {
     };
 
     if (currentId ) {
+      console.log("typeof(currentId):",typeof(currentId))
       fetchTasks();
     }
   }, [currentId, error]);
