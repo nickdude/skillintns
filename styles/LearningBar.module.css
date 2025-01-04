@@ -129,11 +129,6 @@
   background-color: #42b37a;
 }
 
-.progressBar .CircularProgressbar-text {
-  dominant-baseline: middle; /* Vertically centers the text */
-  text-anchor: middle; /* Horizontally centers the text */
-}
-
 
 
 @media (max-width: 678px) {

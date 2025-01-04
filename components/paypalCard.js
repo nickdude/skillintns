@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"; // For navigation
 
 
 
-export default function PayPalCard({ isOpen, onClose, subscription_id, price }) {
+export default function PayPalCard({refreshPage,packageId, isOpen, onClose, subscription_id, price }) {
   
   const [message, setMessage] = useState(null);
   const router = useRouter(); // Initialize router
@@ -15,7 +15,7 @@ export default function PayPalCard({ isOpen, onClose, subscription_id, price }) 
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
   
   const initialOptions = {
-    clientId: "AYiWbQ92P51XP6sFkS9he6cdy8OoSpGq_NeRPsB56dG1wqqi0Q8SHdAPSlUctqaHYB01dFLirOPLzqOi", // Use the provided client ID
+    clientId: "AYiWbQ92P51XP6sFkS9he6cdy8OoSpGq_NeRPsB56dG1wqqi0Q8SHdAPSlUctqaHYB01dFLirOPLzqOi", 
     "enable-funding": "card",
     "disable-funding": "paylater",
     vault: "true",
@@ -44,8 +44,9 @@ export default function PayPalCard({ isOpen, onClose, subscription_id, price }) 
       // Prepare the data to send the subscription ID, status, and user_id to the API
       const subscriptionDetails = {
         subscription_id: subscriptionID,
-        subscription_status: 'premium', // Set subscription status to 'premium'
-        user_id: userId, // Include the user_id from sessionStorage
+        subscription_status: 'premium', 
+        user_id: userId,
+        package_id: packageId
       };
 
       // Call the API to update the user's subscription status using axios
@@ -60,6 +61,7 @@ export default function PayPalCard({ isOpen, onClose, subscription_id, price }) 
       
 
       if (response.status === 200) {
+        refreshPage()
         // Show success message and redirect after success
         setMessage('Subscription Successful! Redirecting...');
         setTimeout(() => {

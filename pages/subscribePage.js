@@ -9,6 +9,7 @@ export default function Package() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [refresh,setRefresh] = useState(false)
   
   const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -44,13 +45,17 @@ export default function Package() {
     };
 
     fetchPackages();
-  }, [apiUrl]);
+  }, [apiUrl,refresh]);
 
   const handleCardClick = (id, package_name) => {
     router.push(`/landing/${id}?package_name=${package_name}`);
     localStorage.setItem("adaptive_package_name", package_name);
     localStorage.setItem("adaptive_package_id", id);
   };
+
+  const refreshPage = () =>{
+    setRefresh(!refresh)
+  }
 
 
   return (
@@ -74,7 +79,7 @@ export default function Package() {
               !error &&
               packages.map((pkg) => (
                 <SubscriptionCard
-                  key={pkg.adaptive_package_id}
+                  packageId={pkg.adaptive_package_id}
                   price={pkg.subscription_status === "ACTIVE" ? "28" : "28"}
                   description="Enjoy complete and uninterrupted access to all features on Skillintens."
                   benefits={['For high school curriculum tasks', 'Ad- free experience', 'Early access to new features']}
@@ -82,6 +87,7 @@ export default function Package() {
                   title={pkg.adaptive_package_name}
                   onClick={() => handleCardClick(pkg.adaptive_package_id,pkg.adaptive_package_name)}
                   subscription_id={pkg.subscription_id}
+                  refreshPage={refreshPage}
                 />
               ))}
           </div>

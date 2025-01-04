@@ -4,7 +4,7 @@ import styles from '../styles/subscribePageCard.module.css';
 import PayPalCard from './paypalCard';
 
 
-export default function SubscriptionCard({ price, description, benefits, color, title, onClick, subscription_id }) {
+export default function SubscriptionCard({refreshPage,packageId, price, description, benefits, color, title, onClick, subscription_id }) {
 
   const [refresh,setRefresh] = useState(false)
 
@@ -23,39 +23,6 @@ export default function SubscriptionCard({ price, description, benefits, color, 
   const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
   const apiUrl = corsProxyUrl ? `${corsProxyUrl}${baseApiUrl}` : baseApiUrl;
   
-  
-  const handleSubscription = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const email = localStorage.getItem("email");
-      const student_id = localStorage.getItem("student_id");
-
-      const response = await fetch(`${apiUrl}/update_user_subscription`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          subscription_id: subscription_id,
-          subscription_status: 'ACTIVE',
-          user_id: student_id
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setRefresh(!refresh)
-        console.log('Subscription updated successfully!');
-      } else {
-        console.error('Subscription update failed:', data);
-      }
-    } catch (error) {
-      console.error('Error while updating subscription:', error);
-    }
-  };
-
   const details = async()=>{
     setShowSubscribtionDetail(true)
     setLoading(true);  // Set loading state to true
@@ -104,7 +71,7 @@ export default function SubscriptionCard({ price, description, benefits, color, 
   const closeDetail = () =>{
     setShowSubscribtionDetail(false)
   }
-    console.log("<<<<<",subscribtionDetail)
+    
   return (<>
         <div className={color === "green" ? styles.subscriptionCardPurchased : styles.subscriptionCard}>
             {color == 'green' &&
@@ -156,7 +123,7 @@ export default function SubscriptionCard({ price, description, benefits, color, 
               <button className={styles.viewTasksButton}  onClick={onClick}>View Tasks</button>
             </div>
         </div>
-        <PayPalCard isOpen={isOpenPayment} onClose={closePayment} price={price} subscription_id={subscription_id}/>
+        <PayPalCard refreshPage={refreshPage} packageId={packageId}isOpen={isOpenPayment} onClose={closePayment} price={price} subscription_id={subscription_id}/>
           {showSubscribtionDetail && <div className={styles.subscribtionDetailContainer}>
               <div className={styles.subscribtionDetailCard}>
                 <div className={styles.topBar}>
