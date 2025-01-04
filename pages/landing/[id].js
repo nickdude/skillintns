@@ -13,6 +13,7 @@ export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
   const [currentId, setCurrentId] = useState(id);
+  const [isMounted, setIsMounted] = useState(false); 
 
   const [isOpenPayment, setIsOpenPayment] = useState(false);
   const openPayment = () => setIsOpenPayment(true);
@@ -23,16 +24,32 @@ export default function Home() {
   ];
 
 
+  // useEffect(() => {
+  //   if (!id) {
+  //     const pathId = router.asPath.split("/")[2]; 
+  //     if (pathId) {
+  //       setCurrentId(pathId); 
+  //     }
+  //   } else {
+  //     setCurrentId(id); 
+  //   }
+  // }, [id, router.asPath]);
   useEffect(() => {
-    if (!id) {
-      const pathId = router.asPath.split("/")[2]; 
-      if (pathId) {
-        setCurrentId(pathId); 
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      if (id) {
+        setCurrentId(id);
+      } else {
+        const pathId = router.asPath.split("/")[2];
+        if (pathId) {
+          setCurrentId(pathId);
+        }
       }
-    } else {
-      setCurrentId(id); 
     }
-  }, [id, router.asPath]);
+  }, [id, router.asPath, isMounted]);
    
   useEffect(() => {
     const fetchTasks = async () => {
@@ -62,10 +79,16 @@ export default function Home() {
       }
     };
 
-    if (currentId) {
+    if (currentId ) {
       fetchTasks();
     }
   }, [currentId, error]);
+
+  if (!isMounted || currentId === null) {
+    return null;
+  }
+
+
 
   return (
      <>
