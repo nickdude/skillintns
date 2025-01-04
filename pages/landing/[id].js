@@ -79,8 +79,7 @@ export default function Home() {
       }
     };
 
-    if (currentId ) {
-      console.log("typeof(currentId):",typeof(currentId))
+    if (currentId !== '[id]' ) {
       fetchTasks();
     }
   }, [currentId, error]);
