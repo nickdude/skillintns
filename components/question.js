@@ -1,7 +1,12 @@
-import React, { useState } from "react";
-import { MathJaxContext, MathJax } from "better-react-mathjax";
+import React, { useEffect, useState } from "react";
+// import { MathJaxContext, MathJax } from "better-react-mathjax";
 import Styles from "../styles/questions.module.css";
 import DropDown from "./dropDown";
+import dynamic from 'next/dynamic';
+
+const MathJaxContext = dynamic(() => import('better-react-mathjax').then(mod => mod.MathJaxContext), { ssr: false });
+const MathJax = dynamic(() => import('better-react-mathjax').then(mod => mod.MathJax), { ssr: false });
+
 
 const Question = ({
     genre,
@@ -22,6 +27,7 @@ const Question = ({
     isLevelChanged,
     isInReview
 }) => {
+console.log("question",question)
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
@@ -65,16 +71,30 @@ const Question = ({
         closePopUp()
     }
 
+    // const config = {
+    //     loader: {
+    //       load: ["input/tex", "output/chtml"],
+    //       paths: { mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5" },
+    //     },
+    //   };
+
     const config = {
         loader: {
-          load: ["input/tex", "output/chtml"],
-          paths: { mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5" },
+            load: ["input/tex", "output/chtml"],
+            paths: { mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5" },
         },
-      };
+        tex: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        },
+        chtml: {
+            scale: 1, // Set a proper scale
+        },
+    };
+    
     
     return (
         <MathJaxContext config={config}>
-            <div className={Styles.Question}>
+            <div className={Styles.Question} key={id}>
                 {/* Question Bar */}
                 <div className={Styles.Qbar}>
                     <div className={Styles.QuestionCell}>
@@ -82,7 +102,7 @@ const Question = ({
                            <MathJax> {genre}</MathJax>
                             <DropDown question={question} id={id} skill_name={skill_name}/>
                         </div>
-                        <div className={Styles.QuestValue}>Q. {question}</div>
+                        <div className={Styles.QuestValue}><MathJax>Q.{question}</MathJax></div>
                     </div>
                 </div>
 
