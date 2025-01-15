@@ -21,9 +21,9 @@ export default function RegisterPage() {
     const updateImageSrc = () => {
       const width = window.innerWidth;
       if (width >= 1025) {
-        setImageSrc("banner.svg"); // Desktop
+        setImageSrc("banner.png"); // Desktop
       } else if (width >= 601 && width <= 1024) {
-        setImageSrc("/tab_banner.svg"); // Tablet
+        setImageSrc("/tab_banner.png"); // Tablet
       } else {
         setImageSrc(""); // No image for mobile
       }
@@ -91,13 +91,22 @@ export default function RegisterPage() {
   return (
     <div className={styles.loginContainer}>
       <div className={styles.imageContainer}>
-        {imageSrc && (
+        <div className={styles.banerLogo}>
+          <img src="./baner_logo.svg"/>
+        </div>
+        <p className={styles.tagLine}>
+          Master high school subjects, Practice for Standardized Tests and More.
+        </p>
+        <p className={styles.subtagLine}>
+          Step-by-Step Learning to Build Confidence and Knowledge
+        </p>
+        {/* {imageSrc && (
           <img
             src={imageSrc}
             alt="Register illustration"
             className={styles.loginImage}
           />
-        )}
+        )} */}
       </div>
 
       <div className={styles.formContainer}>

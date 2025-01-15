@@ -206,6 +206,36 @@
   
   /* For tablets */
   @media (min-width: 601px) and (max-width: 1024px) {
+    .banerLogo{
+      Width:130.53px;
+      Height:30.18px;
+      margin-top: 4vh;
+    }
+    .tagLine{
+      font-family: Helvetica Neue;
+      font-size: 30.25px;
+      font-weight: 500;
+      line-height: 46.11px;
+      letter-spacing: -0.38429027795791626px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;      
+      color: #FEFAF1;
+      margin-top: 1vh;
+      width: 65vw;
+    }
+    .subtagLine{
+      font-family: Inter;
+      font-size: 13.79px;
+      font-weight: 500;
+      line-height: 21.35px;
+      letter-spacing: -0.07116486132144928px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;      
+      color: #FEFAF1;
+      margin-top: 1.5vh;
+    }
     .loginContainer {
         display: flex;
         height: 100vh;
@@ -221,9 +251,12 @@
         height: 50vh;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
         background-color: #f5f5f5;
-        align-items: start;
+        flex-direction: column;
+        background-image: url('../public/tab_banner.png'); 
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
       }
     
       .logoImage{
@@ -397,6 +430,36 @@
   
   /* For desktops */
   @media (min-width: 1025px) {
+    .banerLogo{
+      Width:130.53px;
+      Height:30.18px;
+      margin-top: 10vh;
+    }
+    .tagLine{
+      font-family: Helvetica Neue;
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 51.84px;
+      letter-spacing: -0.4320000112056732px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: #FEFAF1;
+      margin-top: 3vh;
+      width: 43vw;
+    }
+    .subtagLine{
+      font-family: Inter;
+      font-size: 15.5px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: -0.07999999821186066px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: #FEFAF1;
+      margin-top: 3vh;
+    }
     .loginContainer {
         display: flex;
         height: 100vh;
@@ -414,6 +477,12 @@
         display: flex;
         justify-content: flex-start;
         background-color: #f5f5f5;
+        align-items: center;
+        flex-direction: column;
+        background-image: url('../public/banner.png'); 
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
       }
     
       .logoImage{

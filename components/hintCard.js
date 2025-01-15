@@ -15,13 +15,14 @@ export default function HintCard({ isOpen, onClose, taskId, id, question }) {
     if (!isOpen || !taskId) return;
 
     const token = localStorage.getItem("token");
+    const packageId = localStorage.getItem("adaptive_package_id")
 
     const fetchHints = async () => {
       setLoading(true);
       setError(null);
 
       try {
-        const response = await fetch(`${apiUrl}/hints/${taskId}`, {
+        const response = await fetch(`${apiUrl}/hints/${taskId}?package_id=${packageId}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

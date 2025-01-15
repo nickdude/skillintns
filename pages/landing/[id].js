@@ -20,7 +20,7 @@ export default function Home() {
   const closePayment = () => setIsOpenPayment(false);
 
   const breadcrumbLinks = [
-    { text: 'Packages', href: `/subscribePage` },
+    { text: 'Packages', href: `/learning_modules` },
   ];
 
 

@@ -25,7 +25,7 @@ export default function SelectSkill() {
     const apiUrl = corsProxyUrl ? corsProxyUrl + baseApiUrl : baseApiUrl;
   
     const breadcrumbLinks = [
-        { text: 'Packages', href: `/subscribePage` },
+        { text: 'Packages', href: `/learning_modules` },
         { text: 'Tasks', href: `/landing/${currentId}` },
         { text: 'Skills', href: '#' }
     ];

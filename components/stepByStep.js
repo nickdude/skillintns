@@ -16,13 +16,14 @@ export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
   useEffect(() => {
     if (!isOpen || !taskId) return;
     const token = localStorage.getItem("token");
+    const packageId = localStorage.getItem("adaptive_package_id")
 
     const fetchHints = async () => {
       setLoading(true);
       setError(null);
 
       try {
-        const response = await fetch(`${apiUrl}/step_by_step_answers/${taskId}`, {
+        const response = await fetch(`${apiUrl}/step_by_step_answers/${taskId}?package_id=${packageId}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
