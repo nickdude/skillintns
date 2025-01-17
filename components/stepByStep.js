@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
-import { MathJax, MathJaxContext } from "better-react-mathjax";
+//import { MathJax, MathJaxContext } from "better-react-mathjax";
 import styles from "../styles/hintCard.module.css";
+import dynamic from 'next/dynamic';
+
+const MathJaxContext = dynamic(() => import('better-react-mathjax').then(mod => mod.MathJaxContext), { ssr: false });
+const MathJax = dynamic(() => import('better-react-mathjax').then(mod => mod.MathJax), { ssr: false });
+
 
 export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
   const [error, setError] = useState(null);
@@ -48,8 +53,22 @@ export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
 
   if (!isOpen) return null;
 
+  const config = {
+    loader: {
+        load: ["input/tex", "output/chtml"],
+        paths: { mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5" },
+    },
+    tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+    },
+    chtml: {
+        scale: 1, // Set a proper scale
+    },
+};
+
+
   return (
-    <MathJaxContext>
+    <MathJaxContext config={config}>
       <div className={styles.overlay}>
         <div className={styles.popup}>
           <div className={styles.topBar}>
@@ -66,7 +85,7 @@ export default function StepByStep({ isOpen, onClose, taskId, id, question }) {
               <p className={styles.errorMessage}>{error}</p>
             ) : (
               <div className={styles.feedbackText}>
-                <h2 className={styles.question}>Q. {question}</h2>
+                <h2 className={styles.question}><MathJax>Q. {question}</MathJax></h2>
                 {steps.length > 0 ? (
                   steps.map((step, index) => (
                     <p key={index}>

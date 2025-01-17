@@ -27,7 +27,6 @@ const Question = ({
     isLevelChanged,
     isInReview
 }) => {
-console.log("question",question)
 
     const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
     const corsProxyUrl = process.env.NEXT_PUBLIC_CORS_PROXY_URL;
